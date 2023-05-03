@@ -90,7 +90,12 @@ if(isset($_POST['submit'])){
                                             <?php
                                               if(isset($error)){
                                                  foreach($error as $error){
-                                                    echo '<span class="error-msg">'.$error.'</span>';
+                                                    echo '<div class="col-12">
+                                                            <div class="alert alert-danger alert-icon" role="alert">
+                                                                <i class="fa fa-info-circle"></i> Username or Password Wrong!
+                                                            </div>
+                                                        </div>';
+                                                    // echo '<span class="error-msg">'.$error.'</span>';
                                                  };
                                               };
                                             ?>
