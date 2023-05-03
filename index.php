@@ -1,5 +1,5 @@
 <?php
-header('location:main/file/admin_page.php');
+header('location:login_form.php');
 
 ?>
 
