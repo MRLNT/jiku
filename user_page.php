@@ -343,10 +343,10 @@ if(!isset($_SESSION['user_name'])){
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">User Menu</li>
                             
-                            <li><a href="user_page.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
-                            <li><a href="app-chat.html" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">ASN Aktif</span></a> </li>
-                            <li><a href="app-chat.html" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Pra Pensiun ASN</span></a> </li>
-                            <li><a href="pengajuan_kredit.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Pensiun</span></a> </li>
+                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
+                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank Nagari</span></a> </li>
+                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
+                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a> </li>
                             <li><a href="logout.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Logout</span></a> </li>
                         </ul>
                     </div>
