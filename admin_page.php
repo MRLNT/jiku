@@ -1,5 +1,4 @@
 <?php
-@include 'navbar.html';
 @include 'config.php';
 
 session_start();
