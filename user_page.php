@@ -7,6 +7,38 @@ session_start();
 if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
+error_reporting(E_ERROR | E_PARSE);
+
+if(isset($_POST['submit'])){
+    $nama_marketing = $_POST['nama_marketing'];
+    $nik_marketing = $_POST['nik_marketing'];
+    $cabang_pembantu = $_POST['cabang_pembantu'];
+    $no_hp_marketing = $_POST['no_hp_marketing'];
+
+    $nama_user = $_POST['nama_user'];
+    $tempat_lahir = $_POST['tempat_lahir'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
+    $nik_user = $_POST['nik_user'];
+    $nip_user = $_POST['nip_user'];
+    $no_pensiun = $_POST['no_pensiun'];
+    $alamat_user = $_POST['alamat_user'];
+    $nama_ibu = $_POST['nama_ibu'];
+    $nama_instansi = $_POST['nama_instansi'];
+    $pangkat_golongan = $_POST['pangkat_golongan'];
+    $no_rekening = $_POST['no_rekening'];
+    $no_npwp = $_POST['no_npwp'];
+    $no_telepon = $_POST['no_telepon'];
+
+    // $umur = (date('Y') - date('Y',strtotime($tanggal_lahir)));
+    // echo "<script type='text/javascript'>alert('$umur');</script>";
+
+    
+    
+    $insert = "INSERT INTO pengajuan_kredit(nama_marketing, nik_marketing, cabang_pembantu, waktu_pengajuan,no_hp_marketing,tanggal_syarat_ketentuan,tanggal_lahir,nama_user,tempat_lahir,nik_user,nip_user,no_pensiun,alamat_user,nama_ibu,nama_instansi,pangkat_golongan,no_rekening,no_npwp,no_telepon) 
+    VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu',NOW(),'$no_hp_marketing',NOW(),'$tanggal_lahir','$nama_user','$tempat_lahir','$nik_user','$nip_user','$no_pensiun','$alamat_user','$nama_ibu','$nama_instansi','$pangkat_golongan','$no_rekening','$no_npwp','$no_telepon')";
+    mysqli_query($conn, $insert);
+    // header('Location: dashboard_user.php');
+ };
 
 ?>
 
@@ -60,276 +92,7 @@ if(!isset($_SESSION['user_name'])){
                         <i class="ti ti-align-left"></i>
                     </button>
                     <!-- end navbar-header -->
-                    <!-- begin navigation -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="navigation d-flex">
-                            <ul class="navbar-nav nav-right ml-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="ti ti-email"></i>
-                                    </a>
-                                    <div class="dropdown-menu extended animated fadeIn" aria-labelledby="navbarDropdown">
-                                        <ul>
-                                            <li class="dropdown-header bg-gradient p-4 text-white text-left">Messages
-                                                <label class="label label-info label-round">6</label>
-                                                <a href="#" class="float-right btn btn-square btn-inverse-light btn-xs m-0">
-                                                    <span class="font-13"> Mark all as read</span></a>
-                                            </li>
-                                            <li class="dropdown-body">
-                                                <ul class="scrollbar scroll_dark max-h-240">
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/03.jpg" alt="user3">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Brianing Leyon</p>
-                                                                    <small>You will sail along until you...</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/01.jpg" alt="user">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Jimmyimg Leyon</p>
-                                                                    <small>Okay</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/02.jpg" alt="user2">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Brainjon Leyon</p>
-                                                                    <small>So, make the decision...</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/04.jpg" alt="user4">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Smithmin Leyon</p>
-                                                                    <small>Thanks</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/05.jpg" alt="user5">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Jennyns Leyon</p>
-                                                                    <small>How are you</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <img class="img-fluid" src="assets/img/avtar/06.jpg" alt="user6">
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Demian Leyon</p>
-                                                                    <small>I like your themes</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-footer">
-                                                <a class="font-13" href="javascript:void(0)"> View All messages </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fe fe-bell"></i>
-                                        <span class="notify">
-                                                    <span class="blink"></span>
-                                        <span class="dot"></span>
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu extended animated fadeIn" aria-labelledby="navbarDropdown">
-                                        <ul>
-                                            <li class="dropdown-header bg-gradient p-4 text-white text-left">Notifications
-                                                <a href="#" class="float-right btn btn-square btn-inverse-light btn-xs m-0">
-                                                    <span class="font-13"> Clear all</span></a>
-                                            </li>
-                                            <li class="dropdown-body min-h-240 nicescroll">
-                                                <ul class="scrollbar scroll_dark max-h-240">
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <div class="bg-type bg-type-md">
-                                                                        <span>HY</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">New registered user</p>
-                                                                    <small>Just now</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <div class="bg-type bg-type-md bg-success">
-                                                                        <span>GM</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">New invoice received</p>
-                                                                    <small>22 min</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <div class="bg-type bg-type-md bg-danger">
-                                                                        <span>FR</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Server error report</p>
-                                                                    <small>7 min</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <div class="bg-type bg-type-md bg-info">
-                                                                        <span>HT</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Database report</p>
-                                                                    <small>1 day</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="notification d-flex flex-row align-items-center">
-                                                                <div class="notify-icon bg-img align-self-center">
-                                                                    <div class="bg-type bg-type-md">
-                                                                        <span>DE</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="notify-message">
-                                                                    <p class="font-weight-bold">Order confirmation</p>
-                                                                    <small>2 day</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-footer">
-                                                <a class="font-13" href="javascript:void(0)"> View All Notifications
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link search" href="javascript:void(0)">
-                                        <i class="ti ti-search"></i>
-                                    </a>
-                                    <div class="search-wrapper">
-                                        <div class="close-btn">
-                                            <i class="ti ti-close"></i>
-                                        </div>
-                                        <div class="search-content">
-                                            <form>
-                                                <div class="form-group">
-                                                    <i class="ti ti-search magnifier"></i>
-                                                    <input type="text" class="form-control autocomplete" placeholder="Search Here" id="autocomplete-ajax" autofocus="autofocus">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown user-profile">
-                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="assets/img/avtar/02.jpg" alt="avtar-img">
-                                        <span class="bg-success user-status"></span>
-                                    </a>
-                                    <div class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
-                                        <div class="bg-gradient px-4 py-3">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="mr-1">
-                                                    <h4 class="text-white mb-0">Alice Williams</h4>
-                                                    <small class="text-white">Henry@example.com</small>
-                                                </div>
-                                                <a href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i
-                                                                class="zmdi zmdi-power"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="p-4">
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class="fa fa-user pr-2 text-success"></i> Profile</a>
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class="fa fa-envelope pr-2 text-primary"></i> Inbox
-                                                <span class="badge badge-primary ml-auto">6</span>
-                                            </a>
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class=" ti ti-settings pr-2 text-info"></i> Settings
-                                            </a>
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class="fa fa-compass pr-2 text-warning"></i> Need help?</a>
-                                            <div class="row mt-2">
-                                                <div class="col">
-                                                    <a class="bg-light p-3 text-center d-block" href="#">
-                                                        <i class="fe fe-mail font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">My messages</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col">
-                                                    <a class="bg-light p-3 text-center d-block" href="#">
-                                                        <i class="fe fe-plus font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">Compose new</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- end navigation -->
+                    
                 </nav>
                 <!-- end navbar -->
             </header>
@@ -343,13 +106,13 @@ if(!isset($_SESSION['user_name'])){
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">User Menu</li>
                             
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
+                            <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
                                 <ul aria-expanded="false">
-                                    <li> <a href="#">ASN Aktif</a> </li>
-                                    <li> <a href="#">ASN Pra-Pensiun </a> </li>
-                                    <li> <a href="#">ASN Pensiun</a> </li>
+                                    <li> <a href="user_page.php">ASN Aktif</a> </li>
+                                    <li> <a href="user_page.php">ASN Pra-Pensiun </a> </li>
+                                    <li> <a href="user_page.php">ASN Pensiun</a> </li>
                                 </ul>
                             </li>
                             <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
@@ -395,44 +158,280 @@ if(!isset($_SESSION['user_name'])){
                     <!-- end row -->
                     <!-- start Tabs contant -->
                     <div class="row tabs-contant">
-                        <div class="col-xxl-6">
+                        <div class="col-xxl-12">
                             <div class="card card-statistics">
-                                <div class="card-header">
-                                    <div class="card-heading">
-                                        <h4 class="card-title">Pendaftaran</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab nav-border-bottom">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active show" id="home-02-tab" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">Home</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="profile-02-tab" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">Profile </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="portfolio-02-tab" data-toggle="tab" href="#portfolio-02" role="tab" aria-controls="portfolio-02" aria-selected="false">Portfolio </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="contact-02-tab" data-toggle="tab" href="#contact-02" role="tab" aria-controls="contact-02" aria-selected="false">Contact </a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade py-3 active show" id="home-02" role="tabpanel" aria-labelledby="home-02-tab">
-                                                <p>The first thing to remember about success is that it is a process – nothing more, nothing less. There is really no magic to it and it’s not reserved only for a select few people. As such, success really has nothing to do with luck, coincidence or fate. It really comes down to understanding the steps in the process and then executing on those steps.</p>
-                                            </div>
-                                            <div class="tab-pane fade py-3" id="profile-02" role="tabpanel" aria-labelledby="profile-02-tab">
-                                                <p>The sad thing is the majority of people have no clue about what they truly want. They have no clarity. When asked the question, responses will be superficial at best, and at worst, will be what someone else wants for them.</p>
-                                            </div>
-                                            <div class="tab-pane fade py-3" id="portfolio-02" role="tabpanel" aria-labelledby="portfolio-02-tab">
-                                                <p>Motivation is not an accident or something that someone else can give you — you are the only one with the power to motivate you. Motivation cannot be an external force, it must come from within as the natural product of your desire to achieve something and your belief that you are capable to succeed at your goal.</p>
-                                            </div>
-                                            <div class="tab-pane fade py-3" id="contact-02" role="tabpanel" aria-labelledby="contact-02-tab">
-                                                <p>We also know those epic stories, those modern-day legends surrounding the early failures of such supremely successful folks as Michael Jordan and Bill Gates. We can look a bit further back in time to Albert Einstein or even further back to Abraham Lincoln.</p>
-                                            </div>
+                                <form action="" method="post">
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Data Marketing</h4>
                                         </div>
                                     </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Nama Marketing</label>
+                                            <input name="nama_marketing" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">NIK</label>
+                                            <input name="nik_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Handphone</label>
+                                            <input name="no_hp_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Handphone Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Cabang/Capem</label>
+                                            <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang">
+                                        </div>
+                                    </div>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Syarat dan Ketentuan</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Bank Nagari<br><br>Syarat dan Ketentuan:</h4>
+                                        <h5 class="card-text">Bank Nagari<br>Syarat dan Ketentuan:<br>1.	Calon Debitur membuat dan menandatangi permohonan kredit/pembiayaan, dengan melengkapi data persyaratan yang ditetapkan oleh Bank.<br>2. Debitur yang akan mengajukan perubahan plafond, penukaran jaminan, syarat - syarat lainnya dari Perjanjian/Akad Kredit/Pembiayaan harus mengajukan dan menandatangani permohonan kepada Bank.<br> 3. Bank berhak meminta data - data dan keterangan yang dibutuhkan, sesuai dengan kentuan dan persyaratan kredit/pembiayaan.<br>4.	Calon Debitur atau Debitur berkewajiban memberi keterangan yang diminta oleh Bank dengan benar, baik mengenai identitas Debitur, kondisi keuangan dan lain sebagainya.<br>5. Bank setelah melaukan analisa mengenal kelayakan pemberian kredit/pembiayaan atas permohonan yang diajukan oleh Calon Debitur atau Debitur menetapkan : <br>a.	Permohonan ditolak, apabila menurut penilaian Bank, Debitur tidak layak diberikan kredit/pembiayaan.<br>b.	Permohonan ditangguhkan, apabila persyaratan yang ditetapkan oleh Bank belum dipenuhi oleh Debitur atau karena hal lain yang belum bisa dipenuhi untuk syarat pencairan kredit/pembiayaan debitur.<br>c.	Permohonan dikabulkan, apabila menurut penilaian Bank Debitur layak untuk diberikan kredit/pembiayaan.<br>6. Bank hanya dapat mengabulkan permohonan Calon Debitur atau Debitur, maksimal sebesar permohonan Calon Debitur atau Debitur.<br>7. Berdasarkan analisa yang telah dilakukan Bank dapat menetapkan arah/komposisi pembiayaan usaha calon Debitur atau Debitur.<br>8. Calon Debitur jika setuju dengan persyaratan Bank wajib menandatangani Surat Pemberitahuan Persetujuan Kredit yang diserahkan oleh Bank kepada Debitur.<br>9. Jumlah kredit yang diberikan tidak mutlak ditentukan oleh nilai agunan yang diberikan Debitur, tetapi berdasarkan kemampuan bayar dan kebutuhan kredit Debitur.<br></h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Setujui syarat dan ketentuan
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Data Pribadi</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Nama</label>
+                                            <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Tempat Lahir</label>
+                                            <input name="tempat_lahir" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Tempat Lahir Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Tanggal Lahir</label><br>
+                                            <input name="tanggal_lahir" type="date" placeholder="Masukkan Tanggal Lahir">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">NIK</label>
+                                            <input name="nik_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">NIP</label>
+                                            <input name="nip_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIP Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Pensiun</label>
+                                            <input name="no_pensiun" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Pensiun Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Alamat</label>
+                                            <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Alamat Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Nama Ibu</label>
+                                            <input name="nama_ibu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Ibu Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Nama Instansi</label>
+                                            <input name="nama_instansi" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Instansi Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Pangkat dan Golongan</label>
+                                            <input name="pangkat_golongan" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Pangkat dan Golongan Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Rekening</label>
+                                            <input name="no_rekening" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Rekening Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No NPWP</label>
+                                            <input name="no_npwp" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No NPWP Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Telepon</label>
+                                            <input name="no_telepon" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Telepon Anda">
+                                        </div>
+                                    </div>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Perjanjian Kredit</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Customer CIF</label>
+                                            <input name="customer_cif" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Pangkat dan Golongan Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Nominal Permohonan</label>
+                                            <input name="nominal_permohonan" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Rekening Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Jangka Waktu Pinjaman</label>
+                                            <input name="jangka_waktu_pinjaman" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Rekening Anda">
+                                        </div>
+                                        <button>Submit</button>
+                                    </div>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Dokumen Checklist</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                        <label>Umur Pengajuan</label> <br>
+                                        <input name="umur" type="text" placeholder="Masukkan umur">
+                                    </div>
+                                    <div>
+                                        <label>Nomor Rekening Tabungan</label> <br>
+                                        <input name="notabungan" type="text" placeholder="Masukkan Nomor Rekening Tabungan">
+                                    </div>
+                                    <div>
+                                        <label>Nomor NPWP   (untuk kredit ≥ Rp. 50 juta) </label> <br>
+                                        <input name="nonpwp" type="text" placeholder="Masukkan Nomor NPWP">
+                                    </div>
+                                    <div>
+                                        <label>Tanggal Perpekenalan</label> <br>
+                                        <input name="tglperpekenalan" type="date" placeholder="Masukkan Tanggal Perpekenalan">
+                                    </div>
+                                    <div>
+                                        <label>Nomor Telepon / WhatsApp</label> <br>
+                                        <input name="notelp" type="text" placeholder="Masukkan Nomor Telepon">
+                                    </div>
+                                    <div>
+                                        <label>Nomor Handphone</label> <br>
+                                        <input name="nohandphone" type="text" placeholder="Masukkan Nomor Handphone">
+                                    </div>
+                                    <div>
+                                        <br>
+                                    </div>
+                                    <div>
+                                        <label>Perusahaan Fronting PT.Jaringan Inklusi Keuangan</label><br>
+                                    </div>
+                                    <div>
+                                        <label>Suku Bunga</label> <br>
+                                        <input type="radio" name="flat" value="1" id="flat">
+                                        <label for="flat">FLAT</label>
+                                        <input type="radio" name="atsbln" value="1" id="atsbln">
+                                        <label for="atsbln">ANUITAS BULANAN</label>
+                                        <input type="radio" name="sdgbln" value="1" id="sdgbln">
+                                        <label for="sdgbln">SLIDING BULANAN</label>
+                                    </div>
+                                    <div>
+                                        <label>Jumlah Pinjaman</label> <br>
+                                        <input name="pinjaman" type="number" placeholder="Masukkan jumlah Pinjaman">
+                                    </div>
+                                    <div>
+                                        <label>Waktu Pinjaman</label> <br>
+                                        <input name="wpinjaman" type="number" placeholder="Masukkan Waktu Pinjaman">
+                                    </div>
+                                    </div>
+                                    <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
+                                </form>
+                                <?php
+                                $nama = @$_GET['nama'];
+                                $umur = @$_GET['umur'];
+                                $pinjaman = @$_GET['pinjaman'];
+                                $wpinjaman = @$_GET['wpinjaman'];
+                                $norek = @$_GET['notabungan'];
+
+                                $jpersen = 0.0;
+                                $totalbungabulanan = 0;
+                                $premi = 0;
+                                $biayaprovisi = 0;
+                                $jmlhditerima = 0;
+                                $bungabulanan = 0;
+                                $biayapencairan = 0;
+                                $pembayaranbulanan = 0;
+                                $jumlahcicilanbulanan = 0;
+                                $max_pinjaman = 300000000; // Maksimal jumlah pinjaman adalah 300 juta
+                            
+                                if ($pinjaman > $max_pinjaman) 
+                                {
+                                echo "Maaf, maksimal jumlah pinjaman adalah " . number_format($max_pinjaman, 0, ',', '.') . " rupiah.";
+                                exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                }
+
+                                if ($wpinjaman > 15) 
+                                {
+                                echo "Maaf, maksimal Pengajuan waktu kredit 15 Tahun";
+                                exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                }
+
+                                if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                    $jpersen = 9;
+                                } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                    $jpersen = 9.5;
+                                } elseif($wpinjaman>=11 && $wpinjaman<=15) {
+                                    $jpersen = 10.5;
+                                } else{
+                                    echo"Masukkan angka yang benar";
+                                }
+
+                                $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+                            // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+                            // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                $premi = 0.00375*$pinjaman*$wpinjaman;
+                            // Total premi =2.  0.375*200jt*5tahun=3.7jt
+                                $biayaprovisi = $pinjaman*0.01;
+                            // Biaya Provisi =3.
+                                $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+                            // Jumlah yang diterima
+                                $bungabulanan = $jpersen / 12;
+                            // Bunga Bulanan
+                                $biayapencairan= $premi + $biayaprovisi - 150000;
+                            // Bunga Bulanan
+                                $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+                            // Pembayaran Bulanan
+                                $jumlahcicilanbulanan= $wpinjaman*12 ;
+                            // Pembayaran Bulanan
+                                $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+                                $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+                                $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+                                $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+                                $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+                                $premi_format = number_format($premi, 0, ',', '.');
+                                $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
+
+                                echo "<strong>No CIF</strong> 00000001 <br>";
+                                echo "<strong>Nama:</strong> {$nama} <br>";
+                                echo "<strong>Umur:</strong> {$umur} <br>";
+                                echo "<strong>Rekening Bank :</strong> {$norek} <br>";
+                                echo "<br>";
+                                echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
+                                echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} <br>";
+                                echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
+                                echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
+                                echo "<br>";
+                                echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
+                                echo "<br> Suku Bunga Tahunan: {$jpersen}%";
+                                echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
+                                echo "<br> Total Premi: Rp {$premi_format} ";
+                                echo "<br>";
+                                echo "Biaya Provisi: Rp {$biayaprovisi_format}";
+                                echo "<br>";
+                                ?>
+                            </div>
+                            <div class="card card-statistics">
+                                <div class="card-body">
+                                <?php
+                                    $nominal_permohonan = $_POST['nominal_permohonan'];
+                                    if($nominal_permohonan > 300000000) echo "Nominal tidak boleh leih dari Rp 300.000.000";    
+                                ?>
+                                </div>
+                                <div class="card-body">
+                                    <form name="form" action="" method="get">
+                                        <input type="text" name="subject" id="subject" value="Car Loan">
+                                    </form>
+                                    <?php echo $_GET['subject']; ?>
                                 </div>
                             </div>
                         </div>
@@ -452,6 +451,8 @@ if(!isset($_SESSION['user_name'])){
 
     <!-- custom app -->
     <script src="assets/js/app.js"></script>
+
+    
 </body>
 
 
