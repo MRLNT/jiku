@@ -10,15 +10,28 @@ if(!isset($_SESSION['user_name'])){
 error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
-    $nama_marketing = $_POST['nama_marketing'];
-    $nik_marketing = $_POST['nik_marketing'];
-    $cabang_pembantu = $_POST['cabang_pembantu'];
-    $no_hp_marketing = $_POST['no_hp_marketing'];
+    $nama_user = $_POST['nama_user'];
+    $tempat_lahir = $_POST['tempat_lahir'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
+    $nik_user = $_POST['nik_user'];
+    $nip_user = $_POST['nip_user'];
+    $no_pensiun = $_POST['no_pensiun'];
+    $alamat_user = $_POST['alamat_user'];
+    $nama_ibu = $_POST['nama_ibu'];
+    $nama_instansi = $_POST['nama_instansi'];
+    $pangkat_golongan = $_POST['pangkat_golongan'];
+    $no_rekening = $_POST['no_rekening'];
+    $no_npwp = $_POST['no_npwp'];
+    $no_telepon = $_POST['no_telepon'];
 
-    $insert = "INSERT INTO temp_form1(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing')";
+    // $umur = (date('Y') - date('Y',strtotime($tanggal_lahir)));
+    // echo "<script type='text/javascript'>alert('$umur');</script>";
+    
+    $insert = "INSERT INTO temp_form3(tanggal_lahir,nama_user,tempat_lahir,nik_user,nip_user,no_pensiun,alamat_user,nama_ibu,nama_instansi,pangkat_golongan,no_rekening,no_npwp,no_telepon) 
+    VALUES('$tanggal_lahir','$nama_user','$tempat_lahir','$nik_user','$nip_user','$no_pensiun','$alamat_user','$nama_ibu','$nama_instansi','$pangkat_golongan','$no_rekening','$no_npwp','$no_telepon')";
     mysqli_query($conn, $insert);
-    header('Location: user_page2.php');
     // header('Location: kredit_final.php');
+    header('Location: user_page5.php');
  };
 
 ?>
@@ -119,19 +132,6 @@ if(isset($_POST['submit'])){
                                 <div class="page-title mb-2 mb-sm-0">
                                     <h1>Tabs</h1>
                                 </div>
-                                <div class="ml-auto d-flex align-items-center">
-                                    <nav>
-                                        <ol class="breadcrumb p-0 m-b-0">
-                                            <li class="breadcrumb-item">
-                                                <a href="index.html"><i class="ti ti-home"></i></a>
-                                            </li>
-                                            <li class="breadcrumb-item">
-                                                UI Kit
-                                            </li>
-                                            <li class="breadcrumb-item active text-primary" aria-current="page">Tabs</li>
-                                        </ol>
-                                    </nav>
-                                </div>
                             </div>
                             <!-- end page title -->
                         </div>
@@ -144,35 +144,66 @@ if(isset($_POST['submit'])){
                                 <form action="" method="post">
                                     <div class="card-header">
                                         <div class="card-heading">
-                                            <h4 class="card-title">Data Marketing</h4>
+                                            <h4 class="card-title">Data Pribadi</h4>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Nama Marketing</label>
-                                            <input name="nama_marketing" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
-                                            
+                                            <label for="formGroupExampleInput">Nama</label>
+                                            <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Tempat Lahir</label>
+                                            <input name="tempat_lahir" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Tempat Lahir Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Tanggal Lahir</label><br>
+                                            <input name="tanggal_lahir" type="date" placeholder="Masukkan Tanggal Lahir">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">NIK</label>
-                                            <input name="nik_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
+                                            <input name="nik_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Handphone</label>
-                                            <input name="no_hp_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Handphone Anda">
+                                            <label for="formGroupExampleInput2">NIP</label>
+                                            <input name="nip_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIP Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">Cabang/Capem</label>
-                                            <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang">
+                                            <label for="formGroupExampleInput2">No Pensiun</label>
+                                            <input name="no_pensiun" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Pensiun Anda">
                                         </div>
-                                        <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Alamat</label>
+                                            <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Alamat Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Nama Ibu</label>
+                                            <input name="nama_ibu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Ibu Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Nama Instansi</label>
+                                            <input name="nama_instansi" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Instansi Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Pangkat dan Golongan</label>
+                                            <input name="pangkat_golongan" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Pangkat dan Golongan Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Rekening</label>
+                                            <input name="no_rekening" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Rekening Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No NPWP</label>
+                                            <input name="no_npwp" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No NPWP Anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">No Telepon</label>
+                                            <input name="no_telepon" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Telepon Anda">
+                                        </div>
                                     </div>
-                                    
-                                    
+                                    <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
-                                
                             </div>
-                            
                         </div>
                     </div>
                     <!-- end Tabs contant -->
