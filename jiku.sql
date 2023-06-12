@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2023 pada 12.43
+-- Waktu pembuatan: 12 Jun 2023 pada 13.29
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -115,7 +115,10 @@ INSERT INTO `temp_form1` (`id_pengajuan`, `nama_marketing`, `nik_marketing`, `ca
 (4, 'marcel', 12345, 'ciluar', 123456),
 (5, 'test2', 2, '22', 8),
 (6, '', 0, '', 0),
-(7, 'ppp', 999, 'ppp', 999);
+(7, 'ppp', 999, 'ppp', 999),
+(8, '', 0, '', 0),
+(9, '', 0, '', 0),
+(10, '', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +138,10 @@ CREATE TABLE `temp_form2` (
 
 INSERT INTO `temp_form2` (`id_pengajuan`, `waktu_pengajuan`, `tanggal_syarat_ketentuan`) VALUES
 (20, '2023-06-10 14:25:01', '2023-06-10 14:25:01'),
-(21, '2023-06-10 14:50:15', '2023-06-10 14:50:15');
+(21, '2023-06-10 14:50:15', '2023-06-10 14:50:15'),
+(22, '2023-06-12 13:39:12', '2023-06-12 13:39:12'),
+(23, '2023-06-12 14:14:46', '2023-06-12 14:14:46'),
+(24, '2023-06-12 17:36:03', '2023-06-12 17:36:03');
 
 -- --------------------------------------------------------
 
@@ -170,10 +176,36 @@ INSERT INTO `temp_form3` (`id_pengajuan`, `nama_user`, `tempat_lahir`, `tanggal_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `temp_form5`
+-- Struktur dari tabel `temp_form4`
 --
 
-CREATE TABLE `temp_form5` (
+CREATE TABLE `temp_form4` (
+  `id_pengajuan` int(255) NOT NULL,
+  `jumlah_pinjaman` int(255) NOT NULL,
+  `waktu_pinjaman` int(255) NOT NULL,
+  `umur_pengajuan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `temp_form4`
+--
+
+INSERT INTO `temp_form4` (`id_pengajuan`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`) VALUES
+(9, 200000000, 7, 0),
+(10, 1000, 7, 993),
+(11, 0, 0, 1),
+(12, 0, 0, 1),
+(13, 0, 0, 1),
+(14, 0, 0, 1),
+(15, 123456789, 60, 45);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `temp_form6`
+--
+
+CREATE TABLE `temp_form6` (
   `id_pengajuan` int(11) NOT NULL,
   `kredit_file_1` text NOT NULL,
   `kredit_file_2` text NOT NULL,
@@ -197,12 +229,14 @@ CREATE TABLE `temp_form5` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `temp_form5`
+-- Dumping data untuk tabel `temp_form6`
 --
 
-INSERT INTO `temp_form5` (`id_pengajuan`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`, `kredit_file_20`) VALUES
+INSERT INTO `temp_form6` (`id_pengajuan`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`, `kredit_file_20`) VALUES
 (1, 'kredit_file_1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(2, 'kredit_file_1', '', 'kredit_file_3', '', 'kredit_file_5', '', 'kredit_file_7', '', 'kredit_file_9', '', 'kredit_file_11', '', 'kredit_file_14', '', 'kredit_file_16', '', 'kredit_file_18', '', 'kredit_file_20');
+(2, 'kredit_file_1', '', 'kredit_file_3', '', 'kredit_file_5', '', 'kredit_file_7', '', 'kredit_file_9', '', 'kredit_file_11', '', 'kredit_file_14', '', 'kredit_file_16', '', 'kredit_file_18', '', 'kredit_file_20'),
+(3, '', '', '', 'kredit_file_4', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(4, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -294,9 +328,15 @@ ALTER TABLE `temp_form3`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `temp_form5`
+-- Indeks untuk tabel `temp_form4`
 --
-ALTER TABLE `temp_form5`
+ALTER TABLE `temp_form4`
+  ADD PRIMARY KEY (`id_pengajuan`);
+
+--
+-- Indeks untuk tabel `temp_form6`
+--
+ALTER TABLE `temp_form6`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
@@ -325,19 +365,25 @@ ALTER TABLE `pengajuan_kredit`
 -- AUTO_INCREMENT untuk tabel `temp_form1`
 --
 ALTER TABLE `temp_form1`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form2`
 --
 ALTER TABLE `temp_form2`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `temp_form5`
+-- AUTO_INCREMENT untuk tabel `temp_form4`
 --
-ALTER TABLE `temp_form5`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `temp_form4`
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `temp_form6`
+--
+ALTER TABLE `temp_form6`
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_credit`
