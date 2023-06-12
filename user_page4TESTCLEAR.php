@@ -10,28 +10,14 @@ if(!isset($_SESSION['user_name'])){
 error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
-    $nama_user = $_POST['nama_user'];
-    $tempat_lahir = $_POST['tempat_lahir'];
-    $tanggal_lahir = $_POST['tanggal_lahir'];
-    $nik_user = $_POST['nik_user'];
-    $nip_user = $_POST['nip_user'];
-    $no_pensiun = $_POST['no_pensiun'];
-    $alamat_user = $_POST['alamat_user'];
-    $nama_ibu = $_POST['nama_ibu'];
-    $nama_instansi = $_POST['nama_instansi'];
-    $pangkat_golongan = $_POST['pangkat_golongan'];
-    $no_rekening = $_POST['no_rekening'];
-    $no_npwp = $_POST['no_npwp'];
-    $no_telepon = $_POST['no_telepon'];
-
-    // $umur = (date('Y') - date('Y',strtotime($tanggal_lahir)));
-    // echo "<script type='text/javascript'>alert('$umur');</script>";
+    $jumlah_pinjaman = $_POST['jumlah_pinjaman'];
+    $waktu_pinjaman = $_POST['waktu_pinjaman'];
+    $test = $jumlah_pinjaman - $waktu_pinjaman;
     
-    $insert = "INSERT INTO temp_form3(tanggal_lahir,nama_user,tempat_lahir,nik_user,nip_user,no_pensiun,alamat_user,nama_ibu,nama_instansi,pangkat_golongan,no_rekening,no_npwp,no_telepon) 
-    VALUES('$tanggal_lahir','$nama_user','$tempat_lahir','$nik_user','$nip_user','$no_pensiun','$alamat_user','$nama_ibu','$nama_instansi','$pangkat_golongan','$no_rekening','$no_npwp','$no_telepon')";
+    
+    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,test) VALUES('$jumlah_pinjaman','$waktu_pinjaman','$test')";
     mysqli_query($conn, $insert);
-    // header('Location: kredit_final.php');
-    header('Location: user_page4.php');
+    header('Location: user_page5.php');
  };
 
 ?>
@@ -144,62 +130,19 @@ if(isset($_POST['submit'])){
                                 <form action="" method="post">
                                     <div class="card-header">
                                         <div class="card-heading">
-                                            <h4 class="card-title">Data Pribadi</h4>
+                                            <h4 class="card-title">Data Pribadi Nasabah/Debitur</h4>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Nama</label>
-                                            <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
+                                            <label for="numeric8">Jumlah Pinjaman</label>
+                                            <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Tempat Lahir</label>
-                                            <input name="tempat_lahir" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Tempat Lahir Anda">
+                                            <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
+                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput">Tanggal Lahir</label><br>
-                                            <input name="tanggal_lahir" type="date" placeholder="Masukkan Tanggal Lahir">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">NIK</label>
-                                            <input name="nik_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">NIP</label>
-                                            <input name="nip_user" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIP Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Pensiun</label>
-                                            <input name="no_pensiun" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Pensiun Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">Alamat</label>
-                                            <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Alamat Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">Nama Ibu</label>
-                                            <input name="nama_ibu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Ibu Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">Nama Instansi</label>
-                                            <input name="nama_instansi" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Instansi Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">Pangkat dan Golongan</label>
-                                            <input name="pangkat_golongan" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Pangkat dan Golongan Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Rekening</label>
-                                            <input name="no_rekening" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Rekening Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">No NPWP</label>
-                                            <input name="no_npwp" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No NPWP Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Telepon</label>
-                                            <input name="no_telepon" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Telepon Anda">
-                                        </div>
+                                        
                                     </div>
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>

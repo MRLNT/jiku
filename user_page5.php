@@ -10,30 +10,14 @@ if(!isset($_SESSION['user_name'])){
 error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
-    $kredit_file_1 = $_POST['kredit_file_1'];
-    $kredit_file_2 = $_POST['kredit_file_2'];
-    $kredit_file_3 = $_POST['kredit_file_3'];
-    $kredit_file_4 = $_POST['kredit_file_4'];
-    $kredit_file_5 = $_POST['kredit_file_5'];
-    $kredit_file_6 = $_POST['kredit_file_6'];
-    $kredit_file_7 = $_POST['kredit_file_7'];
-    $kredit_file_8 = $_POST['kredit_file_8'];
-    $kredit_file_9 = $_POST['kredit_file_9'];
-    $kredit_file_10 = $_POST['kredit_file_10'];
-    $kredit_file_11 = $_POST['kredit_file_11'];
-    $kredit_file_13 = $_POST['kredit_file_13'];
-    $kredit_file_14 = $_POST['kredit_file_14'];
-    $kredit_file_15 = $_POST['kredit_file_15'];
-    $kredit_file_16 = $_POST['kredit_file_16'];
-    $kredit_file_17 = $_POST['kredit_file_17'];
-    $kredit_file_18 = $_POST['kredit_file_18'];
-    $kredit_file_19 = $_POST['kredit_file_19'];
-    $kredit_file_20 = $_POST['kredit_file_20'];
-
-    $insert = "INSERT INTO temp_form5(kredit_file_1, kredit_file_2, kredit_file_3, kredit_file_4, kredit_file_5, kredit_file_6, kredit_file_7, kredit_file_8, kredit_file_9, kredit_file_10, kredit_file_11, kredit_file_13, kredit_file_14, kredit_file_15, kredit_file_16, kredit_file_17, kredit_file_18, kredit_file_19, kredit_file_20) VALUES('$kredit_file_1','$kredit_file_2','$kredit_file_3','$kredit_file_4','$kredit_file_5','$kredit_file_6','$kredit_file_7','$kredit_file_8','$kredit_file_9','$kredit_file_10','$kredit_file_11','$kredit_file_13','$kredit_file_14','$kredit_file_15','$kredit_file_16','$kredit_file_17','$kredit_file_18','$kredit_file_19','$kredit_file_20')";
-    mysqli_query($conn, $insert);
+    $jumlah_pinjaman = $_POST['jumlah_pinjaman'];
+    $waktu_pinjaman = $_POST['waktu_pinjaman'];
+    $umur_pengajuan = $_POST['umur_pengajuan'];
     
-    header('Location: kredit_final.php');
+    
+    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan) VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan')";
+    mysqli_query($conn, $insert);
+    header('Location: user_page6.php');
  };
 
 ?>
@@ -132,7 +116,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Syarat dan Ketentuan</h1>
+                                    <h1>Tabs</h1>
                                 </div>
                             </div>
                             <!-- end page title -->
@@ -141,268 +125,117 @@ if(isset($_POST['submit'])){
                     <!-- end row -->
                     <!-- start Tabs contant -->
                     <div class="row tabs-contant">
-                        <div class="col-xxl-12 m-b-30">
-                            <div class="card card-statistics h-100 mb-0">
+                        <div class="col-xxl-12">
+                            <div class="card card-statistics">
                                 <form action="" method="post">
-                                    <div class="card-header d-sm-flex justify-content-between align-items-center py-3">
-                                        <div class="card-heading mb-3 mb-sm-0">
-                                            <h4 class="card-title">Dokumen Check List dan Tanda Terima Dokumen</h4>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Hasil Perhitungan</h4>
                                         </div>
                                     </div>
-                                    <div class="card-body scrollbar scroll_dark" style="max-height: 420px;">
-                                        <div class="table-responsive m-t-20">
-                                            <table id="datatable-buttons" class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Dokumen</th>
-                                                        <th>Cek List</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-muted">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Asli SK Pangkat Calon Pegawai 80%</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_1" id="defaultCheck1" name="kredit_file_1">
-                                                                <label class="form-check-label" for="defaultCheck1">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Asli SK Pengangkatan sebagai PNS (100%) / SK Pensiun</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_2" id="defaultCheck2" name="kredit_file_2">
-                                                                <label class="form-check-label" for="defaultCheck2">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Asli SK Pangkat Terakhir</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_3" id="defaultCheck3" name="kredit_file_3">
-                                                                <label class="form-check-label" for="defaultCheck3">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Slip Gaji Bulan Terakhir</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_4" id="defaultCheck4" name="kredit_file_4">
-                                                                <label class="form-check-label" for="defaultCheck4">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>Copy Kartu Tanda Penduduk (KTP)</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_5" id="defaultCheck5" name="kredit_file_5">
-                                                                <label class="form-check-label" for="defaultCheck5">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>6</td>
-                                                        <td>Copy Kartu Keluarga</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_6" id="defaultCheck6" name="kredit_file_6">
-                                                                <label class="form-check-label" for="defaultCheck6">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>7</td>
-                                                        <td>Asli Bukti Kepemilikan Agunan bagi kredit yang disyaratkan<br>menggunakan agunan tambahan</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_7" id="defaultCheck7" name="kredit_file_7">
-                                                                <label class="form-check-label" for="defaultCheck7">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>8</td>
-                                                        <td>Copy Kartu Taspen</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_8" id="defaultCheck8" name="kredit_file_8">
-                                                                <label class="form-check-label" for="defaultCheck8">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>9</td>
-                                                        <td>Copy NPWP untuk jumlah permohonan kredit yang wajib<br>dilengkapi NPWP sesuai aturan yang berlaku</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_9" id="defaultCheck9" name="kredit_file_9">
-                                                                <label class="form-check-label" for="defaultCheck9">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>10</td>
-                                                        <td>Menyerahkan Surat Kuasa Memotong Gaji<br>diatas materi secukupnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_10" id="defaultCheck10" name="kredit_file_10">
-                                                                <label class="form-check-label" for="defaultCheck10">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>11</td>
-                                                        <td>Menyerahkan Surat Kuasa Pendebetan<br>Rekening diatas material secukupnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_11" id="defaultCheck11" name="kredit_file_11">
-                                                                <label class="form-check-label" for="defaultCheck11">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>12</td>
-                                                        <td>Membuat Surat Pernyataan dan<br>Kuasa diatas materai secukupnya yang memuat :</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>13</td>
-                                                        <td>Pernyataan dari debitur tidak akan memindahkan<br>gaji/mengganti rekening gaji debitur dari PT Bank Nagari<br>walaupun debitur pindah tugas ke daerah lain sampai kredit<br>dinyatakan Lunas Oleh PT Bank Nagari</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_13" id="defaultCheck13" name="kredit_file_13">
-                                                                <label class="form-check-label" for="defaultCheck13">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>14</td>
-                                                        <td>Menyetujui penggunaan Hak Substitusi dari Bendahara gaji lama kepada<br>bendahara gaji yang baru untuk memotong gajinya dan meneruskannya<br>/mengirimkan/transfer ke Bank Nagari untuk angsuran kreditnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_14" id="defaultCheck14" name="kredit_file_14">
-                                                                <label class="form-check-label" for="defaultCheck14">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>15</td>
-                                                        <td>Memberikan kuasa kepada Bank Nagari untuk<br>melakukan penagihan kepada lembaga/instansi tempat debitur<br>bekerja apabila debitur pindah dinas ke daerah lain</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_15" id="defaultCheck15" name="kredit_file_15">
-                                                                <label class="form-check-label" for="defaultCheck15">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>16</td>
-                                                        <td>Menyetujui pendampingan pengurusan dan<br>pengarahan yang dilakukan oleh staf PT<br>Bank Nagari agar uang pensiun Debitur dibayarkan melalui PT Bank Nagari</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_16" id="defaultCheck16" name="kredit_file_16">
-                                                                <label class="form-check-label" for="defaultCheck16">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>17</td>
-                                                        <td>Untuk debitur Selang 2 (dua) Waktu wajib dilengkapi dengan I-Deb SLIK</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_17" id="defaultCheck17" name="kredit_file_17">
-                                                                <label class="form-check-label" for="defaultCheck17">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>18</td>
-                                                        <td>Kwitansi/bukti lunas/keterangan lunas dari<br>bank lain tersebut setelah kredit di bank lain dilunasi</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_18" id="defaultCheck18" name="kredit_file_18">
-                                                                <label class="form-check-label" for="defaultCheck18">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>19</td>
-                                                        <td>Form Fronting Agent ditandatangi oleh Calon Debitur dan Bank</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_19" id="defaultCheck19" name="kredit_file_19">
-                                                                <label class="form-check-label" for="defaultCheck19">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>20</td>
-                                                        <td>Format Form Fronting Agent sebagaimana diatur dalam Lampiran</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_20" id="defaultCheck20" name="kredit_file_20">
-                                                                <label class="form-check-label" for="defaultCheck20">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                    <div class="card-body">
+                                    <?php
+                                    $sql1 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
+                                    $result1 = $conn->query($sql1);
+                                    if ($result1->num_rows > 0) {
+                                        $row = $result1->fetch_assoc();
+                                    } else {
+                                        echo "No data found.";
+                                    }
+                                    ?>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Nama Marketing</label>
+                                        <input name="nama_marketing" type="text" class="form-control" id="formGroupExampleInput" value="<?php echo $row['waktu_pinjaman'] ?>">
+                                    </div>
+                                    <h5>
+                                        <?php
+                                        $test = $row['jumlah_pinjaman']; echo $test;
+
+                                        $umur = $row['umur_pengajuan'];
+                                        $pinjaman = $row['jumlah_pinjaman'];
+                                        $wpinjaman = $row['waktu_pinjaman'];
+
+                                        $jpersen = 0.0;
+                                        $totalbungabulanan = 0;
+                                        $premi = 0;
+                                        $biayaprovisi = 0;
+                                        $jmlhditerima = 0;
+                                        $bungabulanan = 0;
+                                        $biayapencairan = 0;
+                                        $pembayaranbulanan = 0;
+                                        $jumlahcicilanbulanan = 0;
+                                        $max_pinjaman = 300000000; // Maksimal jumlah pinjaman adalah 300 juta
+                                    
+                                        if ($pinjaman > $max_pinjaman) 
+                                        {
+                                        echo "Maaf, maksimal jumlah pinjaman adalah " . number_format($max_pinjaman, 0, ',', '.') . " rupiah.";
+                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                        }
+
+                                        if ($wpinjaman > 180) 
+                                        {
+                                        echo "Maaf, maksimal Pengajuan waktu kredit 15 Tahun";
+                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                        }
+
+                                        if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                            $jpersen = 9;
+                                        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                            $jpersen = 9.5;
+                                        } else{
+                                            $jpersen = 10.5;
+                                        }
+
+                                        $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                        $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                        $premi = 0.00375*$pinjaman*$wpinjaman;
+                                    // Total premi =2.  0.375*200jt*5tahun=3.7jt
+                                        $biayaprovisi = $pinjaman*0.01;
+                                    // Biaya Provisi =3.
+                                        $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+                                    // Jumlah yang diterima
+                                        $bungabulanan = $jpersen / 12;
+                                    // Bunga Bulanan
+                                        $biayapencairan= $premi + $biayaprovisi - 150000;
+                                    // Bunga Bulanan
+                                        $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+                                    // Pembayaran Bulanan
+                                        $jumlahcicilanbulanan= $wpinjaman*12 ;
+                                    // Pembayaran Bulanan
+                                        $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+                                        $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+                                        $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+                                        $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+                                        $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+                                        $premi_format = number_format($premi, 0, ',', '.');
+                                        $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
+
+                                        echo "<strong>Umur:</strong> {$umur} <br>";
+                                        echo "<br>";
+                                        echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
+                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} <br>";
+                                        echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
+                                        echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
+                                        echo "<br>";
+                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
+                                        echo "<br> Suku Bunga Tahunan: {$jpersen}%";
+                                        echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
+                                        echo "<br> Total Premi: Rp {$premi_format} ";
+                                        echo "<br>";
+                                        echo "Biaya Provisi: Rp {$biayaprovisi_format}";
+                                        echo "<br>";
+                                        ?>
+                                    </h5>
+                                        
                                     </div>
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
                             </div>
                         </div>
                     </div>
-                    
+                    <!-- end Tabs contant -->
                 </div>
                 <!-- end container-fluid -->
             </div>
