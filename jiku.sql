@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jun 2023 pada 13.29
+-- Waktu pembuatan: 13 Jun 2023 pada 08.58
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -59,7 +59,12 @@ INSERT INTO `pengajuan_kredit` (`id_pengajuan`, `waktu_pengajuan`, `nama_marketi
 (16, '2023-06-02 11:34:09', '', 0, '', 12382323, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-02 11:34:09'),
 (17, '2023-06-03 10:27:47', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-03 10:27:47'),
 (18, '2023-06-03 10:28:18', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-03 10:28:18'),
-(19, '0000-00-00 00:00:00', 'marcel', 12345, 'ciluar', 123456, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00');
+(19, '0000-00-00 00:00:00', 'marcel', 12345, 'ciluar', 123456, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
+(20, '0000-00-00 00:00:00', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
+(21, '0000-00-00 00:00:00', 'testing marketing Jiku', 435345345, 'Padang', 8967567, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
+(22, '0000-00-00 00:00:00', 'testing marketing', 45345, 'Padang', 89467467, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
+(23, '0000-00-00 00:00:00', 'testing Marketing', 234234234, 'Padang', 894564564, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
+(24, '0000-00-00 00:00:00', 'Testing nama marketing', 234234243, 'padang', 823923923, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -118,7 +123,15 @@ INSERT INTO `temp_form1` (`id_pengajuan`, `nama_marketing`, `nik_marketing`, `ca
 (7, 'ppp', 999, 'ppp', 999),
 (8, '', 0, '', 0),
 (9, '', 0, '', 0),
-(10, '', 0, '', 0);
+(10, '', 0, '', 0),
+(11, '', 0, '', 0),
+(12, 'testing marketing Jiku', 435345345, 'Padang', 8967567),
+(13, 'retert', 2147483647, 'rsthsrth', 4563456),
+(14, 'testing marketing', 45345, 'Padang', 89467467),
+(15, 'asd', 123, 'asd', 123),
+(16, 'testing Marketing', 234234234, 'Padang', 894564564),
+(17, '', 0, '', 0),
+(18, 'Testing nama marketing', 234234243, 'padang', 823923923);
 
 -- --------------------------------------------------------
 
@@ -141,7 +154,15 @@ INSERT INTO `temp_form2` (`id_pengajuan`, `waktu_pengajuan`, `tanggal_syarat_ket
 (21, '2023-06-10 14:50:15', '2023-06-10 14:50:15'),
 (22, '2023-06-12 13:39:12', '2023-06-12 13:39:12'),
 (23, '2023-06-12 14:14:46', '2023-06-12 14:14:46'),
-(24, '2023-06-12 17:36:03', '2023-06-12 17:36:03');
+(24, '2023-06-12 17:36:03', '2023-06-12 17:36:03'),
+(25, '2023-06-13 11:45:49', '2023-06-13 11:45:49'),
+(26, '2023-06-13 12:30:57', '2023-06-13 12:30:57'),
+(27, '2023-06-13 12:38:45', '2023-06-13 12:38:45'),
+(28, '2023-06-13 13:15:51', '2023-06-13 13:15:51'),
+(29, '2023-06-13 13:28:04', '2023-06-13 13:28:04'),
+(30, '2023-06-13 13:40:58', '2023-06-13 13:40:58'),
+(31, '2023-06-13 13:47:07', '2023-06-13 13:47:07'),
+(32, '2023-06-13 13:49:47', '2023-06-13 13:49:47');
 
 -- --------------------------------------------------------
 
@@ -171,7 +192,7 @@ CREATE TABLE `temp_form3` (
 --
 
 INSERT INTO `temp_form3` (`id_pengajuan`, `nama_user`, `tempat_lahir`, `tanggal_lahir`, `nik_user`, `nip_user`, `no_pensiun`, `alamat_user`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `no_rekening`, `no_npwp`, `no_telepon`) VALUES
-(0, 'ppp', 'ppp', '9999-09-09', 999, 999, 999, '9p9p9p', 'ppp', 'ppp', 'ppp9', 999, 999, 999);
+(0, 'asd', 'asd', '2023-06-13', 123, 123, 123, 'asd', 'asd', 'asd', 'asd', 123, 123, 123);
 
 -- --------------------------------------------------------
 
@@ -197,7 +218,34 @@ INSERT INTO `temp_form4` (`id_pengajuan`, `jumlah_pinjaman`, `waktu_pinjaman`, `
 (12, 0, 0, 1),
 (13, 0, 0, 1),
 (14, 0, 0, 1),
-(15, 123456789, 60, 45);
+(15, 123456789, 60, 45),
+(16, 0, 0, 0),
+(17, 0, 0, 0),
+(18, 200000000, 120, 48),
+(19, 0, 0, 0),
+(20, 200000000, 120, 48),
+(21, 0, 0, 0),
+(22, 200000000, 120, 48),
+(23, 0, 0, 0),
+(24, 200000000, 120, 49),
+(25, 0, 0, 0),
+(26, 200000000, 120, 48),
+(27, 0, 0, 0),
+(28, 200000000, 120, 44),
+(29, 0, 0, 0),
+(30, 200000000, 60, 44),
+(31, 0, 0, 0),
+(32, 200000000, 60, 44),
+(33, 0, 0, 0),
+(34, 200000000, 60, 44),
+(35, 0, 0, 0),
+(36, 200000000, 60, 44),
+(37, 0, 0, 0),
+(38, 200000000, 60, 44),
+(39, 200000000, 120, 48),
+(40, 300000000, 120, 48),
+(41, 200000000, 7, 44),
+(42, 200000000, 120, 48);
 
 -- --------------------------------------------------------
 
@@ -236,7 +284,17 @@ INSERT INTO `temp_form6` (`id_pengajuan`, `kredit_file_1`, `kredit_file_2`, `kre
 (1, 'kredit_file_1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (2, 'kredit_file_1', '', 'kredit_file_3', '', 'kredit_file_5', '', 'kredit_file_7', '', 'kredit_file_9', '', 'kredit_file_11', '', 'kredit_file_14', '', 'kredit_file_16', '', 'kredit_file_18', '', 'kredit_file_20'),
 (3, '', '', '', 'kredit_file_4', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(4, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+(4, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(5, 'kredit_file_1', 'kredit_file_2', 'kredit_file_3', 'kredit_file_4', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(6, 'kredit_file_1', 'kredit_file_2', 'kredit_file_3', 'kredit_file_4', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(7, 'kredit_file_1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(8, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(9, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(10, 'kredit_file_1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(11, 'kredit_file_1', '', 'kredit_file_3', 'kredit_file_4', '', 'kredit_file_6', 'kredit_file_7', '', 'kredit_file_9', 'kredit_file_10', '', 'kredit_file_13', 'kredit_file_14', '', '', '', '', 'kredit_file_19', 'kredit_file_20'),
+(12, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(13, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(14, 'kredit_file_1', '', 'kredit_file_3', '', 'kredit_file_5', 'kredit_file_6', 'kredit_file_7', '', '', '', 'kredit_file_11', 'kredit_file_13', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -359,31 +417,31 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT untuk tabel `pengajuan_kredit`
 --
 ALTER TABLE `pengajuan_kredit`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form1`
 --
 ALTER TABLE `temp_form1`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form2`
 --
 ALTER TABLE `temp_form2`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form4`
 --
 ALTER TABLE `temp_form4`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form6`
 --
 ALTER TABLE `temp_form6`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_credit`
