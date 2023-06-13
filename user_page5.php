@@ -143,10 +143,6 @@ if(isset($_POST['submit'])){
                                         echo "No data found.";
                                     }
                                     ?>
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Nama Marketing</label>
-                                        <input name="nama_marketing" type="text" class="form-control" id="formGroupExampleInput" value="<?php echo $row['waktu_pinjaman'] ?>">
-                                    </div>
                                     <h5>
                                         <?php
 

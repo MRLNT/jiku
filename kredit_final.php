@@ -252,6 +252,106 @@ if(isset($_POST['submit'])){
                                             <input name="no_telepon" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['no_telepon'] ?>">
                                         </div>
                                     </div>
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Simulasi Kredit</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                    <?php
+                                    $sql1 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
+                                    $result1 = $conn->query($sql1);
+                                    if ($result1->num_rows > 0) {
+                                        $row = $result1->fetch_assoc();
+                                    } else {
+                                        echo "No data found.";
+                                    }
+                                    ?>
+                                    
+                                    <h5>
+                                        <?php
+
+                                        $umur = $row['umur_pengajuan'];
+                                        $pinjaman = $row['jumlah_pinjaman'];
+                                        $wpinjaman = $row['waktu_pinjaman'];
+
+                                        $jpersen = 0.0;
+                                        $totalbungabulanan = 0;
+                                        $premi = 0;
+                                        $biayaprovisi = 0;
+                                        $jmlhditerima = 0;
+                                        $bungabulanan = 0;
+                                        $biayapencairan = 0;
+                                        $pembayaranbulanan = 0;
+                                        $jumlahcicilanbulanan = 0;
+                                        $max_pinjaman = 300000000; // Maksimal jumlah pinjaman adalah 300 juta
+                                    
+                                        if ($pinjaman > $max_pinjaman) 
+                                        {
+                                        echo "Maaf, maksimal jumlah pinjaman adalah " . number_format($max_pinjaman, 0, ',', '.') . " rupiah.";
+                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                        }
+
+                                        if ($wpinjaman > 180) 
+                                        {
+                                        echo "Maaf, maksimal Pengajuan waktu kredit 15 Tahun";
+                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
+                                        }
+
+                                        if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                            $jpersen = 9;
+                                        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                            $jpersen = 9.5;
+                                        } else{
+                                            $jpersen = 10.5;
+                                        }
+
+                                        $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                        $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
+                                        $premi = 0.00375*$pinjaman*$wpinjaman;
+                                    // Total premi =2.  0.375*200jt*5tahun=3.7jt
+                                        $biayaprovisi = $pinjaman*0.01;
+                                    // Biaya Provisi =3.
+                                        $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+                                    // Jumlah yang diterima
+                                        $bungabulanan = $jpersen / 12;
+                                    // Bunga Bulanan
+                                        $biayapencairan= $premi + $biayaprovisi - 150000;
+                                    // Bunga Bulanan
+                                        $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+                                    // Pembayaran Bulanan
+                                        $jumlahcicilanbulanan= $wpinjaman*12 ;
+                                    // Pembayaran Bulanan
+                                        $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+                                        $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+                                        $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+                                        $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+                                        $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+                                        $premi_format = number_format($premi, 0, ',', '.');
+                                        $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
+
+                                        echo "<strong>Umur:</strong> {$umur} <br>";
+                                        echo "<br>";
+                                        echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
+                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} <br>";
+                                        echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
+                                        echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
+                                        echo "<br>";
+                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
+                                        echo "<br> Suku Bunga Tahunan: {$jpersen}%";
+                                        echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
+                                        echo "<br> Total Premi: Rp {$premi_format} ";
+                                        echo "<br>";
+                                        echo "Biaya Provisi: Rp {$biayaprovisi_format}";
+                                        echo "<br>";
+                                        ?>
+                                    </h5>
+                                        
+                                    </div>
+
+
                                     <div class="card-header d-sm-flex justify-content-between align-items-center py-3">
                                         <div class="card-heading mb-3 mb-sm-0">
                                             <h4 class="card-title">Dokumen Check List dan Tanda Terima Dokumen</h4>
