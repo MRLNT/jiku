@@ -149,7 +149,6 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <h5>
                                         <?php
-                                        $test = $row['jumlah_pinjaman']; echo $test;
 
                                         $umur = $row['umur_pengajuan'];
                                         $pinjaman = $row['jumlah_pinjaman'];
