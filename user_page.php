@@ -163,6 +163,61 @@ if(isset($_POST['submit'])){
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Cabang/Capem</label>
+                                            <select class="form-control">
+                                                <option>CABANG ALAHAN PANJANG</option>
+                                                <option>CABANG NIAGA</option>
+                                                <option>CAPEM GUBERNUR</option>
+                                                <option>CAPEM LUBUK BUAYA</option>
+                                                <option>CABANG PASAR RAYA</option>
+                                                <option>CABANG SYARIAH PADANG</option>
+                                                <option>CAPEM BANDAR BUAT</option>
+                                                <option>CAPEM UNAND</option>
+                                                <option>CABANG BATU SANGKAR</option>
+                                                <option>CABANG SITEBA</option>
+                                                <option>CAPEM RSUP M JAMIL</option>
+                                                <option>CABANG SOLOK</option>
+                                                <option>CAPEM AROSUKA</option>
+                                                <option>CABANG PAINAN</option>
+                                                <option>CAPEM SIMPANG HARU</option>
+                                                <option>CABANG BUKIT TINGGI</option>
+                                                <option>CABANG SIMPANG EMPAT</option>
+                                                <option>CABANG UJUNG GADING</option>
+                                                <option>CAPEM TABEK PATAH</option>
+                                                <option>CABANG SYARIAH BATUSANGKAR</option>
+                                                <option>CABANG UTAMA</option>
+                                                <option>CABANG BANDUNG</option>
+                                                <option>CABANG JAKARTA</option>
+                                                <option>CABANG KOTA BARU</option>
+                                                <option>CABANG LINTAU</option>
+                                                <option>CABANG LUBUK ALUNG</option>
+                                                <option>CABANG LUBUK BASUNG</option>
+                                                <option>CABANG LUBUK GADANG</option>
+                                                <option>CABANG LUBUK SIKAPING</option>
+                                                <option>CABANG MANTRAMAN JAKARTA</option>
+                                                <option>CABANG MENTAWAI</option>
+                                                <option>CABANG MUARA LABUH</option>
+                                                <option>CABANG PADANG PANJANG</option>
+                                                <option>CABANG PANGKALAN</option>
+                                                <option>CABANG PARIAMAN</option>
+                                                <option>CABANG PAYAKUMBUH</option>
+                                                <option>CABANG PEKANBARU</option>
+                                                <option>CABANG PULAU PUNJUNG</option>
+                                                <option>CABANG SAWAHLUNTO</option>
+                                                <option>CABANG SIJUNJUNG</option>
+                                                <option>CABANG SYARIAH PAYAKUMBUH</option>
+                                                <option>CABANG SYARIAH SOLOK</option>
+                                                <option>CABANG TAPAN</option>
+                                                <option>CABANG TAPUS</option>
+                                                <option>CAPEM AUR KUNING BUKITTINGGI</option>
+                                                <option>CAPEM AIR HAJI</option>
+                                                <option>CAPEM BY PASS PADANG</option>
+                                                <option>CAPEM BAWAN</option>
+                                            </select>
+                                            <!-- FIX THE VALUE FOR OUTPUT -->
+                                            <!-- <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang"> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Cabang/Capem</label>
                                             <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang">
                                         </div>
                                         <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">

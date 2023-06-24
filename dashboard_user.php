@@ -128,6 +128,36 @@ error_reporting(E_ERROR | E_PARSE);
                     </div>
                     <!-- end row -->
                     <!-- start Tabs contant -->
+                    <div class="row">
+                        <div class="col-xxl-4 m-b-30">
+                            <div class="card card-statistics h-100 mb-0 o-hidden">
+                                <div class="card-header">
+                                    <h4 class="card-title">Total Nasabah</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 col-xxs-4 col-md-4 mb-3 mb-sm-0">
+                                            <h3 class="mb-1 mb-xxs-0">132</h3>
+                                            <span class="d-block"> <i class="fa fa-arrow-up text-success"></i> <b class="text-success">+23%</b> dari bulan lalu  </span>
+                                        </div>
+                                        <div class="col-6 col-xxs-4 col-md-4 mb-3 mb-sm-0">
+                                            <h3 class="mb-1 mb-xxs-0">45,541</h3>
+                                            <span class="d-block"> <i class="fa fa-arrow-up text-success"></i> <b class="text-success">+15%</b> Likes </span>
+                                        </div>
+                                        <div class="col-12 col-xxs-4 col-md-4 mb-3 mb-sm-0">
+                                            <h3 class="mb-1 mb-xxs-0">78,462</h3>
+                                            <span class="d-block"> <i class="fa fa-arrow-up text-success"></i> <b class="text-success">+32%</b> Comments </span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mt-xxs-4">
+                                        <p>You're scheduled earn <span class="badge  badge-success-inverse">$2,350 today</span></p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Tabs contant -->
                     
                 </div>
                 <!-- end container-fluid -->

@@ -139,8 +139,8 @@ if(isset($_POST['submit'])){
                                             <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
-                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
+                                            <label for="numeric9">Waktu Pinjaman (dalam bulan)</label>
+                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam bulan">
                                         </div>
                                         <div class="form-group">
                                             <label for="numeric10">Umur Pengajuan (dalam tahun)</label>
