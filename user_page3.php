@@ -30,7 +30,6 @@ if(isset($_POST['submit'])){
     $insert = "INSERT INTO temp_form3(tanggal_lahir,nama_user,tempat_lahir,nik_user,nip_user,no_pensiun,alamat_user,nama_ibu,nama_instansi,pangkat_golongan,no_rekening,no_npwp,no_telepon) 
     VALUES('$tanggal_lahir','$nama_user','$tempat_lahir','$nik_user','$nip_user','$no_pensiun','$alamat_user','$nama_ibu','$nama_instansi','$pangkat_golongan','$no_rekening','$no_npwp','$no_telepon')";
     mysqli_query($conn, $insert);
-    // header('Location: kredit_final.php');
     header('Location: user_page4.php');
  };
 

@@ -259,16 +259,14 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-body">
                                     <?php
-                                    $sql1 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
-                                    $result1 = $conn->query($sql1);
-                                    if ($result1->num_rows > 0) {
-                                        $row = $result1->fetch_assoc();
+                                    $sql5 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
+                                    $result5 = $conn->query($sql5);
+                                    if ($result5->num_rows > 0) {
+                                        $row = $result5->fetch_assoc();
                                     } else {
                                         echo "No data found.";
                                     }
                                     ?>
-                                    
-                                    <h5>
                                         <?php
 
                                         $umur = $row['umur_pengajuan'];
@@ -277,7 +275,6 @@ if(isset($_POST['submit'])){
 
                                         $jpersen = 0.0;
                                         $totalbungabulanan = 0;
-                                        $premi = 0;
                                         $biayaprovisi = 0;
                                         $jmlhditerima = 0;
                                         $bungabulanan = 0;
@@ -285,7 +282,9 @@ if(isset($_POST['submit'])){
                                         $pembayaranbulanan = 0;
                                         $jumlahcicilanbulanan = 0;
                                         $max_pinjaman = 300000000; // Maksimal jumlah pinjaman adalah 300 juta
-                                    
+                                        $premi = 0;
+                                        $wpinjamanthn = 0; //new
+
                                         if ($pinjaman > $max_pinjaman) 
                                         {
                                         echo "Maaf, maksimal jumlah pinjaman adalah " . number_format($max_pinjaman, 0, ',', '.') . " rupiah.";
@@ -298,9 +297,9 @@ if(isset($_POST['submit'])){
                                         exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
                                         }
 
-                                        if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                        if ($wpinjaman>=1 && $wpinjaman<=60) {
                                             $jpersen = 9;
-                                        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                        } elseif($wpinjaman>=61 && $wpinjaman<=120) {
                                             $jpersen = 9.5;
                                         } else{
                                             $jpersen = 10.5;
@@ -308,22 +307,25 @@ if(isset($_POST['submit'])){
 
                                         $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
                                     // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
-                                        $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+                                        $totalbunga = ($pinjaman*$jpersen)/100*$wpinjamanthn;
                                     // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
-                                        $premi = 0.00375*$pinjaman*$wpinjaman;
-                                    // Total premi =2.  0.375*200jt*5tahun=3.7jt
+                                        $premi = 0.00375*$pinjaman*($wpinjaman/12);
+                                    // Total premi =2.  0.375*200jt*5tahun=3.750.000jt
                                         $biayaprovisi = $pinjaman*0.01;
                                     // Biaya Provisi =3.
                                         $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
                                     // Jumlah yang diterima
                                         $bungabulanan = $jpersen / 12;
                                     // Bunga Bulanan
-                                        $biayapencairan= $premi + $biayaprovisi - 150000;
+                                        $biayapencairan= $premi + $biayaprovisi + 150000;
                                     // Bunga Bulanan
-                                        $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+                                        $pembayaranbulanan= ($pinjaman + $totalbunga) / $wpinjaman;
                                     // Pembayaran Bulanan
-                                        $jumlahcicilanbulanan= $wpinjaman*12 ;
+                                        $jumlahcicilanbulanan= $wpinjaman;
                                     // Pembayaran Bulanan
+                                        $wpinjamanthn= $wpinjaman / 12 ; 
+                                    // Pinjaman dalam tahun new
+
                                         $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
                                         $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
                                         $pinjaman_format = number_format($pinjaman, 0, ',', '.');
@@ -332,10 +334,9 @@ if(isset($_POST['submit'])){
                                         $premi_format = number_format($premi, 0, ',', '.');
                                         $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
 
-                                        echo "<strong>Umur:</strong> {$umur} <br>";
                                         echo "<br>";
                                         echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
-                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} <br>";
+                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} Bulan / {$wpinjamanthn} Tahun<br>";
                                         echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
                                         echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
                                         echo "<br>";
@@ -359,10 +360,10 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-body scrollbar scroll_dark" style="max-height: 420px;">
                                     <?php
-                                        $sql5 = "SELECT * FROM temp_form5 ORDER BY id_pengajuan DESC LIMIT 1";
-                                        $result5 = $conn->query($sql5);
-                                        if ($result5->num_rows > 0) {
-                                            $row = $result5->fetch_assoc();
+                                        $sql6 = "SELECT * FROM temp_form6 ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $result6 = $conn->query($sql6);
+                                        if ($result6->num_rows > 0) {
+                                            $row = $result6->fetch_assoc();
                                         } else {
                                             echo "No data found.";
                                         }

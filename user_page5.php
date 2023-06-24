@@ -135,10 +135,10 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-body">
                                     <?php
-                                    $sql1 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
-                                    $result1 = $conn->query($sql1);
-                                    if ($result1->num_rows > 0) {
-                                        $row = $result1->fetch_assoc();
+                                    $sql5 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
+                                    $result5 = $conn->query($sql5);
+                                    if ($result5->num_rows > 0) {
+                                        $row = $result5->fetch_assoc();
                                     } else {
                                         echo "No data found.";
                                     }

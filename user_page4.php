@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     
     $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan) VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan')";
     mysqli_query($conn, $insert);
-    header('Location: user_page5.php');
+    header('Location: user_page6.php');
  };
 
 ?>
@@ -139,7 +139,7 @@ if(isset($_POST['submit'])){
                                             <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="numeric9">Waktu Pinjaman (dalam bulan)</label>
+                                            <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
                                             <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
                                         </div>
                                         <div class="form-group">
