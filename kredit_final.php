@@ -320,6 +320,416 @@ if(isset($_POST['submit'])){
                                             <input name="nomor_telepon" type="number" class="form-control" id="formGroupExampleInput13" value="<?php echo $row['nomor_telepon'] ?>">
                                         </div>
                                     </div>
+
+
+
+                                    <div class="card-header d-sm-flex justify-content-between align-items-center py-3">
+                                        <div class="card-heading mb-3 mb-sm-0">
+                                            <h4 class="card-title">Dokumen Check List dan Tanda Terima Dokumen</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body scrollbar scroll_dark" style="max-height: 420px;">
+                                    <?php
+                                        $kode_marketing = $_SESSION['user_name'];
+                                        $sql6 = "SELECT * FROM temp_form6 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $result6 = $conn->query($sql6);
+                                        if ($result6->num_rows > 0) {
+                                            $row = $result6->fetch_assoc();
+                                        } else {
+                                            echo "No data found.";
+                                        }
+                                    ?>
+                                        <div class="table-responsive m-t-20">
+                                            <table id="datatable-buttons" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Dokumen</th>
+                                                        <th>Cek List</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-muted">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Asli SK Pangkat Calon Pegawai 80%</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_1" <?php echo ($row['kredit_file_1'] == 'Ada') ? 'checked' : '' ?> id="inlineRadio11" value="Ada">
+                                                                    <label class="form-check-label" for="inlineRadio11">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_1" <?php echo ($row['kredit_file_1'] == 'Tidak') ? 'checked' : '' ?> id="inlineRadio12" value="Tidak">
+                                                                    <label class="form-check-label" for="inlineRadio12">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Asli SK Pengangkatan sebagai PNS (100%) / SK Pensiun</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_2" <?php echo ($row['kredit_file_2'] == 'Ada') ? 'checked' : '' ?> id="inlineRadio21" value="Ada">
+                                                                    <label class="form-check-label" for="inlineRadio22">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_2" <?php echo ($row['kredit_file_2'] == 'Tidak') ? 'checked' : '' ?> id="inlineRadio22" value="Tidak">
+                                                                    <label class="form-check-label" for="inlineRadio22">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Asli SK Pangkat Terakhir</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_3" <?php echo ($row['kredit_file_3'] == 'Ada') ? 'checked' : '' ?> id="inlineRadio31" value="Ada">
+                                                                    <label class="form-check-label" for="inlineRadio31">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_3" <?php echo ($row['kredit_file_3'] == 'Tidak') ? 'checked' : '' ?> id="inlineRadio32" value="Tidak">
+                                                                    <label class="form-check-label" for="inlineRadio32">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Slip Gaji Bulan Terakhir</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_4"
+                                                                    <?php echo ($row['kredit_file_4'] == 'Ada') ? 'checked' : '' ?>
+                                                                    id="inlineRadio41" value="Ada">
+                                                                    <label class="form-check-label" for="inlineRadio41">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="kredit_file_4"
+                                                                    <?php echo ($row['kredit_file_4'] == 'Tidak') ? 'checked' : '' ?>
+                                                                    id="inlineRadio42" value="Tidak">
+                                                                    <label class="form-check-label" for="inlineRadio42">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Copy Kartu Tanda Penduduk (KTP)</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_5" id="inlineRadio51" value="Ada"
+                                                                    <?php echo ($row['kredit_file_5'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio51">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_5" id="inlineRadio52" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_5'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio52">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>Copy Kartu Keluarga</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_6" id="inlineRadio61" value="Ada"
+                                                                    <?php echo ($row['kredit_file_6'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio61">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_6" id="inlineRadio62" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_6'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio62">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>Asli Bukti Kepemilikan Agunan bagi kredit yang disyaratkan<br>menggunakan agunan tambahan</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_7" id="inlineRadio71" value="Ada"
+                                                                    <?php echo ($row['kredit_file_7'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio71">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_7" id="inlineRadio72" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_7'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio72">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>Copy Kartu Taspen</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_8" id="inlineRadio81" value="Ada"
+                                                                    <?php echo ($row['kredit_file_8'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio81">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_8" id="inlineRadio82" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_8'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio82">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td>Copy NPWP untuk jumlah permohonan kredit yang wajib<br>dilengkapi NPWP sesuai aturan yang berlaku</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_9" id="inlineRadio91" value="Ada"
+                                                                    <?php echo ($row['kredit_file_9'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio91">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_9" id="inlineRadio92" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_9'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio92">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td>Menyerahkan Surat Kuasa Memotong Gaji<br>diatas materi secukupnya</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_10" id="inlineRadio101" value="Ada"
+                                                                    <?php echo ($row['kredit_file_10'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio101">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_10" id="inlineRadio102" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_10'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio102">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11</td>
+                                                        <td>Menyerahkan Surat Kuasa Pendebetan<br>Rekening diatas material secukupnya</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_11" id="inlineRadio111" value="Ada"
+                                                                    <?php echo ($row['kredit_file_11'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio111">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_11" id="inlineRadio112" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_11'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio112">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>Membuat Surat Pernyataan dan<br>Kuasa diatas materai secukupnya yang memuat :</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12</td>
+                                                        <td>Pernyataan dari debitur tidak akan memindahkan<br>gaji/mengganti rekening gaji debitur dari PT Bank Nagari<br>walaupun debitur pindah tugas ke daerah lain sampai kredit<br>dinyatakan Lunas Oleh PT Bank Nagari</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_12" id="inlineRadio121" value="Ada"
+                                                                    <?php echo ($row['kredit_file_12'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio121">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_12" id="inlineRadio122" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_12'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio122">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td>Menyetujui penggunaan Hak Substitusi dari Bendahara gaji lama kepada<br>bendahara gaji yang baru untuk memotong gajinya dan meneruskannya<br>/mengirimkan/transfer ke Bank Nagari untuk angsuran kreditnya</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_13" id="inlineRadio131" value="Ada"
+                                                                    <?php echo ($row['kredit_file_13'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio131">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_13" id="inlineRadio132" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_13'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio132">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14</td>
+                                                        <td>Memberikan kuasa kepada Bank Nagari untuk<br>melakukan penagihan kepada lembaga/instansi tempat debitur<br>bekerja apabila debitur pindah dinas ke daerah lain</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_14" id="inlineRadio141" value="Ada"
+                                                                    <?php echo ($row['kredit_file_14'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio141">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_14" id="inlineRadio142" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_14'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio142">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15</td>
+                                                        <td>Menyetujui pendampingan pengurusan dan<br>pengarahan yang dilakukan oleh staf PT<br>Bank Nagari agar uang pensiun Debitur dibayarkan melalui PT Bank Nagari</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_15" id="inlineRadio151" value="Ada"
+                                                                    <?php echo ($row['kredit_file_15'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio151">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_15" id="inlineRadio152" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_15'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio152">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>16</td>
+                                                        <td>Untuk debitur Selang 2 (dua) Waktu wajib dilengkapi dengan I-Deb SLIK</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_16" id="inlineRadio161" value="Ada"
+                                                                    <?php echo ($row['kredit_file_16'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio161">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_16" id="inlineRadio162" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_16'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio162">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>17</td>
+                                                        <td>Kwitansi/bukti lunas/keterangan lunas dari<br>bank lain tersebut setelah kredit di bank lain dilunasi</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_17" id="inlineRadio171" value="Ada"
+                                                                    <?php echo ($row['kredit_file_17'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio171">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_17" id="inlineRadio172" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_17'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio172">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>18</td>
+                                                        <td>Form Fronting Agent ditandatangi oleh Calon Debitur dan Bank</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_18" id="inlineRadio181" value="Ada"
+                                                                    <?php echo ($row['kredit_file_18'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio181">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_18" id="inlineRadio182" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_18'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio182">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>19</td>
+                                                        <td>Format Form Fronting Agent sebagaimana diatur dalam Lampiran</td>
+                                                        <td>
+                                                            <div class="card-body">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_19" id="inlineRadio191" value="Ada"
+                                                                    <?php echo ($row['kredit_file_19'] == 'Ada') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio191">Ada</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio"
+                                                                    name="kredit_file_19" id="inlineRadio192" value="Tidak"
+                                                                    <?php echo ($row['kredit_file_19'] == 'Tidak') ? 'checked' : '' ?>>
+                                                                    <label class="form-check-label" for="inlineRadio192">Tidak</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
                             </div>

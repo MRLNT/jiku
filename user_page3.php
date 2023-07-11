@@ -28,7 +28,8 @@ if(isset($_POST['submit'])){
     $insert = "INSERT INTO temp_form3(nama_debitur,kode_marketing,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon) VALUES('$nama_debitur','$kode_marketing','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon')";
     mysqli_query($conn, $insert);
     //header('Location: user_page4.php');
-    header('Location: kredit_final.php');
+    //header('Location: kredit_final.php');
+    header('Location: user_page6.php');
  };
 
 ?>
