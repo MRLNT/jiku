@@ -10,25 +10,29 @@ if(!isset($_SESSION['user_name'])){
 //error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
-    $kode_marketing = $_SESSION['user_name'];
-    $nama_debitur = $_POST['nama_debitur'];
+    $nama_user = $_POST['nama_user'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
-    $nik_debitur = $_POST['nik_debitur'];
-    $nip_debitur = $_POST['nip_debitur'];
-    $nomor_pensiun = $_POST['nomor_pensiun'];
-    $alamat_rumah = $_POST['alamat_rumah'];
+    $nik_user = $_POST['nik_user'];
+    $nip_user = $_POST['nip_user'];
+    $no_pensiun = $_POST['no_pensiun'];
+    $alamat_user = $_POST['alamat_user'];
     $nama_ibu = $_POST['nama_ibu'];
     $nama_instansi = $_POST['nama_instansi'];
     $pangkat_golongan = $_POST['pangkat_golongan'];
-    $nomor_rekening = $_POST['nomor_rekening'];
-    $nomor_npwp = $_POST['nomor_npwp'];
-    $nomor_telepon = $_POST['nomor_telepon'];
+    $no_rekening = $_POST['no_rekening'];
+    $no_npwp = $_POST['no_npwp'];
+    $no_telepon = $_POST['no_telepon'];
+    $kode_marketing = $_SESSION['user_name'];
+
+    // $umur = (date('Y') - date('Y',strtotime($tanggal_lahir)));
+    // echo "<script type='text/javascript'>alert('$umur');</script>";
     
-    $insert = "INSERT INTO temp_form3(nama_debitur,kode_marketing,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon) VALUES('$nama_debitur','$kode_marketing','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon')";
+    $insert = "INSERT INTO temp_form3(tanggal_lahir,nama_user,tempat_lahir,nik_user,nip_user,no_pensiun,alamat_user,nama_ibu,nama_instansi,pangkat_golongan,no_rekening,no_npwp,no_telepon,kode_marketing) 
+    VALUES('$tanggal_lahir','$nama_user','$tempat_lahir','$nik_user','$nip_user','$no_pensiun','$alamat_user','$nama_ibu','$nama_instansi','$pangkat_golongan','$no_rekening','$no_npwp','$no_telepon','$kode_marketing')";
     mysqli_query($conn, $insert);
     //header('Location: user_page4.php');
-    header('Location: kredit_final.php');
+    //header('Location: kredit_final.php');
  };
 
 ?>
@@ -127,7 +131,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Data Pribadi</h1>
+                                    <h1>Tabs</h1>
                                 </div>
                             </div>
                             <!-- end page title -->
@@ -139,10 +143,15 @@ if(isset($_POST['submit'])){
                         <div class="col-xxl-12">
                             <div class="card card-statistics">
                                 <form action="" method="post">
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Data Pribadi</h4>
+                                        </div>
+                                    </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput1">Nama Debitur</label>
-                                            <input name="nama_debitur" type="text" class="form-control" id="formGroupExampleInput1" placeholder="Masukkan Nama Anda">
+                                            <label for="formGroupExampleInput1">Nama</label>
+                                            <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput1" placeholder="Masukkan Nama Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Tempat Lahir</label>
@@ -153,20 +162,20 @@ if(isset($_POST['submit'])){
                                             <input id="formGroupExampleInput3" name="tanggal_lahir" type="date" placeholder="Masukkan Tanggal Lahir">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput4">NIK Debitur</label>
-                                            <input name="nik_debitur" type="number" class="form-control" id="formGroupExampleInput4" placeholder="Masukkan NIK Anda">
+                                            <label for="formGroupExampleInput4">NIK</label>
+                                            <input name="nik_user" type="text" class="form-control autonumber" id="formGroupExampleInput4" placeholder="Masukkan NIK Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput5">NIP Debitur</label>
-                                            <input name="nip_debitur" type="number" class="form-control" id="formGroupExampleInput5" placeholder="Masukkan NIP Anda">
+                                            <label for="formGroupExampleInput5">NIP</label>
+                                            <input name="nip_user" type="text" class="form-control autonumber" id="formGroupExampleInput5" placeholder="Masukkan NIP Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput6">Nomor Pensiun</label>
-                                            <input name="nomor_pensiun" type="number" class="form-control" id="formGroupExampleInput6" placeholder="Masukkan Nomor Pensiun Anda">
+                                            <label for="formGroupExampleInput6">No Pensiun</label>
+                                            <input name="no_pensiun" type="text" class="form-control autonumber" id="formGroupExampleInput6" placeholder="Masukkan No Pensiun Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput7">Alamat Rumah</label>
-                                            <input name="alamat_rumah" type="text" class="form-control" id="formGroupExampleInput7" placeholder="Masukkan Alamat Anda">
+                                            <label for="formGroupExampleInput7">Alamat</label>
+                                            <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput7" placeholder="Masukkan Alamat Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput8">Nama Ibu</label>
@@ -178,43 +187,22 @@ if(isset($_POST['submit'])){
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput10">Pangkat dan Golongan</label>
-                                            <select class="form-control"
-                                            name="pangkat_golongan" type="text"  id="formGroupExampleInput10" placeholder="Masukkan Pangkat dan Golongan Anda">
-                                                <option>Golongan IV A Pembina</option>
-                                                <option>Golongan IV B Pembina Tingkat 1</option>
-                                                <option>Golongan IV C Pembina Utama Muda</option>
-                                                <option>Golongan IV D Pembina Utama Madya</option>
-                                                <option>Golongan IV E Pembina Utama</option>
-                                                <option>Golongan III A Penata Muda</option>
-                                                <option>Golongan III B Penata Muda Tingkat 1</option>
-                                                <option>Golongan III C Penata</option>
-                                                <option>Golongan III D Penata Tingkat 1</option>
-                                                <option>Golongan II A Pengatur Muda</option>
-                                                <option>Golongan II B Pengatur Muda Tingkat 1</option>
-                                                <option>Golongan II C Pengatur</option>
-                                                <option>Golongan II D Pengatur Tingkat 1</option>
-                                                <option>Golongan I A Juru Muda</option>
-                                                <option>Golongan I B Juru Muda Tingkat 1</option>
-                                                <option>Golongan I C Juru</option>
-                                                <option>Golongan I D Juru Tingkat 1</option>
-                                                <option>Lainnya</option>
-                                                
-                                            </select>
+                                            <input name="pangkat_golongan" type="text" class="form-control" id="formGroupExampleInput10" placeholder="Masukkan Pangkat dan Golongan Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput11">Nomor Rekening</label>
-                                            <input name="nomor_rekening" type="number" class="form-control" id="formGroupExampleInput11" placeholder="Masukkan Nomor Rekening Anda">
+                                            <label for="formGroupExampleInput11">No Rekening</label>
+                                            <input name="no_rekening" type="text" class="form-control autonumber" id="formGroupExampleInput11" placeholder="Masukkan No Rekening Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput12">Nomor NPWP</label>
-                                            <input name="nomor_npwp" type="number" class="form-control" id="formGroupExampleInput12" placeholder="Masukkan Nomor NPWP Anda">
+                                            <label for="formGroupExampleInput12">No NPWP</label>
+                                            <input name="no_npwp" type="text" class="form-control autonumber" id="formGroupExampleInput12" placeholder="Masukkan No NPWP Anda">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput13">Nomor Telepon</label>
-                                            <input name="nomor_telepon" type="number" class="form-control" id="formGroupExampleInput13" placeholder="Masukkan Nomor Telepon Anda">
+                                            <label for="formGroupExampleInput13">No Telepon</label>
+                                            <input name="no_telepon" type="text" class="form-control autonumber" id="formGroupExampleInput13" placeholder="Masukkan No Telepon Anda">
                                         </div>
-                                        <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                     </div>
+                                    <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
                             </div>
                         </div>

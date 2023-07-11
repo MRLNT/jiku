@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
+$kode_marketing = $_SESSION['user_name'];
 //error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
@@ -132,7 +133,8 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-body">
                                         <?php
-                                        $sql1 = "SELECT * FROM temp_form1 ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $kode_marketing = $_SESSION['user_name'];
+                                        $sql1 = "SELECT * FROM temp_form1 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
                                         $result1 = $conn->query($sql1);
                                         if ($result1->num_rows > 0) {
                                             $row = $result1->fetch_assoc();
@@ -155,7 +157,56 @@ if(isset($_POST['submit'])){
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Cabang/Capem</label>
-                                            <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['cabang_pembantu'] ?>">
+                                            <select class="form-control" name="cabang_pembantu" id="formGroupExampleInput2">
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG ALAHAN PANJANG') ? 'selected' : '' ?>>CABANG ALAHAN PANJANG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG NIAGA') ? 'selected' : '' ?>>CABANG NIAGA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM GUBERNUR') ? 'selected' : '' ?>>CAPEM GUBERNUR</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM LUBUK BUAYA') ? 'selected' : '' ?>>CAPEM LUBUK BUAYA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PASAR RAYA') ? 'selected' : '' ?>>CABANG PASAR RAYA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SYARIAH PADANG') ? 'selected' : '' ?>>CABANG SYARIAH PADANG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM BANDAR BUAT') ? 'selected' : '' ?>>CAPEM BANDAR BUAT</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM UNAND') ? 'selected' : '' ?>>CAPEM UNAND</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG BATU SANGKAR') ? 'selected' : '' ?>>CABANG BATU SANGKAR</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SITEBA') ? 'selected' : '' ?>>CABANG SITEBA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM RSUP M JAMIL') ? 'selected' : '' ?>>CAPEM RSUP M JAMIL</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SOLOK') ? 'selected' : '' ?>>CABANG SOLOK</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM AROSUKA') ? 'selected' : '' ?>>CAPEM AROSUKA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PAINAN') ? 'selected' : '' ?>>CABANG PAINAN</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM SIMPANG HARU') ? 'selected' : '' ?>>CAPEM SIMPANG HARU</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG BUKIT TINGGI') ? 'selected' : '' ?>>CABANG BUKIT TINGGI</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SIMPANG EMPAT') ? 'selected' : '' ?>>CABANG SIMPANG EMPAT</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG UJUNG GADING') ? 'selected' : '' ?>>CABANG UJUNG GADING</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM TABEK PATAH') ? 'selected' : '' ?>>CAPEM TABEK PATAH</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SYARIAH BATUSANGKAR') ? 'selected' : '' ?>>CABANG SYARIAH BATUSANGKAR</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG UTAMA') ? 'selected' : '' ?>>CABANG UTAMA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG BANDUNG') ? 'selected' : '' ?>>CABANG BANDUNG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG JAKARTA') ? 'selected' : '' ?>>CABANG JAKARTA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG KOTA BARU') ? 'selected' : '' ?>>CABANG KOTA BARU</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG LINTAU') ? 'selected' : '' ?>>CABANG LINTAU</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG LUBUK ALUNG') ? 'selected' : '' ?>>CABANG LUBUK ALUNG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG LUBUK BASUNG') ? 'selected' : '' ?>>CABANG LUBUK BASUNG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG LUBUK GADANG') ? 'selected' : '' ?>>CABANG LUBUK GADANG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG LUBUK SIKAPING') ? 'selected' : '' ?>>CABANG LUBUK SIKAPING</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG MANTRAMAN JAKARTA') ? 'selected' : '' ?>>CABANG MANTRAMAN JAKARTA</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG MENTAWAI') ? 'selected' : '' ?>>CABANG MENTAWAI</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG MUARA LABUH') ? 'selected' : '' ?>>CABANG MUARA LABUH</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PADANG PANJANG') ? 'selected' : '' ?>>CABANG PADANG PANJANG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PANGKALAN') ? 'selected' : '' ?>>CABANG PANGKALAN</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PARIAMAN') ? 'selected' : '' ?>>CABANG PARIAMAN</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PAYAKUMBUH') ? 'selected' : '' ?>>CABANG PAYAKUMBUH</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PEKANBARU') ? 'selected' : '' ?>>CABANG PEKANBARU</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG PULAU PUNJUNG') ? 'selected' : '' ?>>CABANG PULAU PUNJUNG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SAWAHLUNTO') ? 'selected' : '' ?>>CABANG SAWAHLUNTO</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SIJUNJUNG') ? 'selected' : '' ?>>CABANG SIJUNJUNG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SYARIAH PAYAKUMBUH') ? 'selected' : '' ?>>CABANG SYARIAH PAYAKUMBUH</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG SYARIAH SOLOK') ? 'selected' : '' ?>>CABANG SYARIAH SOLOK</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG TAPAN') ? 'selected' : '' ?>>CABANG TAPAN</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CABANG TAPUS') ? 'selected' : '' ?>>CABANG TAPUS</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM AUR KUNING BUKITTINGGI') ? 'selected' : '' ?>>CAPEM AUR KUNING BUKITTINGGI</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM AIR HAJI') ? 'selected' : '' ?>>CAPEM AIR HAJI</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM BY PASS PADANG') ? 'selected' : '' ?>>CAPEM BY PASS PADANG</option>
+                                                <option <?php echo ($row['cabang_pembantu'] == 'CAPEM BAWAN') ? 'selected' : '' ?>>CAPEM BAWAN</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="card-header">
@@ -170,7 +221,8 @@ if(isset($_POST['submit'])){
                                     <div class="card-body">
                                         <h5 class="card-text">Bank Nagari<br>Syarat dan Ketentuan:<br>1.	Calon Debitur membuat dan menandatangi permohonan kredit/pembiayaan, dengan melengkapi data persyaratan yang ditetapkan oleh Bank.<br><br>2. Debitur yang akan mengajukan perubahan plafond, penukaran jaminan, syarat - syarat lainnya dari Perjanjian/Akad Kredit/Pembiayaan harus mengajukan dan menandatangani permohonan kepada Bank.<br><br> 3. Bank berhak meminta data - data dan keterangan yang dibutuhkan, sesuai dengan kentuan dan persyaratan kredit/pembiayaan.<br><br>4.	Calon Debitur atau Debitur berkewajiban memberi keterangan yang diminta oleh Bank dengan benar, baik mengenai identitas Debitur, kondisi keuangan dan lain sebagainya.<br><br>5. Bank setelah melaukan analisa mengenal kelayakan pemberian kredit/pembiayaan atas permohonan yang diajukan oleh Calon Debitur atau Debitur menetapkan : <br>a.	Permohonan ditolak, apabila menurut penilaian Bank, Debitur tidak layak diberikan kredit/pembiayaan.<br>b.	Permohonan ditangguhkan, apabila persyaratan yang ditetapkan oleh Bank belum dipenuhi oleh Debitur atau karena hal lain yang belum bisa dipenuhi untuk syarat pencairan kredit/pembiayaan debitur.<br>c.	Permohonan dikabulkan, apabila menurut penilaian Bank Debitur layak untuk diberikan kredit/pembiayaan.<br><br>6. Bank hanya dapat mengabulkan permohonan Calon Debitur atau Debitur, maksimal sebesar permohonan Calon Debitur atau Debitur.<br><br>7. Berdasarkan analisa yang telah dilakukan Bank dapat menetapkan arah/komposisi pembiayaan usaha calon Debitur atau Debitur.<br><br>8. Calon Debitur jika setuju dengan persyaratan Bank wajib menandatangani Surat Pemberitahuan Persetujuan Kredit yang diserahkan oleh Bank kepada Debitur.<br><br>9. Jumlah kredit yang diberikan tidak mutlak ditentukan oleh nilai agunan yang diberikan Debitur, tetapi berdasarkan kemampuan bayar dan kebutuhan kredit Debitur.<br></h5>
                                         <?php
-                                        $sql2 = "SELECT * FROM temp_form2 ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $kode_marketing = $_SESSION['user_name'];
+                                        $sql2 = "SELECT * FROM temp_form2 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
                                         $result2 = $conn->query($sql2);
                                         if ($result2->num_rows > 0) {
                                             $row = $result2->fetch_assoc();
@@ -182,16 +234,13 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-header">
                                         <div class="card-heading">
-                                        </div>
-                                    </div>
-                                    <div class="card-header">
-                                        <div class="card-heading">
-                                            <h4 class="card-title">Data Pribadi</h4>
+                                            <h4 class="card-title">Data Marketing</h4>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <?php
-                                        $sql3 = "SELECT * FROM temp_form3 ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $kode_marketing = $_SESSION['user_name'];
+                                        $sql3 = "SELECT * FROM temp_form3 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
                                         $result3 = $conn->query($sql3);
                                         if ($result3->num_rows > 0) {
                                             $row = $result3->fetch_assoc();
@@ -200,428 +249,80 @@ if(isset($_POST['submit'])){
                                         }
                                         ?>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Nama</label>
-                                            <input name="nama_user" type="text" class="form-control" id="formGroupExampleInput" value="<?php echo $row['nama_user'] ?>">
+                                            <label for="formGroupExampleInput1">Nama Marketing</label>
+                                            <input name="nama_debitur" type="text" class="form-control" id="formGroupExampleInput1" value="<?php echo $row['nama_debitur'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Tempat Lahir</label>
-                                            <input name="tempat_lahir" type="text" class="form-control" id="formGroupExampleInput" value="<?php echo $row['tempat_lahir'] ?>">
+                                            <label for="formGroupExampleInput2">Tempat Lahir</label>
+                                            <input name="tempat_lahir" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['tempat_lahir'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput">Tanggal Lahir</label><br>
-                                            <input name="tanggal_lahir" type="date" value="<?php echo $row['tanggal_lahir'] ?>">
+                                            <label for="formGroupExampleInput3">Tanggal Lahir</label><br>
+                                            <input id="formGroupExampleInput3" name="tanggal_lahir" type="date"  value="<?php echo $row['tanggal_lahir'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">NIK</label>
-                                            <input name="nik_user" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['nik_user'] ?>">
+                                            <label for="formGroupExampleInput4">NIK Debitur</label>
+                                            <input name="nik_debitur" type="number" class="form-control" id="formGroupExampleInput4" value="<?php echo $row['nik_debitur'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">NIP</label>
-                                            <input name="nip_user" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['nip_user'] ?>">
+                                            <label for="formGroupExampleInput5">NIP Debitur</label>
+                                            <input name="nip_debitur" type="number" class="form-control" id="formGroupExampleInput5" value="<?php echo $row['nip_debitur'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Pensiun</label>
-                                            <input name="no_pensiun" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['no_pensiun'] ?>">
+                                            <label for="formGroupExampleInput6">Nomor Pensiun</label>
+                                            <input name="nomor_pensiun" type="number" class="form-control" id="formGroupExampleInput6" value="<?php echo $row['nomor_pensiun'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">Alamat</label>
-                                            <input name="alamat_user" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['alamat_user'] ?>">
+                                            <label for="formGroupExampleInput7">Alamat Rumah</label>
+                                            <input name="alamat_rumah" type="text" class="form-control" id="formGroupExampleInput7" value="<?php echo $row['alamat_rumah'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">Nama Ibu</label>
-                                            <input name="nama_ibu" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['nama_ibu'] ?>">
+                                            <label for="formGroupExampleInput8">Nama Ibu</label>
+                                            <input name="nama_ibu" type="text" class="form-control" id="formGroupExampleInput8" value="<?php echo $row['nama_ibu'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">Nama Instansi</label>
-                                            <input name="nama_instansi" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['nama_instansi'] ?>">
+                                            <label for="formGroupExampleInput9">Nama Instansi</label>
+                                            <input name="nama_instansi" type="text" class="form-control" id="formGroupExampleInput9" value="<?php echo $row['nama_instansi'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">Pangkat dan Golongan</label>
-                                            <input name="pangkat_golongan" type="text" class="form-control" id="formGroupExampleInput2" value="<?php echo $row['pangkat_golongan'] ?>">
+                                            <label for="formGroupExampleInput10">Pangkat dan Golongan</label>
+                                            <select class="form-control" name="pangkat_golongan" id="formGroupExampleInput10">
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan IV A Pembina') ? 'selected' : '' ?>>Golongan IV A Pembina</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan IV B Pembina Tingkat 1') ? 'selected' : '' ?>>Golongan IV B Pembina Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan IV C Pembina Utama Muda') ? 'selected' : '' ?>>Golongan IV C Pembina Utama Muda</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan IV D Pembina Utama Madya') ? 'selected' : '' ?>>Golongan IV D Pembina Utama Madya</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan IV E Pembina Utama') ? 'selected' : '' ?>>Golongan IV E Pembina Utama</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan III A Penata Muda') ? 'selected' : '' ?>>Golongan III A Penata Muda</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan III B Penata Muda Tingkat 1') ? 'selected' : '' ?>>Golongan III B Penata Muda Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan III C Penata') ? 'selected' : '' ?>>Golongan III C Penata</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan III D Penata Tingkat 1') ? 'selected' : '' ?>>Golongan III D Penata Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan II A Pengatur Muda') ? 'selected' : '' ?>>Golongan II A Pengatur Muda</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan II B Pengatur Muda Tingkat 1') ? 'selected' : '' ?>>Golongan II B Pengatur Muda Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan II C Pengatur') ? 'selected' : '' ?>>Golongan II C Pengatur</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan II D Pengatur Tingkat 1') ? 'selected' : '' ?>>Golongan II D Pengatur Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan I A Juru Muda') ? 'selected' : '' ?>>Golongan I A Juru Muda</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan I B Juru Muda Tingkat 1') ? 'selected' : '' ?>>Golongan I B Juru Muda Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan I C Juru') ? 'selected' : '' ?>>Golongan I C Juru</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Golongan I D Juru Tingkat 1') ? 'selected' : '' ?>>Golongan I D Juru Tingkat 1</option>
+                                                <option <?php echo ($row['pangkat_golongan'] == 'Lainnya') ? 'selected' : '' ?>>Lainnya</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Rekening</label>
-                                            <input name="no_rekening" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['no_rekening'] ?>">
+                                            <label for="formGroupExampleInput11">Nomor Rekening</label>
+                                            <input name="nomor_rekening" type="number" class="form-control" id="formGroupExampleInput11" value="<?php echo $row['nomor_rekening'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">No NPWP</label>
-                                            <input name="no_npwp" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['no_npwp'] ?>">
+                                            <label for="formGroupExampleInput12">Nomor NPWP</label>
+                                            <input name="nomor_npwp" type="number" class="form-control" id="formGroupExampleInput12" value="<?php echo $row['nomor_npwp'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="formGroupExampleInput2">No Telepon</label>
-                                            <input name="no_telepon" type="text" class="form-control autonumber" id="numeric" value="<?php echo $row['no_telepon'] ?>">
-                                        </div>
-                                    </div>
-                                    <div class="card-header">
-                                        <div class="card-heading">
-                                            <h4 class="card-title">Simulasi Kredit</h4>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                    <?php
-                                    $sql5 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
-                                    $result5 = $conn->query($sql5);
-                                    if ($result5->num_rows > 0) {
-                                        $row = $result5->fetch_assoc();
-                                    } else {
-                                        echo "No data found.";
-                                    }
-                                    ?>
-                                        <?php
-
-                                        $umur = $row['umur_pengajuan'];
-                                        $pinjaman = $row['jumlah_pinjaman'];
-                                        $wpinjaman = $row['waktu_pinjaman'];
-
-                                        $jpersen = 0.0;
-                                        $totalbungabulanan = 0;
-                                        $biayaprovisi = 0;
-                                        $jmlhditerima = 0;
-                                        $bungabulanan = 0;
-                                        $biayapencairan = 0;
-                                        $pembayaranbulanan = 0;
-                                        $jumlahcicilanbulanan = 0;
-                                        $max_pinjaman = 300000000; // Maksimal jumlah pinjaman adalah 300 juta
-                                        $premi = 0;
-                                        $wpinjamanthn = 0; //new
-
-                                        if ($pinjaman > $max_pinjaman) 
-                                        {
-                                        echo "Maaf, maksimal jumlah pinjaman adalah " . number_format($max_pinjaman, 0, ',', '.') . " rupiah.";
-                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
-                                        }
-
-                                        if ($wpinjaman > 180) 
-                                        {
-                                        echo "Maaf, maksimal Pengajuan waktu kredit 15 Tahun";
-                                        exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
-                                        }
-
-                                        if ($wpinjaman>=1 && $wpinjaman<=60) {
-                                            $jpersen = 9;
-                                        } elseif($wpinjaman>=61 && $wpinjaman<=120) {
-                                            $jpersen = 9.5;
-                                        } else{
-                                            $jpersen = 10.5;
-                                        }
-
-                                        $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
-                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
-                                        $totalbunga = ($pinjaman*$jpersen)/100*$wpinjamanthn;
-                                    // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
-                                        $premi = 0.00375*$pinjaman*($wpinjaman/12);
-                                    // Total premi =2.  0.375*200jt*5tahun=3.750.000jt
-                                        $biayaprovisi = $pinjaman*0.01;
-                                    // Biaya Provisi =3.
-                                        $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
-                                    // Jumlah yang diterima
-                                        $bungabulanan = $jpersen / 12;
-                                    // Bunga Bulanan
-                                        $biayapencairan= $premi + $biayaprovisi + 150000;
-                                    // Bunga Bulanan
-                                        $pembayaranbulanan= ($pinjaman + $totalbunga) / $wpinjaman;
-                                    // Pembayaran Bulanan
-                                        $jumlahcicilanbulanan= $wpinjaman;
-                                    // Pembayaran Bulanan
-                                        $wpinjamanthn= $wpinjaman / 12 ; 
-                                    // Pinjaman dalam tahun new
-
-                                        $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
-                                        $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
-                                        $pinjaman_format = number_format($pinjaman, 0, ',', '.');
-                                        $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
-                                        $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
-                                        $premi_format = number_format($premi, 0, ',', '.');
-                                        $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
-
-                                        echo "<br>";
-                                        echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
-                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} Bulan / {$wpinjamanthn} Tahun<br>";
-                                        echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
-                                        echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
-                                        echo "<br>";
-                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
-                                        echo "<br> Suku Bunga Tahunan: {$jpersen}%";
-                                        echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
-                                        echo "<br> Total Premi: Rp {$premi_format} ";
-                                        echo "<br>";
-                                        echo "Biaya Provisi: Rp {$biayaprovisi_format}";
-                                        echo "<br>";
-                                        ?>
-                                    </h5>
-                                        
-                                    </div>
-
-
-                                    <div class="card-header d-sm-flex justify-content-between align-items-center py-3">
-                                        <div class="card-heading mb-3 mb-sm-0">
-                                            <h4 class="card-title">Dokumen Check List dan Tanda Terima Dokumen</h4>
-                                        </div>
-                                    </div>
-                                    <div class="card-body scrollbar scroll_dark" style="max-height: 420px;">
-                                    <?php
-                                        $sql6 = "SELECT * FROM temp_form6 ORDER BY id_pengajuan DESC LIMIT 1";
-                                        $result6 = $conn->query($sql6);
-                                        if ($result6->num_rows > 0) {
-                                            $row = $result6->fetch_assoc();
-                                        } else {
-                                            echo "No data found.";
-                                        }
-                                    ?>
-                                        <div class="table-responsive m-t-20">
-                                            <table id="datatable-buttons" class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Dokumen</th>
-                                                        <th>Cek List</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-muted">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Asli SK Pangkat Calon Pegawai 80%</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_1" id="defaultCheck1" name="kredit_file_1" <?php echo ($row['kredit_file_1']=='kredit_file_1' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck1">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Asli SK Pengangkatan sebagai PNS (100%) / SK Pensiun</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_2" id="defaultCheck2" name="kredit_file_2" <?php echo ($row['kredit_file_2']=='kredit_file_2' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck2">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Asli SK Pangkat Terakhir</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_3" id="defaultCheck3" name="kredit_file_3" <?php echo ($row['kredit_file_3']=='kredit_file_3' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck3">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Slip Gaji Bulan Terakhir</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_4" id="defaultCheck4" name="kredit_file_4" <?php echo ($row['kredit_file_4']=='kredit_file_4' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck4">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>Copy Kartu Tanda Penduduk (KTP)</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_5" id="defaultCheck5" name="kredit_file_5" <?php echo ($row['kredit_file_5']=='kredit_file_5' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck5">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>6</td>
-                                                        <td>Copy Kartu Keluarga</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_6" id="defaultCheck6" name="kredit_file_6" <?php echo ($row['kredit_file_6']=='kredit_file_6' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck6">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>7</td>
-                                                        <td>Asli Bukti Kepemilikan Agunan bagi kredit yang disyaratkan<br>menggunakan agunan tambahan</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_7" id="defaultCheck7" name="kredit_file_7" <?php echo ($row['kredit_file_7']=='kredit_file_7' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck7">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>8</td>
-                                                        <td>Copy Kartu Taspen</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_8" id="defaultCheck8" name="kredit_file_8" <?php echo ($row['kredit_file_8']=='kredit_file_8' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck8">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>9</td>
-                                                        <td>Copy NPWP untuk jumlah permohonan kredit yang wajib<br>dilengkapi NPWP sesuai aturan yang berlaku</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_9" id="defaultCheck9" name="kredit_file_9" <?php echo ($row['kredit_file_9']=='kredit_file_9' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck9">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>10</td>
-                                                        <td>Menyerahkan Surat Kuasa Memotong Gaji<br>diatas materi secukupnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_10" id="defaultCheck10" name="kredit_file_10" <?php echo ($row['kredit_file_10']=='kredit_file_10' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck10">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>11</td>
-                                                        <td>Menyerahkan Surat Kuasa Pendebetan<br>Rekening diatas material secukupnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_11" id="defaultCheck11" name="kredit_file_11" <?php echo ($row['kredit_file_11']=='kredit_file_11' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck11">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>12</td>
-                                                        <td>Membuat Surat Pernyataan dan<br>Kuasa diatas materai secukupnya yang memuat :</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>13</td>
-                                                        <td>Pernyataan dari debitur tidak akan memindahkan<br>gaji/mengganti rekening gaji debitur dari PT Bank Nagari<br>walaupun debitur pindah tugas ke daerah lain sampai kredit<br>dinyatakan Lunas Oleh PT Bank Nagari</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_13" id="defaultCheck13" name="kredit_file_13" <?php echo ($row['kredit_file_13']=='kredit_file_13' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck13">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>14</td>
-                                                        <td>Menyetujui penggunaan Hak Substitusi dari Bendahara gaji lama kepada<br>bendahara gaji yang baru untuk memotong gajinya dan meneruskannya<br>/mengirimkan/transfer ke Bank Nagari untuk angsuran kreditnya</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_14" id="defaultCheck14" name="kredit_file_14" <?php echo ($row['kredit_file_14']=='kredit_file_14' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck14">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>15</td>
-                                                        <td>Memberikan kuasa kepada Bank Nagari untuk<br>melakukan penagihan kepada lembaga/instansi tempat debitur<br>bekerja apabila debitur pindah dinas ke daerah lain</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_15" id="defaultCheck15" name="kredit_file_15" <?php echo ($row['kredit_file_15']=='kredit_file_15' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck15">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>16</td>
-                                                        <td>Menyetujui pendampingan pengurusan dan<br>pengarahan yang dilakukan oleh staf PT<br>Bank Nagari agar uang pensiun Debitur dibayarkan melalui PT Bank Nagari</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_16" id="defaultCheck16" name="kredit_file_16" <?php echo ($row['kredit_file_16']=='kredit_file_16' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck16">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>17</td>
-                                                        <td>Untuk debitur Selang 2 (dua) Waktu wajib dilengkapi dengan I-Deb SLIK</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_17" id="defaultCheck17" name="kredit_file_17" <?php echo ($row['kredit_file_17']=='kredit_file_17' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck17">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>18</td>
-                                                        <td>Kwitansi/bukti lunas/keterangan lunas dari<br>bank lain tersebut setelah kredit di bank lain dilunasi</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_18" id="defaultCheck18" name="kredit_file_18" <?php echo ($row['kredit_file_18']=='kredit_file_18' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck18">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>19</td>
-                                                        <td>Form Fronting Agent ditandatangi oleh Calon Debitur dan Bank</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_19" id="defaultCheck19" name="kredit_file_19" <?php echo ($row['kredit_file_19']=='kredit_file_19' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck19">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>20</td>
-                                                        <td>Format Form Fronting Agent sebagaimana diatur dalam Lampiran</td>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="kredit_file_20" id="defaultCheck20" name="kredit_file_20" <?php echo ($row['kredit_file_20']=='kredit_file_20' ? 'checked' : ''); ?>>
-                                                                <label class="form-check-label" for="defaultCheck20">
-                                                                    Ada / Tidak
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <label for="formGroupExampleInput13">Nomor Telepon</label>
+                                            <input name="nomor_telepon" type="number" class="form-control" id="formGroupExampleInput13" value="<?php echo $row['nomor_telepon'] ?>">
                                         </div>
                                     </div>
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
-                                    
-                                    
                                 </form>
-                                
                             </div>
-                            
                         </div>
                     </div>
                     <!-- end Tabs contant -->

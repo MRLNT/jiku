@@ -14,11 +14,12 @@ if(isset($_POST['submit'])){
     $nik_marketing = $_POST['nik_marketing'];
     $cabang_pembantu = $_POST['cabang_pembantu'];
     $no_hp_marketing = $_POST['no_hp_marketing'];
+    $kode_marketing = $_SESSION['user_name'];
 
-    $insert = "INSERT INTO temp_form1(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing')";
+    $insert = "INSERT INTO temp_form1(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing, kode_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing','$kode_marketing')";
     mysqli_query($conn, $insert);
     header('Location: user_page2.php');
-    // header('Location: kredit_final.php');
+    //header('Location: kredit_final.php');
  };
 
 ?>
@@ -151,19 +152,19 @@ if(isset($_POST['submit'])){
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Nama Marketing</label>
                                             <input name="nama_marketing" type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukkan Nama Anda">
-                                            
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">NIK</label>
-                                            <input name="nik_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan NIK Anda">
+                                            <input name="nik_marketing" type="number" class="form-control autonumber" id="formGroupExampleInput2" placeholder="Masukkan NIK Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">No Handphone</label>
-                                            <input name="no_hp_marketing" type="text" class="form-control autonumber" id="numeric" placeholder="Masukkan No Handphone Anda">
+                                            <input name="no_hp_marketing" type="number" class="form-control autonumber" id="numeric" placeholder="Masukkan No Handphone Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">Cabang/Capem</label>
-                                            <select class="form-control">
+                                            <select class="form-control"
+                                            name="cabang_pembantu" type="text"  id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang">
                                                 <option>CABANG ALAHAN PANJANG</option>
                                                 <option>CABANG NIAGA</option>
                                                 <option>CAPEM GUBERNUR</option>
@@ -213,12 +214,6 @@ if(isset($_POST['submit'])){
                                                 <option>CAPEM BY PASS PADANG</option>
                                                 <option>CAPEM BAWAN</option>
                                             </select>
-                                            <!-- FIX THE VALUE FOR OUTPUT -->
-                                            <!-- <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang"> -->
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput2">Cabang/Capem</label>
-                                            <input name="cabang_pembantu" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Nama Cabang">
                                         </div>
                                         <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                     </div>
