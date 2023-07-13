@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jul 2023 pada 13.31
+-- Waktu pembuatan: 13 Jul 2023 pada 22.23
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -24,52 +24,212 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan_kredit`
+-- Struktur dari tabel `data_kredit_asnaktif`
 --
 
-CREATE TABLE `pengajuan_kredit` (
-  `id_pengajuan` int(255) NOT NULL,
-  `waktu_pengajuan` datetime NOT NULL,
+CREATE TABLE `data_kredit_asnaktif` (
+  `id_pengajuan` int(11) NOT NULL,
+  `tipe_kredit` varchar(255) NOT NULL,
+  `kode_marketing` varchar(11) NOT NULL,
   `nama_marketing` varchar(255) NOT NULL,
   `nik_marketing` int(11) NOT NULL,
   `cabang_pembantu` varchar(255) NOT NULL,
   `no_hp_marketing` int(255) NOT NULL,
-  `nama_user` varchar(255) NOT NULL,
+  `waktu_pengajuan` datetime NOT NULL,
+  `tanggal_syarat_ketentuan` datetime NOT NULL,
+  `nama_debitur` varchar(255) NOT NULL,
   `tempat_lahir` varchar(255) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `nik_user` int(255) NOT NULL,
-  `nip_user` int(255) NOT NULL,
-  `no_pensiun` int(255) NOT NULL,
-  `alamat_user` varchar(255) NOT NULL,
+  `nik_debitur` varchar(255) NOT NULL,
+  `nip_debitur` varchar(255) NOT NULL,
+  `nomor_pensiun` varchar(255) NOT NULL,
+  `alamat_rumah` varchar(255) NOT NULL,
   `nama_ibu` varchar(255) NOT NULL,
   `nama_instansi` varchar(255) NOT NULL,
   `pangkat_golongan` varchar(255) NOT NULL,
-  `no_rekening` int(255) NOT NULL,
-  `no_npwp` int(255) NOT NULL,
-  `no_telepon` int(255) NOT NULL,
-  `tanggal_syarat_ketentuan` datetime NOT NULL
+  `nomor_rekening` varchar(255) NOT NULL,
+  `nomor_npwp` varchar(255) NOT NULL,
+  `nomor_telepon` varchar(255) NOT NULL,
+  `gaji_debitur` int(255) NOT NULL,
+  `jumlah_pinjaman` int(255) NOT NULL,
+  `waktu_pinjaman` int(255) NOT NULL,
+  `umur_pengajuan` int(11) NOT NULL,
+  `pembayaran_bulanan` varchar(255) NOT NULL,
+  `suku_bunga` varchar(255) NOT NULL,
+  `total_premi` varchar(255) NOT NULL,
+  `biaya_provisi` varchar(255) NOT NULL,
+  `kredit_file_1` text NOT NULL,
+  `kredit_file_2` text NOT NULL,
+  `kredit_file_3` text NOT NULL,
+  `kredit_file_4` text NOT NULL,
+  `kredit_file_5` text NOT NULL,
+  `kredit_file_6` text NOT NULL,
+  `kredit_file_7` text NOT NULL,
+  `kredit_file_8` text NOT NULL,
+  `kredit_file_9` text NOT NULL,
+  `kredit_file_10` text NOT NULL,
+  `kredit_file_11` text NOT NULL,
+  `kredit_file_12` text NOT NULL,
+  `kredit_file_13` text NOT NULL,
+  `kredit_file_14` text NOT NULL,
+  `kredit_file_15` text NOT NULL,
+  `kredit_file_16` text NOT NULL,
+  `kredit_file_17` text NOT NULL,
+  `kredit_file_18` text NOT NULL,
+  `kredit_file_19` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pengajuan_kredit`
+-- Dumping data untuk tabel `data_kredit_asnaktif`
 --
 
-INSERT INTO `pengajuan_kredit` (`id_pengajuan`, `waktu_pengajuan`, `nama_marketing`, `nik_marketing`, `cabang_pembantu`, `no_hp_marketing`, `nama_user`, `tempat_lahir`, `tanggal_lahir`, `nik_user`, `nip_user`, `no_pensiun`, `alamat_user`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `no_rekening`, `no_npwp`, `no_telepon`, `tanggal_syarat_ketentuan`) VALUES
-(15, '2023-06-02 11:29:05', 'marcel', 2147483647, 'kcp ciluar', 2147483647, 'marcel', 'bogoe', '2001-06-24', 2147483647, 23, 24, 'bogor', 'emak', 'atma', 'golongan 3', 2147483647, 332211, 2147483647, '2023-06-02 11:29:05'),
-(16, '2023-06-02 11:34:09', '', 0, '', 12382323, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-02 11:34:09'),
-(17, '2023-06-03 10:27:47', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-03 10:27:47'),
-(18, '2023-06-03 10:28:18', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '2023-06-03 10:28:18'),
-(19, '0000-00-00 00:00:00', 'marcel', 12345, 'ciluar', 123456, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(20, '0000-00-00 00:00:00', '', 0, '', 0, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(21, '0000-00-00 00:00:00', 'testing marketing Jiku', 435345345, 'Padang', 8967567, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(22, '0000-00-00 00:00:00', 'testing marketing', 45345, 'Padang', 89467467, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(23, '0000-00-00 00:00:00', 'testing Marketing', 234234234, 'Padang', 894564564, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(24, '0000-00-00 00:00:00', 'Testing nama marketing', 234234243, 'padang', 823923923, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(25, '0000-00-00 00:00:00', 'Testing marketing', 2147483647, 'Padang', 893556, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(26, '0000-00-00 00:00:00', 'testing ', 54656456, 'testing ', 456456456, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(27, '0000-00-00 00:00:00', 'testing', 2147483647, 'CABANG PASAR RAYA', 893929202, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(28, '0000-00-00 00:00:00', 'Sasa', 321101, 'CABANG LUBUK GADANG', 321101, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00'),
-(29, '0000-00-00 00:00:00', 'Salvator', 1234567890, 'CABANG PULAU PUNJUNG', 129400234, '', '', '0000-00-00', 0, 0, 0, '', '', '', '', 0, 0, 0, '0000-00-00 00:00:00');
+INSERT INTO `data_kredit_asnaktif` (`id_pengajuan`, `tipe_kredit`, `kode_marketing`, `nama_marketing`, `nik_marketing`, `cabang_pembantu`, `no_hp_marketing`, `waktu_pengajuan`, `tanggal_syarat_ketentuan`, `nama_debitur`, `tempat_lahir`, `tanggal_lahir`, `nik_debitur`, `nip_debitur`, `nomor_pensiun`, `alamat_rumah`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `nomor_rekening`, `nomor_npwp`, `nomor_telepon`, `gaji_debitur`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`, `pembayaran_bulanan`, `suku_bunga`, `total_premi`, `biaya_provisi`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_12`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`) VALUES
+(1, 'ASN AKTIF', 'marcel', '222', 222, 'CAPEM UNAND', 222, '2023-07-14 02:06:49', '2023-07-14 02:06:49', '222', '222', '2002-06-06', '222', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 20000000, 11, 21, '334848.48484848', '11', '825000', '', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
+(2, 'ASN AKTIF', 'marcel', '222', 222, 'CAPEM UNAND', 222, '2023-07-14 02:06:49', '2023-07-14 02:06:49', '222', '222', '2002-06-06', '222', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 20000000, 11, 21, '334848.48484848', '11', '825000', '', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_kredit_pensiun`
+--
+
+CREATE TABLE `data_kredit_pensiun` (
+  `id_pengajuan` int(11) NOT NULL,
+  `tipe_kredit` varchar(255) NOT NULL,
+  `kode_marketing` varchar(11) NOT NULL,
+  `nama_marketing` varchar(255) NOT NULL,
+  `nik_marketing` int(11) NOT NULL,
+  `cabang_pembantu` varchar(255) NOT NULL,
+  `no_hp_marketing` int(255) NOT NULL,
+  `waktu_pengajuan` datetime NOT NULL,
+  `tanggal_syarat_ketentuan` datetime NOT NULL,
+  `nama_debitur` varchar(255) NOT NULL,
+  `tempat_lahir` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `nik_debitur` varchar(255) NOT NULL,
+  `nip_debitur` varchar(255) NOT NULL,
+  `nomor_pensiun` varchar(255) NOT NULL,
+  `alamat_rumah` varchar(255) NOT NULL,
+  `nama_ibu` varchar(255) NOT NULL,
+  `nama_instansi` varchar(255) NOT NULL,
+  `pangkat_golongan` varchar(255) NOT NULL,
+  `nomor_rekening` varchar(255) NOT NULL,
+  `nomor_npwp` varchar(255) NOT NULL,
+  `nomor_telepon` varchar(255) NOT NULL,
+  `gaji_debitur` int(255) NOT NULL,
+  `jumlah_pinjaman` int(255) NOT NULL,
+  `waktu_pinjaman` int(255) NOT NULL,
+  `umur_pengajuan` int(11) NOT NULL,
+  `pembayaran_bulanan` varchar(255) NOT NULL,
+  `suku_bunga` varchar(255) NOT NULL,
+  `total_premi` varchar(255) NOT NULL,
+  `biaya_provisi` varchar(255) NOT NULL,
+  `kredit_file_1` text NOT NULL,
+  `kredit_file_2` text NOT NULL,
+  `kredit_file_3` text NOT NULL,
+  `kredit_file_4` text NOT NULL,
+  `kredit_file_5` text NOT NULL,
+  `kredit_file_6` text NOT NULL,
+  `kredit_file_7` text NOT NULL,
+  `kredit_file_8` text NOT NULL,
+  `kredit_file_9` text NOT NULL,
+  `kredit_file_10` text NOT NULL,
+  `kredit_file_11` text NOT NULL,
+  `kredit_file_12` text NOT NULL,
+  `kredit_file_13` text NOT NULL,
+  `kredit_file_14` text NOT NULL,
+  `kredit_file_15` text NOT NULL,
+  `kredit_file_16` text NOT NULL,
+  `kredit_file_17` text NOT NULL,
+  `kredit_file_18` text NOT NULL,
+  `kredit_file_19` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `data_kredit_pensiun`
+--
+
+INSERT INTO `data_kredit_pensiun` (`id_pengajuan`, `tipe_kredit`, `kode_marketing`, `nama_marketing`, `nik_marketing`, `cabang_pembantu`, `no_hp_marketing`, `waktu_pengajuan`, `tanggal_syarat_ketentuan`, `nama_debitur`, `tempat_lahir`, `tanggal_lahir`, `nik_debitur`, `nip_debitur`, `nomor_pensiun`, `alamat_rumah`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `nomor_rekening`, `nomor_npwp`, `nomor_telepon`, `gaji_debitur`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`, `pembayaran_bulanan`, `suku_bunga`, `total_premi`, `biaya_provisi`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_12`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`) VALUES
+(1, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(2, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(3, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(4, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(5, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '', '', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(6, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '123', 'adw', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(7, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '111', 'rew', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(8, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '', '', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 80000000, 6, 28, '1744444.4444444', '9.5', '1800000', '800000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(9, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '33', '33', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 80000000, 6, 28, '1744444.4444444', '9.5', '1800000', '800000', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', '', '', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
+(10, '', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '32', '32', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 80000000, 6, 28, '1744444.4444444', '9.5', '1800000', '800000', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
+(11, 'ASN PENSIUN', 'marketing1', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '31', '31', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 80000000, 6, 28, '1744444.4444444', '9.5', '1800000', '800000', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
+(12, 'ASN PENSIUN', '', 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '31', '31', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 0, 0, 0, '200075.07', '9.5', '461711.7', '123123.12', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
+(13, 'ASN PENSIUN', 'marcel', '222', 222, 'CAPEM UNAND', 222, '2023-07-14 02:06:49', '2023-07-14 02:06:49', '222', '222', '2002-06-06', '', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 20000000, 11, 21, '334848.48484848', '11', '825000', '', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_kredit_prapensiun`
+--
+
+CREATE TABLE `data_kredit_prapensiun` (
+  `id_pengajuan` int(11) NOT NULL,
+  `tipe_kredit` varchar(255) NOT NULL,
+  `kode_marketing` varchar(11) NOT NULL,
+  `nama_marketing` varchar(255) NOT NULL,
+  `nik_marketing` int(11) NOT NULL,
+  `cabang_pembantu` varchar(255) NOT NULL,
+  `no_hp_marketing` int(255) NOT NULL,
+  `waktu_pengajuan` datetime NOT NULL,
+  `tanggal_syarat_ketentuan` datetime NOT NULL,
+  `nama_debitur` varchar(255) NOT NULL,
+  `tempat_lahir` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `nik_debitur` varchar(255) NOT NULL,
+  `nip_debitur` varchar(255) NOT NULL,
+  `nomor_pensiun` varchar(255) NOT NULL,
+  `alamat_rumah` varchar(255) NOT NULL,
+  `nama_ibu` varchar(255) NOT NULL,
+  `nama_instansi` varchar(255) NOT NULL,
+  `pangkat_golongan` varchar(255) NOT NULL,
+  `nomor_rekening` varchar(255) NOT NULL,
+  `nomor_npwp` varchar(255) NOT NULL,
+  `nomor_telepon` varchar(255) NOT NULL,
+  `gaji_debitur` int(255) NOT NULL,
+  `jumlah_pinjaman` int(255) NOT NULL,
+  `waktu_pinjaman` int(255) NOT NULL,
+  `umur_pengajuan` int(11) NOT NULL,
+  `pembayaran_bulanan` varchar(255) NOT NULL,
+  `suku_bunga` varchar(255) NOT NULL,
+  `total_premi` varchar(255) NOT NULL,
+  `biaya_provisi` varchar(255) NOT NULL,
+  `kredit_file_1` text NOT NULL,
+  `kredit_file_2` text NOT NULL,
+  `kredit_file_3` text NOT NULL,
+  `kredit_file_4` text NOT NULL,
+  `kredit_file_5` text NOT NULL,
+  `kredit_file_6` text NOT NULL,
+  `kredit_file_7` text NOT NULL,
+  `kredit_file_8` text NOT NULL,
+  `kredit_file_9` text NOT NULL,
+  `kredit_file_10` text NOT NULL,
+  `kredit_file_11` text NOT NULL,
+  `kredit_file_12` text NOT NULL,
+  `kredit_file_13` text NOT NULL,
+  `kredit_file_14` text NOT NULL,
+  `kredit_file_15` text NOT NULL,
+  `kredit_file_16` text NOT NULL,
+  `kredit_file_17` text NOT NULL,
+  `kredit_file_18` text NOT NULL,
+  `kredit_file_19` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `data_kredit_prapensiun`
+--
+
+INSERT INTO `data_kredit_prapensiun` (`id_pengajuan`, `tipe_kredit`, `kode_marketing`, `nama_marketing`, `nik_marketing`, `cabang_pembantu`, `no_hp_marketing`, `waktu_pengajuan`, `tanggal_syarat_ketentuan`, `nama_debitur`, `tempat_lahir`, `tanggal_lahir`, `nik_debitur`, `nip_debitur`, `nomor_pensiun`, `alamat_rumah`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `nomor_rekening`, `nomor_npwp`, `nomor_telepon`, `gaji_debitur`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`, `pembayaran_bulanan`, `suku_bunga`, `total_premi`, `biaya_provisi`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_12`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`) VALUES
+(1, 'ASN AKTIF', 'marcel', '222', 222, 'CAPEM UNAND', 222, '2023-07-14 02:06:49', '2023-07-14 02:06:49', '222', '222', '2002-06-06', '222', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 20000000, 11, 21, '334848.48484848', '11', '825000', '', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
+(2, 'ASN AKTIF', 'marcel', '222', 222, 'CAPEM UNAND', 222, '2023-07-14 02:06:49', '2023-07-14 02:06:49', '222', '222', '2002-06-06', '222', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 20000000, 11, 21, '334848.48484848', '11', '825000', '', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
+(3, 'PRAPENSIUN', 'marcel', '111', 111, 'CABANG SOLOK', 111, '2023-07-14 02:30:06', '2023-07-14 02:30:06', '111', '111', '2000-06-02', '111', '111', '111', '111', '111', '111', 'Golongan I C Juru', '111', '111', '111', 11111111, 11111111, 11, 23, '186026.93416667', '11', '458333.32875', '', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada');
 
 -- --------------------------------------------------------
 
@@ -91,31 +251,16 @@ CREATE TABLE `temp_form1` (
 --
 
 INSERT INTO `temp_form1` (`id_pengajuan`, `nama_marketing`, `nik_marketing`, `cabang_pembantu`, `no_hp_marketing`, `kode_marketing`) VALUES
-(1, '123', 123, 'CAPEM RSUP M JAMIL', 123, 'marcel'),
-(2, '333', 333, 'CAPEM UNAND', 333, 'Adam'),
-(3, '444', 444, 'CAPEM TABEK PATAH', 444, 'Adam'),
-(4, '34', 34, 'CABANG SYARIAH PADANG', 34, 'marcel'),
-(5, '35', 35, 'CAPEM BAWAN', 35, 'marcel'),
-(6, '36', 36, 'CAPEM BANDAR BUAT', 36, 'Adam'),
-(7, '', 0, 'CABANG ALAHAN PANJANG', 0, 'Adam'),
-(8, 'Salvator', 1234567890, 'CABANG PULAU PUNJUNG', 129400234, 'marcel'),
-(9, 'Salvator', 1231234, 'CAPEM SIMPANG HARU', 1231342, 'marcel'),
-(10, 'Salvator', 12314322, 'CAPEM TABEK PATAH', 234234, 'marcel'),
-(11, 'testingA1', 456354625, 'CABANG SITEBA', 2147483647, 'marcel'),
-(12, 'testingA2', 43545342, 'CAPEM AROSUKA', 53245345, 'Adam'),
-(13, 'testingA3', 3453453, 'CABANG PAINAN', 45345345, 'marketing'),
-(14, 'testingA4', 345435, 'CAPEM RSUP M JAMIL', 2147483647, 'marketing'),
-(15, 'marketing 1', 4353245, 'CABANG ALAHAN PANJANG', 32452345, 'marketing2'),
-(16, 'marketing 2', 2147483647, 'CABANG NIAGA', 32454325, 'marketing2'),
-(17, 'marketing 3', 32453425, 'CAPEM GUBERNUR', 234523455, 'marketing2'),
-(18, 'marketing 4', 234234234, 'CABANG SYARIAH PADANG', 0, 'marketing2'),
-(19, 'marketing 5', 43534, 'CABANG SIMPANG EMPAT', 3465436, 'marketing2'),
-(20, 'marketing 1', 0, 'CABANG ALAHAN PANJANG', 0, 'marketing1'),
-(21, 'marketing 2', 0, 'CABANG ALAHAN PANJANG', 0, 'marketing2'),
-(22, 'marketing 3', 0, 'CABANG ALAHAN PANJANG', 0, 'marketing3'),
-(23, 'Sal', 12312, 'CABANG UJUNG GADING', 12312, 'Adam'),
-(24, 'FFF', 1231, 'CAPEM SIMPANG HARU', 12312, 'user'),
-(25, '', 0, 'CABANG ALAHAN PANJANG', 0, 'marcel');
+(1, 'marce', 123, 'CABANG BUKIT TINGGI', 123, 'marcel'),
+(2, '', 0, 'CABANG ALAHAN PANJANG', 0, 'marcel'),
+(3, 'mar', 12345, 'CABANG SYARIAH PADANG', 2312312, 'marcel'),
+(4, '', 0, 'CABANG ALAHAN PANJANG', 0, 'marcel'),
+(5, '', 0, 'CABANG ALAHAN PANJANG', 0, 'marcel'),
+(6, 'EDO VIO NANDA', 2147483647, 'CABANG BATU SANGKAR', 2147483647, 'marketing1'),
+(7, 'mar', 123, 'CAPEM UNAND', 123, 'marcel'),
+(8, 'mar', 123, 'CABANG SITEBA', 123, 'marcel'),
+(9, '222', 222, 'CAPEM UNAND', 222, 'marcel'),
+(10, '111', 111, 'CABANG SOLOK', 111, 'marcel');
 
 -- --------------------------------------------------------
 
@@ -135,32 +280,15 @@ CREATE TABLE `temp_form2` (
 --
 
 INSERT INTO `temp_form2` (`id_pengajuan`, `waktu_pengajuan`, `tanggal_syarat_ketentuan`, `kode_marketing`) VALUES
-(1, '2023-07-11 09:21:04', '2023-07-11 09:21:04', 'marcel'),
-(2, '2023-07-11 11:45:28', '2023-07-11 11:45:28', 'Adam'),
-(3, '2023-07-11 11:50:34', '2023-07-11 11:50:34', 'Adam'),
-(4, '2023-07-11 11:50:49', '2023-07-11 11:50:49', 'Adam'),
-(5, '2023-07-11 13:27:26', '2023-07-11 13:27:26', 'marcel'),
-(6, '2023-07-11 13:29:05', '2023-07-11 13:29:05', 'marcel'),
-(7, '2023-07-11 13:34:35', '2023-07-11 13:34:35', 'Adam'),
-(8, '2023-07-11 22:01:02', '2023-07-11 22:01:02', 'Adam'),
-(9, '2023-07-11 22:05:36', '2023-07-11 22:05:36', 'marcel'),
-(10, '2023-07-11 22:08:18', '2023-07-11 22:08:18', 'marcel'),
-(11, '2023-07-11 22:08:38', '2023-07-11 22:08:38', 'marcel'),
-(12, '2023-07-11 22:19:28', '2023-07-11 22:19:28', 'marcel'),
-(13, '2023-07-11 22:19:31', '2023-07-11 22:19:31', 'Adam'),
-(14, '2023-07-11 22:19:35', '2023-07-11 22:19:35', 'marketing'),
-(15, '2023-07-11 22:19:47', '2023-07-11 22:19:47', 'marketing'),
-(16, '2023-07-11 22:30:31', '2023-07-11 22:30:31', 'marketing2'),
-(17, '2023-07-11 22:30:33', '2023-07-11 22:30:33', 'marketing2'),
-(18, '2023-07-11 22:30:37', '2023-07-11 22:30:37', 'marketing2'),
-(19, '2023-07-11 22:30:40', '2023-07-11 22:30:40', 'marketing2'),
-(20, '2023-07-11 22:31:18', '2023-07-11 22:31:18', 'marketing2'),
-(21, '2023-07-11 22:52:27', '2023-07-11 22:52:27', 'marketing1'),
-(22, '2023-07-11 22:52:30', '2023-07-11 22:52:30', 'marketing2'),
-(23, '2023-07-11 22:52:34', '2023-07-11 22:52:34', 'marketing3'),
-(24, '2023-07-11 22:57:22', '2023-07-11 22:57:22', 'Adam'),
-(25, '2023-07-11 22:57:38', '2023-07-11 22:57:38', 'user'),
-(26, '2023-07-12 12:03:53', '2023-07-12 12:03:53', 'marcel');
+(1, '2023-07-13 11:07:54', '2023-07-13 11:07:54', 'marcel'),
+(2, '2023-07-13 16:12:13', '2023-07-13 16:12:13', 'marcel'),
+(3, '2023-07-13 17:59:00', '2023-07-13 17:59:00', 'marcel'),
+(4, '2023-07-13 18:08:36', '2023-07-13 18:08:36', 'marcel'),
+(5, '2023-07-13 21:49:32', '2023-07-13 21:49:32', 'marketing1'),
+(6, '2023-07-14 01:28:11', '2023-07-14 01:28:11', 'marcel'),
+(7, '2023-07-14 01:42:12', '2023-07-14 01:42:12', 'marcel'),
+(8, '2023-07-14 02:06:49', '2023-07-14 02:06:49', 'marcel'),
+(9, '2023-07-14 02:30:06', '2023-07-14 02:30:06', 'marcel');
 
 -- --------------------------------------------------------
 
@@ -192,43 +320,17 @@ CREATE TABLE `temp_form3` (
 --
 
 INSERT INTO `temp_form3` (`id_pengajuan`, `nama_debitur`, `tempat_lahir`, `tanggal_lahir`, `nik_debitur`, `nip_debitur`, `nomor_pensiun`, `alamat_rumah`, `nama_ibu`, `nama_instansi`, `pangkat_golongan`, `nomor_rekening`, `nomor_npwp`, `nomor_telepon`, `gaji_debitur`, `kode_marketing`) VALUES
-(1, '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, ''),
-(2, 'testing', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, ''),
-(3, 'qwe', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 'marcel'),
-(4, 'ewq', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(5, 'ewq', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(6, 'ewq', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(7, 'rew', 'rew', '2023-07-11', '', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(8, 'rrr', 'rrr', '2023-07-02', '', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(9, 'xxx', 'xxx', '2023-06-25', '123', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(10, 'xxx', 'xxx', '2023-06-25', '123', '', '', '', '', '', '', '', '', '', 0, 'Adam'),
-(11, 'xxx', 'xxx', '2023-06-24', '222', '222', '222', '', '', '', '', '', '', '', 0, 'Adam'),
-(12, 'xxx', 'xxx', '2023-06-24', '222', '222', '222', '', '', '', '', '', '', '', 0, 'Adam'),
-(13, 'vvv', 'vvv', '2023-06-24', '0123', '123', '123', '', '', '', '', '', '', '', 0, 'Adam'),
-(14, '35', '35', '2023-06-26', '35', '35', '35', '35', '35', '35', 'Golongan III A Penata Muda', '35', '35', '35', 0, 'marcel'),
-(15, '36', '36', '2023-06-27', '36', '36', '36', '36', '36', '36', 'Golongan I D Juru Tingkat 1', '36', '36', '36', 0, 'Adam'),
-(16, '', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 0, 'Adam'),
-(17, 'Salvator Sangi', 'Ende', '1968-07-10', '12312', '12312', '123123', 'dasda', 'asdas', 'asdas', 'Golongan I A Juru Muda', '123124234', '1231413', '342341341', 0, 'marcel'),
-(18, 'Salvator Sangi', 'Ende', '1952-08-07', '123123', '123123', '1231', '1231', 'asdasd', 'asdasd', 'Golongan I C Juru', '1231231', '1323123', '12312312', 0, 'marcel'),
-(19, 'testing debitur 1', 'jakarta', '1966-05-11', '3452345', '324523452345', '23452345', '32452345', '23452345', '23453245', 'Golongan II A Pengatur Muda', '23452345', '23452345', '23453425', 0, 'marcel'),
-(20, 'testing debitur 2', 'Jkarata', '1963-06-11', '3456356354', '345634565346', '34563456345', '34563456', 'testing', 'srgserg', 'Golongan III D Penata Tingkat 1', '4365436546', '5644536', '5456456456', 0, 'Adam'),
-(21, 'testing debitur 4', 'jakarta', '1972-06-03', '356345', '436436456', '45364356', '34564356435', 'dfgawsefsd', 'sdfgesrfgesr', 'Golongan III B Penata Muda Tingkat 1', '46456', '456456', '43564356', 0, 'marketing'),
-(22, 'testing debitur 3', 'jakarta', '1953-10-27', '32453245', '34252435234', '32453245', 'ghgfdh', 'dfthgsdthser', 'gsergesg', 'Golongan III B Penata Muda Tingkat 1', '34653456', '546456', '456456', 0, 'marketing'),
-(23, 'debitur 1', 'Jakarta 1', '1956-06-14', '345346', '456456', '34564356', 'dzfgsdfg', 'ergserg', 'stregesrg', 'Golongan I D Juru Tingkat 1', '34563456', '34564356', '34564356435', 0, 'marketing2'),
-(24, 'debitur 2', 'Jakarta 2', '1991-06-13', '43564356435', '43564536', '45643564356', 'dfsfrf', 'aergeargear', 'aergeargearg', 'Golongan II C Pengatur', '345673456', '4563456', '4564356456', 0, 'marketing2'),
-(25, 'debitur 3', 'Jakarta 3', '1975-07-03', '5467657', '745675467', '54675467', 'fgbdrtghse', 'tgsetrgertg', 'srthrth', 'Golongan III C Penata', '464356354', '673547567', '5467546754', 0, 'marketing2'),
-(26, 'debitur 5', 'Jakarta 5', '1965-11-10', '465436', '34563456', '34564356', 'dfgasdfgv', 'dfgvdfg', 'dzrgzdrg', 'Golongan IV A Pembina', '56475467', '54675467', '54675467', 0, 'marketing2'),
-(27, 'debitur 4', 'Jakarta 4', '1977-09-13', '456456', '45645645', '45645645', 'esrgearg', 'aergeargaer', 'eargaerg', 'Golongan IV C Pembina Utama Muda', '5464536356', '34564356', '435643564356', 0, 'marketing2'),
-(28, 'Debitur 1', 'Jkarta 1', '1957-05-11', '111111111111111111111111111111', '111111112121111111111111111111111111', '111111111111111111111111111121212', 'testing 1', 'testing ibu 1', 'testing ins 1', 'Golongan I D Juru Tingkat 1', '111111111111111111212121212', '111111111111111111212121', '121111111111121212212', 0, 'marketing1'),
-(29, 'Debitur 2', 'Jkarta 2', '1982-06-25', '222222222222222222222222212112', '2222222222222211112222', '2222222222211112222', 'testing 2', 'testing ibu 2', 'testing ins 2', 'Golongan II D Pengatur Tingkat 1', '2222222111122222', '22221112121212', '22222111112121212', 0, 'marketing2'),
-(30, 'Debitur 3', 'Jkarta 3', '1983-02-03', '3333333333333123121212', '3333333333333333333333333112321', '3333333333331212123', 'testing rmh 3', 'testing ibu3', 'testing ins 3', 'Golongan III A Penata Muda', '33333324242424', '333321222', '333311222', 0, 'marketing3'),
-(31, 'FFF', 'wdasd', '1954-06-10', '123', '1231', '3123', '1231', '123', '13123', 'Golongan I C Juru', '1231', '23123', '123123', 0, 'user'),
-(32, 'GGG', 'asdas', '1986-02-12', '23123', '123123', '1231', '1231', '12312', '1231', 'Golongan IV E Pembina Utama', '1231', '123', '123123', 0, 'Adam'),
-(33, 'sss', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 222, 'marcel'),
-(34, 'sss', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 123, 'marcel'),
-(35, 'aaa', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 123456789, 'marcel'),
-(36, 'aaa', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 123456789, 'marcel'),
-(37, '', '', '2001-06-24', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 0, 'marcel');
+(1, 'marce', 'bogoe', '2005-06-15', '123', '123', '123', '123asdasd', 'asdasd', 'aswdf12', 'Golongan III A Penata Muda', '123', '123', '123', 4000000, 'marcel'),
+(2, 'xxx', 'bogoe', '2004-05-11', '222', '22222', '222', '22', '22', '22', 'Golongan II C Pengatur', '2222', '22222', '2222', 22222222, 'marcel'),
+(3, 'xxx', 'bogoe', '2004-05-11', '222', '22222', '222', '22', '22', '22', 'Golongan II C Pengatur', '2222', '22222', '2222', 22222222, 'marcel'),
+(4, 'xxx', 'bogoe', '2004-05-11', '222', '22222', '222', '22', '22', '22', 'Golongan II C Pengatur', '2222', '22222', '2222', 22222222, 'marcel'),
+(5, '', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 222222, 'marcel'),
+(6, '', '', '0000-00-00', '', '', '', '', '', '', 'Golongan IV A Pembina', '', '', '', 0, 'marcel'),
+(7, 'Novia safitri', 'Air bangis', '1994-11-10', '1312015010940001', '199410112020122007', '', '', 'Sumarni', 'SMPN 1 Koto Balingka', 'Golongan III A Penata Muda', '15020210032730', '638230953202000', '082385159940', 2660700, 'marketing1'),
+(8, 'mar', 'mar', '2010-06-03', '123', '123', '123', 'mar', 'mar', '123', 'Golongan III A Penata Muda', '123', '123', '123', 123123123, 'marcel'),
+(9, 'mar', 'mar', '2013-06-04', '123', '123', '123', '123', 'mar', '123mar', 'Golongan III C Penata', '123', '123', '123', 12312312, 'marcel'),
+(10, '222', '222', '2002-06-06', '222', '222', '222', '222', '222', '2222', 'Golongan IV B Pembina Tingkat 1', '22', '22', '22', 22222222, 'marcel'),
+(11, '111', '111', '2000-06-02', '111', '111', '111', '111', '111', '111', 'Golongan I C Juru', '111', '111', '111', 11111111, 'marcel');
 
 -- --------------------------------------------------------
 
@@ -241,17 +343,40 @@ CREATE TABLE `temp_form4` (
   `jumlah_pinjaman` int(255) NOT NULL,
   `waktu_pinjaman` int(255) NOT NULL,
   `umur_pengajuan` int(11) NOT NULL,
-  `kode_marketing` varchar(255) NOT NULL
+  `pembayaran_bulanan` varchar(255) NOT NULL,
+  `gaji_debitur` varchar(255) NOT NULL,
+  `suku_bunga` varchar(255) NOT NULL,
+  `total_premi` varchar(255) NOT NULL,
+  `biaya_provisi` varchar(255) NOT NULL,
+  `kode_marketing` varchar(255) NOT NULL,
+  `jenis_payroll` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `temp_form4`
 --
 
-INSERT INTO `temp_form4` (`id_pengajuan`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`, `kode_marketing`) VALUES
-(1, 300000000, 60, 22, 'marcel'),
-(2, 300000000, 60, 22, 'marcel'),
-(3, 300000000, 10, 22, 'marcel');
+INSERT INTO `temp_form4` (`id_pengajuan`, `jumlah_pinjaman`, `waktu_pinjaman`, `umur_pengajuan`, `pembayaran_bulanan`, `gaji_debitur`, `suku_bunga`, `total_premi`, `biaya_provisi`, `kode_marketing`, `jenis_payroll`) VALUES
+(1, 23000000, 10, 13, '', '', '', '', '', 'marcel', 'Bank Nagari'),
+(2, 23000000, 10, 13, '', '', '', '', '', 'marcel', ''),
+(3, 22222222, 10, 10, '', '', '', '', '', 'marcel', ''),
+(4, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(5, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(6, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(7, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(8, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(9, 22222222, 10, 10, '', '', '', '', '', 'marcel', 'marcel'),
+(10, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', ''),
+(11, 22222222, 10, 10, '', '', '', '', '', 'marcel', 'Bank Nagari'),
+(12, 22222222, 10, 10, '361111.1075', '12312312', '9.5', '833333.325', '222222.22', 'marcel', 'Bank Nagari'),
+(13, 20000000, 6, 10, '', '', '', '', '', 'marcel', 'Bank Nagari'),
+(14, 20000000, 6, 10, '', '', '', '', '', 'marcel', 'Non Nagari'),
+(15, 20000000, 11, 21, '', '', '', '', '', 'marcel', 'Non Nagari'),
+(16, 20000000, 11, 21, '326515.15151515', '22222222', '10.5', '825000', '', 'marcel', 'Non Nagari'),
+(17, 20000000, 11, 21, '', '', '', '', '', 'marcel', 'Non Nagari'),
+(18, 20000000, 11, 21, '334848.48484848', '22222222', '11', '825000', '', 'marcel', 'Non Nagari'),
+(19, 11111111, 11, 23, '', '', '', '', '', 'marcel', 'Non Nagari'),
+(20, 11111111, 11, 23, '186026.93416667', '11111111', '11', '458333.32875', '', 'marcel', 'Non Nagari');
 
 -- --------------------------------------------------------
 
@@ -288,54 +413,13 @@ CREATE TABLE `temp_form6` (
 --
 
 INSERT INTO `temp_form6` (`id_pengajuan`, `kode_marketing`, `kredit_file_1`, `kredit_file_2`, `kredit_file_3`, `kredit_file_4`, `kredit_file_5`, `kredit_file_6`, `kredit_file_7`, `kredit_file_8`, `kredit_file_9`, `kredit_file_10`, `kredit_file_11`, `kredit_file_12`, `kredit_file_13`, `kredit_file_14`, `kredit_file_15`, `kredit_file_16`, `kredit_file_17`, `kredit_file_18`, `kredit_file_19`) VALUES
-(1, 'Adam', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
-(2, 'Adam', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(3, 'marcel', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(4, 'marcel', 'Tidak', 'Ada', 'Ada', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(5, 'marcel', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', '', 'Ada', 'Ada', '', 'Ada', 'Ada', 'Ada', 'Ada', ''),
-(6, 'Adam', 'Ada', 'Ada', '', '', 'Ada', 'Ada', 'Ada', '', 'Ada', 'Ada', 'Ada', 'Ada', '', 'Ada', '', '', '', '', ''),
-(7, 'marketing', 'Ada', 'Ada', '', '', 'Ada', 'Ada', '', '', 'Ada', '', 'Ada', 'Ada', 'Ada', '', 'Ada', 'Ada', 'Ada', '', ''),
-(8, 'marketing', 'Ada', 'Ada', 'Ada', '', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', '', 'Ada', 'Ada', 'Ada', 'Ada', '', '', 'Ada', ''),
-(9, 'marketing2', 'Ada', 'Tidak', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
-(10, 'marketing2', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada'),
-(11, 'marketing2', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak'),
-(12, 'marketing2', 'Tidak', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada'),
-(13, 'marketing2', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
-(14, 'marketing1', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', '', '', '', '', '', '', '', ''),
-(15, 'marketing2', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', '', '', '', '', '', '', '', '', '', ''),
-(16, 'marketing3', 'Ada', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', '', '', ''),
-(17, 'user', 'Ada', '', 'Ada', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(18, 'Adam', 'Ada', 'Ada', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user_credit`
---
-
-CREATE TABLE `user_credit` (
-  `ID` int(11) NOT NULL,
-  `Nama` text NOT NULL,
-  `Tempat_Lahir` text NOT NULL,
-  `Tgl_Lahir` varchar(255) NOT NULL,
-  `NIK` int(255) NOT NULL,
-  `NIP` int(255) NOT NULL,
-  `No_Pensiun` int(255) NOT NULL,
-  `Nama_Ibu` text NOT NULL,
-  `Nama_Instansi` varchar(255) NOT NULL,
-  `Pangkat` varchar(255) NOT NULL,
-  `No_Rekening` int(255) NOT NULL,
-  `NPWP` int(255) NOT NULL,
-  `No_Telepon` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `user_credit`
---
-
-INSERT INTO `user_credit` (`ID`, `Nama`, `Tempat_Lahir`, `Tgl_Lahir`, `NIK`, `NIP`, `No_Pensiun`, `Nama_Ibu`, `Nama_Instansi`, `Pangkat`, `No_Rekening`, `NPWP`, `No_Telepon`) VALUES
-(4, 'asd', 'asd', '05-06-2018', 124123, 124124, 12124, '235235', 'asdfasdf', 'asdfasdf', 12124, 12312, 345345),
-(5, 'Tooer', 'Jakarta', '21-07-1994', 546485059, 2147483647, 2147483647, 'Astuti', 'Polri', '3 A', 2147483647, 2147483647, 2147483647);
+(1, 'marcel', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
+(2, 'marcel', '', 'Ada', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(3, 'marketing1', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', '', '', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Tidak', 'Ada', 'Ada'),
+(4, 'marcel', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada'),
+(5, 'marcel', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Ada', 'Ada', 'Ada'),
+(6, 'marcel', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada', 'Tidak', 'Ada'),
+(7, 'marcel', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada', 'Ada');
 
 -- --------------------------------------------------------
 
@@ -374,9 +458,21 @@ INSERT INTO `user_form` (`id`, `name`, `email`, `password`, `user_type`, `kode_m
 --
 
 --
--- Indeks untuk tabel `pengajuan_kredit`
+-- Indeks untuk tabel `data_kredit_asnaktif`
 --
-ALTER TABLE `pengajuan_kredit`
+ALTER TABLE `data_kredit_asnaktif`
+  ADD PRIMARY KEY (`id_pengajuan`);
+
+--
+-- Indeks untuk tabel `data_kredit_pensiun`
+--
+ALTER TABLE `data_kredit_pensiun`
+  ADD PRIMARY KEY (`id_pengajuan`);
+
+--
+-- Indeks untuk tabel `data_kredit_prapensiun`
+--
+ALTER TABLE `data_kredit_prapensiun`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
@@ -410,12 +506,6 @@ ALTER TABLE `temp_form6`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `user_credit`
---
-ALTER TABLE `user_credit`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indeks untuk tabel `user_form`
 --
 ALTER TABLE `user_form`
@@ -426,46 +516,52 @@ ALTER TABLE `user_form`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan_kredit`
+-- AUTO_INCREMENT untuk tabel `data_kredit_asnaktif`
 --
-ALTER TABLE `pengajuan_kredit`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+ALTER TABLE `data_kredit_asnaktif`
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `data_kredit_pensiun`
+--
+ALTER TABLE `data_kredit_pensiun`
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `data_kredit_prapensiun`
+--
+ALTER TABLE `data_kredit_prapensiun`
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form1`
 --
 ALTER TABLE `temp_form1`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form2`
 --
 ALTER TABLE `temp_form2`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form3`
 --
 ALTER TABLE `temp_form3`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form4`
 --
 ALTER TABLE `temp_form4`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form6`
 --
 ALTER TABLE `temp_form6`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT untuk tabel `user_credit`
---
-ALTER TABLE `user_credit`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_form`
