@@ -24,12 +24,15 @@ if(isset($_POST['submit'])){
     $nomor_rekening = $_POST['nomor_rekening'];
     $nomor_npwp = $_POST['nomor_npwp'];
     $nomor_telepon = $_POST['nomor_telepon'];
+
+    $gaji_debitur = $_POST['gaji_debitur'];
+    $gaji_debitur = preg_replace('/[.,]|Rp\s?/u', '', $gaji_debitur);
     
-    $insert = "INSERT INTO temp_form3(nama_debitur,kode_marketing,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon) VALUES('$nama_debitur','$kode_marketing','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon')";
+    $insert = "INSERT INTO temp_form3(nama_debitur,kode_marketing,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon,gaji_debitur) VALUES('$nama_debitur','$kode_marketing','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon','$gaji_debitur')";
     mysqli_query($conn, $insert);
-    //header('Location: user_page4.php');
+    header('Location: user_page4.php');
     //header('Location: kredit_final.php');
-    header('Location: user_page6.php');
+    //header('Location: user_page6.php');
  };
 
 ?>
@@ -51,6 +54,22 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script>
+        function formatNumber(input) {
+            // Remove existing dots, commas, and "Rp" prefix
+            var num = input.replace(/[.,]|Rp\s?/g, "");
+            // Add thousands separator and "Rp" prefix
+            num = "Rp " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return num;
+        }
+        function removeNonNumeric(input) {
+            return input.replace(/[^0-9.,]/g, "");
+        }
+        function handleInputChange(input) {
+            var sanitizedValue = removeNonNumeric(input.value);
+            input.value = formatNumber(sanitizedValue);
+        }
+    </script>
 </head>
 
 <body>
@@ -71,7 +90,6 @@ if(isset($_POST['submit'])){
             <header class="app-header top-bar">
                 <!-- begin navbar -->
                 <nav class="navbar navbar-expand-md">
-
                     <!-- begin navbar-header -->
                     <div class="navbar-header d-flex align-items-center">
                         <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
@@ -84,7 +102,6 @@ if(isset($_POST['submit'])){
                         <i class="ti ti-align-left"></i>
                     </button>
                     <!-- end navbar-header -->
-                    
                 </nav>
                 <!-- end navbar -->
             </header>
@@ -97,7 +114,6 @@ if(isset($_POST['submit'])){
                     <div class="sidebar-nav scrollbar scroll_light">
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">User Menu</li>
-                            
                             <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
@@ -115,7 +131,6 @@ if(isset($_POST['submit'])){
                     <!-- end sidebar-nav -->
                 </aside>
                 <!-- end app-navbar -->
-                
             </div>
             <!-- end app-container -->
             <!-- begin app-main -->
@@ -201,6 +216,10 @@ if(isset($_POST['submit'])){
                                                 <option>Lainnya</option>
                                                 
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput14">Gaji Bulanan</label>
+                                            <input id="formGroupExampleInput14" class="form-control" type="text" name="gaji_debitur" inputmode="numeric" oninput="handleInputChange(this);" placeholder="Masukkan Gaji Bulanan Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput11">Nomor Rekening</label>

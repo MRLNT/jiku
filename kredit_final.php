@@ -308,6 +308,10 @@ if(isset($_POST['submit'])){
                                             </select>
                                         </div>
                                         <div class="form-group">
+                                            <label for="formGroupExampleInput14">Gaji Bulanan</label>
+                                            <input id="formGroupExampleInput14" class="form-control" type="text" name="gaji_debitur" inputmode="numeric" oninput="handleInputChange(this);" value="<?php echo $row['gaji_debitur'] ?>">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="formGroupExampleInput11">Nomor Rekening</label>
                                             <input name="nomor_rekening" type="number" class="form-control" id="formGroupExampleInput11" value="<?php echo $row['nomor_rekening'] ?>">
                                         </div>

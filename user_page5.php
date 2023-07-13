@@ -1,24 +1,61 @@
 <?php
+    @include 'config.php';
+    session_start();
+    if(!isset($_SESSION['user_name'])){
+    header('location:login_form.php');
+    }
+    error_reporting(E_ERROR | E_PARSE);
 
-@include 'config.php';
+    $kode_marketing = $_SESSION['user_name'];
 
-session_start();
+    $sql54 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
+    $result54 = $conn->query($sql54);
+    if ($result54->num_rows > 0) {
+        $row = $result54->fetch_assoc();
+    }
+    $umur = $row['umur_pengajuan'];
+    $pinjaman = $row['jumlah_pinjaman'];
+    $wpinjaman = $row['waktu_pinjaman'];
+    $jpersen = 0.0;
+    $totalbungabulanan = 0;
+    $premi = 0;
+    $biayaprovisi = 0;
+    $jmlhditerima = 0;
+    $bungabulanan = 0;
+    $biayapencairan = 0;
+    $pembayaranbulanan = 0;
+    $jumlahcicilanbulanan = 0;
+    if ($wpinjaman>=1 && $wpinjaman<=5) {
+        $jpersen = 9;
+    } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+        $jpersen = 9.5;
+    } else{
+        $jpersen = 10.5;
+    }
 
-if(!isset($_SESSION['user_name'])){
-   header('location:login_form.php');
-}
-error_reporting(E_ERROR | E_PARSE);
+    $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+    $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+    $premi = 0.00375*$pinjaman*$wpinjaman;
+    $biayaprovisi = $pinjaman*0.01;
+    $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+    $bungabulanan = $jpersen / 12;
+    $biayapencairan= $premi + $biayaprovisi - 150000;
+    $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+    $jumlahcicilanbulanan= $wpinjaman*12 ;
 
-if(isset($_POST['submit'])){
-    $jumlah_pinjaman = $_POST['jumlah_pinjaman'];
-    $waktu_pinjaman = $_POST['waktu_pinjaman'];
-    $umur_pengajuan = $_POST['umur_pengajuan'];
-    
-    
-    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan) VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan')";
-    mysqli_query($conn, $insert);
-    header('Location: user_page6.php');
- };
+    $sql33 = "SELECT * FROM temp_form3 ORDER BY id_pengajuan DESC LIMIT 1";
+    $result33 = $conn->query($sql33);
+    if ($result33->num_rows > 0) {
+        $row = $result33->fetch_assoc();
+    } else echo "No data found.";
+    $gaji_debitur = $row['gaji_debitur'];
+
+
+    if(isset($_POST['submit'])){
+        $insert = "INSERT INTO temp_form4(pembayaran_bulanan,suku_bunga,total_premi,biaya_provisi,gaji_debitur,kode_marketing,umur_pengajuan,jumlah_pinjaman,waktu_pinjaman) VALUES('$pembayaranbulanan','$jpersen','$premi','$biayaprovisi','$gaji_debitur','$kode_marketing','$umur','$pinjaman','$wpinjaman')";
+        mysqli_query($conn, $insert);
+        header('Location: user_page6.php');
+    };
 
 ?>
 
@@ -116,7 +153,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Tabs</h1>
+                                    <h1>Hasil Perhitungan</h1>
                                 </div>
                             </div>
                             <!-- end page title -->
@@ -128,11 +165,6 @@ if(isset($_POST['submit'])){
                         <div class="col-xxl-12">
                             <div class="card card-statistics">
                                 <form action="" method="post">
-                                    <div class="card-header">
-                                        <div class="card-heading">
-                                            <h4 class="card-title">Hasil Perhitungan</h4>
-                                        </div>
-                                    </div>
                                     <div class="card-body">
                                     <?php
                                     $sql5 = "SELECT * FROM temp_form4 ORDER BY id_pengajuan DESC LIMIT 1";
@@ -215,6 +247,34 @@ if(isset($_POST['submit'])){
                                         echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
                                         echo "<br>";
                                         echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
+
+                                        $sql3 = "SELECT * FROM temp_form3 ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $result3 = $conn->query($sql3);
+                                        if ($result3->num_rows > 0) {
+                                            $row = $result3->fetch_assoc();
+                                        } else echo "No data found.";
+                                        echo "Nama Debitur: {$row['nama_debitur']} <br>";
+                                        echo "Gaji Debitur: {$row['gaji_debitur']}<br>";
+                                        $gaji_debitur = $row['gaji_debitur'] * 9 / 10;
+
+                                        if ($pembayaranbulanan > $gaji_debitur) {
+                                            $BtnIsActive = false;
+                                            ?>
+                                            <div class="col-12 mb-2">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <strong>Gaji tidak mencukupi untuk pembayaran, Silahkan....</strong>
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <i class="ti ti-close"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        } else {
+                                            $BtnIsActive = true;
+                                            echo "<strong><i>Gaji Cukup untuk Melakukan Pinjaman</i></strong>";
+                                        }
+
+
                                         echo "<br> Suku Bunga Tahunan: {$jpersen}%";
                                         echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
                                         echo "<br> Total Premi: Rp {$premi_format} ";
@@ -225,7 +285,14 @@ if(isset($_POST['submit'])){
                                     </h5>
                                         
                                     </div>
-                                    <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
+                                    <?php if ($BtnIsActive): ?>
+                                        <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
+                                    <?php endif; ?>
+                                    <?php if (!$BtnIsActive): ?>
+                                        <div class="col-12 mb-2">
+                                            <button onclick="goBack()" class="btn btn-primary">Kembali</button>
+                                        </div>
+                                    <?php endif; ?>
                                 </form>
                             </div>
                         </div>
@@ -239,7 +306,11 @@ if(isset($_POST['submit'])){
         <!-- end app-wrap -->
     </div>
     <!-- end app -->
-    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <!-- plugins -->
     <script src="assets/js/vendors.js"></script>
 

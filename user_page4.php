@@ -7,17 +7,31 @@ session_start();
 if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
+
+$kode_marketing = $_SESSION['user_name'];
+$sql3 = "SELECT * FROM temp_form3 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
+$result3 = $conn->query($sql3);
+if ($result3->num_rows > 0) {
+    $row = $result3->fetch_assoc();
+    $tanggal_lahir = $row['tanggal_lahir'];
+    $umur = date_diff(date_create($tanggal_lahir), date_create('today'))->y;
+} else {echo "No data found.";}
 
 if(isset($_POST['submit'])){
     $jumlah_pinjaman = $_POST['jumlah_pinjaman'];
+    $jumlah_pinjaman = preg_replace('/[.,]|Rp\s?/u', '', $jumlah_pinjaman);
     $waktu_pinjaman = $_POST['waktu_pinjaman'];
     $umur_pengajuan = $_POST['umur_pengajuan'];
+    $kode_marketing = $_SESSION['user_name'];
+
     
     
-    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan) VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan')";
+    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,kode_marketing) 
+    VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$kode_marketing')";
     mysqli_query($conn, $insert);
-    header('Location: user_page6.php');
+    //header('Location: user_page6.php');
+    header('Location: user_page5.php');
  };
 
 ?>
@@ -39,6 +53,30 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script>
+        function formatNumber(input) {
+            // Remove existing dots, commas, and "Rp" prefix
+            var num = input.replace(/[.,]|Rp\s?/g, "");
+            // Add thousands separator and "Rp" prefix
+            num = "Rp " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return num;
+        }
+        function removeNonNumeric(input) {
+            return input.replace(/[^0-9.,]/g, "");
+        }
+        function handleInputChange(input) {
+            var sanitizedValue = removeNonNumeric(input.value);
+            input.value = formatNumber(sanitizedValue);
+        }
+        function validateJumlahPinjaman(input) {
+            var maxPinjaman = 300000000; // 300 juta
+            var pinjaman = removeNonNumeric(input.value);
+            if (pinjaman > maxPinjaman) {
+                alert("Jumlah pinjaman tidak boleh melebihi 300 juta");
+                input.value = formatNumber(maxPinjaman);
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -116,7 +154,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Tabs</h1>
+                                    <h1>Kalkulasi</h1>
                                 </div>
                             </div>
                             <!-- end page title -->
@@ -128,25 +166,19 @@ if(isset($_POST['submit'])){
                         <div class="col-xxl-12">
                             <div class="card card-statistics">
                                 <form action="" method="post">
-                                    <div class="card-header">
-                                        <div class="card-heading">
-                                            <h4 class="card-title">Data Pribadi Nasabah/Debitur</h4>
-                                        </div>
-                                    </div>
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="numeric8">Jumlah Pinjaman</label>
-                                            <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda">
+                                            <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda" inputmode="numeric" oninput="handleInputChange(this);">
                                         </div>
                                         <div class="form-group">
-                                            <label for="numeric9">Waktu Pinjaman (dalam bulan)</label>
-                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam bulan">
+                                            <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
+                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
                                         </div>
                                         <div class="form-group">
                                             <label for="numeric10">Umur Pengajuan (dalam tahun)</label>
-                                            <input name="umur_pengajuan" type="text" class="form-control autonumber" id="numeric10" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
+                                            <input name="umur_pengajuan" type="text" class="form-control autonumber" id="numeric10" value="<?php echo $umur; ?>">
                                         </div>
-                                        
                                     </div>
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
