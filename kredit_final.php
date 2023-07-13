@@ -8,12 +8,12 @@ $kode_marketing = $_SESSION['user_name'];
 //error_reporting(E_ERROR | E_PARSE);
 
 if(isset($_POST['submit'])){
-    $nama_marketing = $_POST['nama_marketing'];
-    $nik_marketing = $_POST['nik_marketing'];
-    $cabang_pembantu = $_POST['cabang_pembantu'];
-    $no_hp_marketing = $_POST['no_hp_marketing'];
+    //$nama_marketing = $_POST['nama_marketing'];
+    //$nik_marketing = $_POST['nik_marketing'];
+    // $insert = "INSERT INTO pengajuan_kredit(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing')";
 
-    $insert = "INSERT INTO pengajuan_kredit(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing')";
+    
+
     mysqli_query($conn, $insert);
     header('Location: dashboard_user.php');
  };
@@ -325,8 +325,29 @@ if(isset($_POST['submit'])){
                                         </div>
                                     </div>
 
-
-
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Data Kalkulasi</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php
+                                        $kode_marketing = $_SESSION['user_name'];
+                                        $sql4 = "SELECT * FROM temp_form4 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
+                                        $result4 = $conn->query($sql4);
+                                        if ($result4->num_rows > 0) {
+                                            $row = $result4->fetch_assoc();
+                                        } else echo "No data found.";
+                                        ?>
+                                        <div class="form-group">
+                                            <h5>Jumlah Pinjaman: Rp <?php echo number_format($row['jumlah_pinjaman'], 0, ',', '.') ?></h5>
+                                            <h5>Waktu Pinjaman : <?php echo $row['waktu_pinjaman'] ?> Tahun</h5>
+                                            <h5>Waktu Pinjaman : <?php echo $row['umur_pengajuan'] ?> Tahun</h5>
+                                            <h5>Suku Bunga : <?php echo $row['suku_bunga'] ?> %</h5>
+                                            <h5>Total Premi: Rp <?php echo number_format($row['total_premi'], 0, ',', '.') ?></h5>
+                                            <h5>Biaya Provisi: Rp <?php echo number_format($row['biaya_provisi'], 0, ',', '.') ?></h5>
+                                        </div>
+                                    </div>
                                     <div class="card-header d-sm-flex justify-content-between align-items-center py-3">
                                         <div class="card-heading mb-3 mb-sm-0">
                                             <h4 class="card-title">Dokumen Check List dan Tanda Terima Dokumen</h4>
@@ -726,14 +747,10 @@ if(isset($_POST['submit'])){
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    
-                                                    
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-
-
                                     <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
                             </div>

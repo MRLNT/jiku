@@ -25,8 +25,6 @@ if(isset($_POST['submit'])){
     $umur_pengajuan = $_POST['umur_pengajuan'];
     $kode_marketing = $_SESSION['user_name'];
 
-    
-    
     $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,kode_marketing) 
     VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$kode_marketing')";
     mysqli_query($conn, $insert);

@@ -290,7 +290,7 @@
                                     <?php endif; ?>
                                     <?php if (!$BtnIsActive): ?>
                                         <div class="col-12 mb-2">
-                                            <button onclick="goBack()" class="btn btn-primary">Kembali</button>
+                                            <a href="user_page3.php" class="btn btn-primary">Kembali</a>
                                         </div>
                                     <?php endif; ?>
                                 </form>
