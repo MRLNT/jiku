@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $kode_marketing = $_SESSION['user_name'];
     $insert = "INSERT INTO temp_form2(waktu_pengajuan, tanggal_syarat_ketentuan, kode_marketing) VALUES(NOW(), NOW(), '$kode_marketing')";
     mysqli_query($conn, $insert);
-    header('Location: user_page3.php');
+    header('Location: prapensiun_3.php');
     //header('Location: kredit_final.php');
  };
 

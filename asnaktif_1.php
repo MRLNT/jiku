@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 
     $insert = "INSERT INTO temp_form1(nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing, kode_marketing) VALUES('$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing','$kode_marketing')";
     mysqli_query($conn, $insert);
-    header('Location: user_page2.php');
+    header('Location: asnaktif_2.php');
     //header('Location: kredit_final.php');
  };
 
@@ -118,7 +118,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Tabs</h1>
+                                    <h1>KREDIT ASN AKTIF</h1>
                                 </div>
                                 <div class="ml-auto d-flex align-items-center">
                                     <nav>

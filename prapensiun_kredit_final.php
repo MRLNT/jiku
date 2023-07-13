@@ -9,7 +9,7 @@ $kode_marketing = $_SESSION['user_name'];
 
 
 if(isset($_POST['submit'])){
-    $tipe_kredit = "ASN PENSIUN";
+    $tipe_kredit = "PRAPENSIUN";
     // TABLE 1
     $nama_marketing = $_POST['nama_marketing'];$nik_marketing = $_POST['nik_marketing'];$cabang_pembantu = $_POST['cabang_pembantu'];$no_hp_marketing = $_POST['no_hp_marketing'];
     // TABLE 2
@@ -17,26 +17,26 @@ if(isset($_POST['submit'])){
     // TABLE 3
     $nama_debitur = $_POST['nama_debitur'];$tempat_lahir = $_POST['tempat_lahir'];$tanggal_lahir = $_POST['tanggal_lahir'];$nik_debitur = $_POST['nik_debitur'];$nip_debitur = $_POST['nip_debitur'];$nomor_pensiun = $_POST['nomor_pensiun'];$alamat_rumah = $_POST['alamat_rumah'];$nama_ibu = $_POST['nama_ibu'];$nama_instansi = $_POST['nama_instansi'];$pangkat_golongan = $_POST['pangkat_golongan'];$nomor_rekening = $_POST['nomor_rekening'];$nomor_npwp = $_POST['nomor_npwp'];$nomor_telepon = $_POST['nomor_telepon'];$gaji_debitur = $_POST['gaji_debitur'];$gaji_debitur = preg_replace('/[.,]|Rp\s?/u', '', $gaji_debitur);
     // TABLE 4
-    $sql4 = "SELECT * FROM temp_form4 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";$result4 = $conn->query($sql4);if ($result4->num_rows > 0) {$row = $result4->fetch_assoc();$jumlah_pinjaman = $row['jumlah_pinjaman'];$waktu_pinjaman = $row['waktu_pinjaman'];$umur_pengajuan = $row['umur_pengajuan'];$suku_bunga = $row['suku_bunga'];$total_premi = $row['total_premi'];$biaya_provisi = $row['biaya_provisi'];$pembayaranbulanan = $row['pembayaran_bulanan'];} else echo "No data found.";
+    $sql4 = "SELECT * FROM temp_form4 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";$result4 = $conn->query($sql4);if ($result4->num_rows > 0) {$row = $result4->fetch_assoc();$jumlah_pinjaman = $row['jumlah_pinjaman'];$waktu_pinjaman = $row['waktu_pinjaman'];$umur_pengajuan = $row['umur_pengajuan'];$suku_bunga = $row['suku_bunga'];$total_premi = $row['total_premi'];$pembayaranbulanan = $row['pembayaran_bulanan'];} else echo "No data found.";
     // TABLE 5
     $kredit_file_1 = $_POST['kredit_file_1'];$kredit_file_2 = $_POST['kredit_file_2'];$kredit_file_3 = $_POST['kredit_file_3'];$kredit_file_4 = $_POST['kredit_file_4'];$kredit_file_5 = $_POST['kredit_file_5'];$kredit_file_6 = $_POST['kredit_file_6'];$kredit_file_7 = $_POST['kredit_file_7'];$kredit_file_8 = $_POST['kredit_file_8'];$kredit_file_9 = $_POST['kredit_file_9'];$kredit_file_10 = $_POST['kredit_file_10'];$kredit_file_11 = $_POST['kredit_file_11'];$kredit_file_12 = $_POST['kredit_file_12'];$kredit_file_13 = $_POST['kredit_file_13'];$kredit_file_14 = $_POST['kredit_file_14'];$kredit_file_15 = $_POST['kredit_file_15'];$kredit_file_16 = $_POST['kredit_file_16'];$kredit_file_17 = $_POST['kredit_file_17'];$kredit_file_18 = $_POST['kredit_file_18'];$kredit_file_19 = $_POST['kredit_file_19'];
 
     // Buat variabel untuk menyimpan query
-    $insert = "INSERT INTO data_kredit_pensiun(tipe_kredit,
+    $insert = "INSERT INTO data_kredit_prapensiun(tipe_kredit,
         nama_marketing, nik_marketing, cabang_pembantu, no_hp_marketing, kode_marketing,
         waktu_pengajuan, tanggal_syarat_ketentuan,
         nama_debitur,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon,gaji_debitur,
-        jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,suku_bunga,total_premi,biaya_provisi,pembayaran_bulanan,
+        jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,suku_bunga,total_premi,pembayaran_bulanan,
         kredit_file_1, kredit_file_2, kredit_file_3, kredit_file_4, kredit_file_5, kredit_file_6, kredit_file_7, kredit_file_8, kredit_file_9, kredit_file_10, kredit_file_11, kredit_file_12, kredit_file_13, kredit_file_14, kredit_file_15, kredit_file_16, kredit_file_17, kredit_file_18, kredit_file_19
         ) 
         VALUES('$tipe_kredit','$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing','$kode_marketing',
         '$tanggal_syarat_ketentuan','$tanggal_syarat_ketentuan',
         '$nama_debitur','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon','$gaji_debitur',
-        '$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$suku_bunga','$total_premi','$biaya_provisi','$pembayaranbulanan',
+        '$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$suku_bunga','$total_premi','$pembayaranbulanan',
         '$kredit_file_1','$kredit_file_2','$kredit_file_3','$kredit_file_4','$kredit_file_5','$kredit_file_6','$kredit_file_7','$kredit_file_8','$kredit_file_9','$kredit_file_10','$kredit_file_11','$kredit_file_12','$kredit_file_13','$kredit_file_14','$kredit_file_15','$kredit_file_16','$kredit_file_17','$kredit_file_18','$kredit_file_19'
         )";
     mysqli_query($conn, $insert);
-    //header('Location: dashboard_user.php');
+    header('Location: dashboard_user.php');
  };
 ?>
 
@@ -358,14 +358,27 @@ if(isset($_POST['submit'])){
                                         if ($result4->num_rows > 0) {
                                             $row = $result4->fetch_assoc();
                                         } else echo "No data found.";
+                                        echo $row['jenis_payroll'];
                                         ?>
+                                        <div class="form-group">
+                                            <div class="card-body">
+                                                <label for="inlineRadio01">Jenis Payroll</label><br>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="jenis_payroll" <?php echo ($row['jenis_payroll'] == 'Bank Nagari') ? 'checked' : '' ?> id="inlineRadio01" value="Bank Nagari">
+                                                    <label class="form-check-label" for="inlineRadio01">Bank Nagari</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="jenis_payroll" <?php echo ($row['jenis_payroll'] == 'Non Nagari') ? 'checked' : '' ?> id="inlineRadio02" value="Non Nagari">
+                                                    <label class="form-check-label" for="inlineRadio02">Non Nagari</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <h5>Jumlah Pinjaman: Rp <?php echo number_format($row['jumlah_pinjaman'], 0, ',', '.') ?></h5>
                                             <h5>Waktu Pinjaman : <?php echo $row['waktu_pinjaman'] ?> Tahun</h5>
                                             <h5>Umur Waktu Pinjaman : <?php echo $row['umur_pengajuan'] ?> Tahun</h5>
                                             <h5>Suku Bunga : <?php echo $row['suku_bunga'] ?> %</h5>
                                             <h5>Total Premi: Rp <?php echo number_format($row['total_premi'], 0, ',', '.') ?></h5>
-                                            <h5>Biaya Provisi: Rp <?php echo number_format($row['biaya_provisi'], 0, ',', '.') ?></h5>
                                         </div>
                                     </div>
                                     <div class="card-header d-sm-flex justify-content-between align-items-center py-3">

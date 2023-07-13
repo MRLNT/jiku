@@ -81,8 +81,8 @@ error_reporting(E_ERROR | E_PARSE);
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
                                 <ul aria-expanded="false">
-                                    <li> <a href="user_page.php">ASN Aktif</a> </li>
-                                    <li> <a href="user_page.php">ASN Pra-Pensiun </a> </li>
+                                    <li> <a href="asnaktif_1.php">ASN Aktif</a> </li>
+                                    <li> <a href="prapensiun_1.php">ASN Pra-Pensiun </a> </li>
                                     <li> <a href="user_page.php">ASN Pensiun</a> </li>
                                 </ul>
                             </li>

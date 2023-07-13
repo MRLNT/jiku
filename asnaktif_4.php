@@ -7,14 +7,30 @@ session_start();
 if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
+
+$kode_marketing = $_SESSION['user_name'];
+$sql3 = "SELECT * FROM temp_form3 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";
+$result3 = $conn->query($sql3);
+if ($result3->num_rows > 0) {
+    $row = $result3->fetch_assoc();
+    $tanggal_lahir = $row['tanggal_lahir'];
+    $umur = date_diff(date_create($tanggal_lahir), date_create('today'))->y;
+} else {echo "No data found.";}
 
 if(isset($_POST['submit'])){
+    $jumlah_pinjaman = $_POST['jumlah_pinjaman'];
+    $jumlah_pinjaman = preg_replace('/[.,]|Rp\s?/u', '', $jumlah_pinjaman);
+    $waktu_pinjaman = $_POST['waktu_pinjaman'];
+    $umur_pengajuan = $_POST['umur_pengajuan'];
     $kode_marketing = $_SESSION['user_name'];
-    $insert = "INSERT INTO temp_form2(waktu_pengajuan, tanggal_syarat_ketentuan, kode_marketing) VALUES(NOW(), NOW(), '$kode_marketing')";
+    $jenis_payroll = $_POST['jenis_payroll'];
+
+    $insert = "INSERT INTO temp_form4(jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,kode_marketing,jenis_payroll) 
+    VALUES('$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$kode_marketing','$jenis_payroll')";
     mysqli_query($conn, $insert);
-    header('Location: user_page3.php');
-    //header('Location: kredit_final.php');
+    //header('Location: user_page6.php');
+    header('Location: asnaktif_5.php');
  };
 
 ?>
@@ -36,6 +52,30 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script>
+        function formatNumber(input) {
+            // Remove existing dots, commas, and "Rp" prefix
+            var num = input.replace(/[.,]|Rp\s?/g, "");
+            // Add thousands separator and "Rp" prefix
+            num = "Rp " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return num;
+        }
+        function removeNonNumeric(input) {
+            return input.replace(/[^0-9.,]/g, "");
+        }
+        function handleInputChange(input) {
+            var sanitizedValue = removeNonNumeric(input.value);
+            input.value = formatNumber(sanitizedValue);
+        }
+        function validateJumlahPinjaman(input) {
+            var maxPinjaman = 300000000; // 300 juta
+            var pinjaman = removeNonNumeric(input.value);
+            if (pinjaman > maxPinjaman) {
+                alert("Jumlah pinjaman tidak boleh melebihi 300 juta");
+                input.value = formatNumber(maxPinjaman);
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -113,7 +153,7 @@ if(isset($_POST['submit'])){
                             <!-- begin page title -->
                             <div class="d-block d-sm-flex flex-nowrap align-items-center">
                                 <div class="page-title mb-2 mb-sm-0">
-                                    <h1>Syarat dan Ketentuan</h1>
+                                    <h1>Kalkulasi</h1>
                                 </div>
                             </div>
                             <!-- end page title -->
@@ -126,21 +166,35 @@ if(isset($_POST['submit'])){
                             <div class="card card-statistics">
                                 <form action="" method="post">
                                     <div class="card-body">
-                                        <h5 class="card-text">Bank Nagari<br>Syarat dan Ketentuan:<br>1.	Calon Debitur membuat dan menandatangi permohonan kredit/pembiayaan, dengan melengkapi data persyaratan yang ditetapkan oleh Bank.<br><br>2. Debitur yang akan mengajukan perubahan plafond, penukaran jaminan, syarat - syarat lainnya dari Perjanjian/Akad Kredit/Pembiayaan harus mengajukan dan menandatangani permohonan kepada Bank.<br><br> 3. Bank berhak meminta data - data dan keterangan yang dibutuhkan, sesuai dengan kentuan dan persyaratan kredit/pembiayaan.<br><br>4.	Calon Debitur atau Debitur berkewajiban memberi keterangan yang diminta oleh Bank dengan benar, baik mengenai identitas Debitur, kondisi keuangan dan lain sebagainya.<br><br>5. Bank setelah melaukan analisa mengenal kelayakan pemberian kredit/pembiayaan atas permohonan yang diajukan oleh Calon Debitur atau Debitur menetapkan : <br>a.	Permohonan ditolak, apabila menurut penilaian Bank, Debitur tidak layak diberikan kredit/pembiayaan.<br>b.	Permohonan ditangguhkan, apabila persyaratan yang ditetapkan oleh Bank belum dipenuhi oleh Debitur atau karena hal lain yang belum bisa dipenuhi untuk syarat pencairan kredit/pembiayaan debitur.<br>c.	Permohonan dikabulkan, apabila menurut penilaian Bank Debitur layak untuk diberikan kredit/pembiayaan.<br><br>6. Bank hanya dapat mengabulkan permohonan Calon Debitur atau Debitur, maksimal sebesar permohonan Calon Debitur atau Debitur.<br><br>7. Berdasarkan analisa yang telah dilakukan Bank dapat menetapkan arah/komposisi pembiayaan usaha calon Debitur atau Debitur.<br><br>8. Calon Debitur jika setuju dengan persyaratan Bank wajib menandatangani Surat Pemberitahuan Persetujuan Kredit yang diserahkan oleh Bank kepada Debitur.<br><br>9. Jumlah kredit yang diberikan tidak mutlak ditentukan oleh nilai agunan yang diberikan Debitur, tetapi berdasarkan kemampuan bayar dan kebutuhan kredit Debitur.<br></h5>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Setujui syarat dan ketentuan
-                                            </label>
+                                        <div class="form-group">
+                                            <label for="numeric8">Jumlah Pinjaman</label>
+                                            <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda" inputmode="numeric" oninput="handleInputChange(this);">
                                         </div>
-                                        <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
+                                        <div class="form-group">
+                                            <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
+                                            <input name="waktu_pinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="numeric10">Umur Pengajuan (dalam tahun)</label>
+                                            <input name="umur_pengajuan" type="text" class="form-control autonumber" id="numeric10" value="<?php echo $umur; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="card-body">
+                                                <label>Jenis Payroll</label><br>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="jenis_payroll" id="inlineRadio01" value="Bank Nagari">
+                                                    <label class="form-check-label" for="inlineRadio01">Bank Nagari</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="jenis_payroll" id="inlineRadio02" value="Non Nagari">
+                                                    <label class="form-check-label" for="inlineRadio02">Non Nagari</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
-                                    
+                                    <input type="submit" name="submit" value="Selanjutnya" class="btn btn-primary text-uppercase">
                                 </form>
-                                
                             </div>
-                            
                         </div>
                     </div>
                     <!-- end Tabs contant -->

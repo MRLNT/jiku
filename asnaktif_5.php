@@ -16,30 +16,46 @@
     $umur = $row['umur_pengajuan'];
     $pinjaman = $row['jumlah_pinjaman'];
     $wpinjaman = $row['waktu_pinjaman'];
+    $jenis_payroll = $row['jenis_payroll'];
+
     $jpersen = 0.0;
     $totalbungabulanan = 0;
     $premi = 0;
-    $biayaprovisi = 0;
     $jmlhditerima = 0;
     $bungabulanan = 0;
     $biayapencairan = 0;
     $pembayaranbulanan = 0;
     $jumlahcicilanbulanan = 0;
-    if ($wpinjaman>=1 && $wpinjaman<=5) {
-        $jpersen = 9;
-    } elseif($wpinjaman>=6 && $wpinjaman<=10) {
-        $jpersen = 9.5;
-    } else{
-        $jpersen = 10.5;
+    if($jenis_payroll == "Bank Nagari"){
+        if ($wpinjaman>=1 && $wpinjaman<=5) {
+            $jpersen = 8.25;
+        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+            $jpersen = 8.75;
+        } elseif($wpinjaman>=11 && $wpinjaman<=13) {
+            $jpersen = 9.75;
+        } elseif($wpinjaman>=14 && $wpinjaman<=15) {
+            $jpersen = 10;
+        } else{
+            $jpersen = 10;
+        }
+    } elseif($jenis_payroll == "Non Nagari"){
+        if ($wpinjaman>=1 && $wpinjaman<=5) {
+            $jpersen = 8.75;
+        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+            $jpersen = 9.75;
+        } elseif($wpinjaman>=11 && $wpinjaman<=15) {
+            $jpersen = 11;
+        } else{
+            $jpersen = 11;
+        }
     }
 
     $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
     $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
     $premi = 0.00375*$pinjaman*$wpinjaman;
-    $biayaprovisi = $pinjaman*0.01;
-    $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+    $jmlhditerima = $pinjaman - $premi;
     $bungabulanan = $jpersen / 12;
-    $biayapencairan= $premi + $biayaprovisi - 150000;
+    $biayapencairan= $premi;
     $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
     $jumlahcicilanbulanan= $wpinjaman*12 ;
 
@@ -52,9 +68,9 @@
 
 
     if(isset($_POST['submit'])){
-        $insert = "INSERT INTO temp_form4(pembayaran_bulanan,suku_bunga,total_premi,biaya_provisi,gaji_debitur,kode_marketing,umur_pengajuan,jumlah_pinjaman,waktu_pinjaman) VALUES('$pembayaranbulanan','$jpersen','$premi','$biayaprovisi','$gaji_debitur','$kode_marketing','$umur','$pinjaman','$wpinjaman')";
+        $insert = "INSERT INTO temp_form4(pembayaran_bulanan,suku_bunga,total_premi,gaji_debitur,kode_marketing,umur_pengajuan,jumlah_pinjaman,waktu_pinjaman,jenis_payroll) VALUES('$pembayaranbulanan','$jpersen','$premi','$gaji_debitur','$kode_marketing','$umur','$pinjaman','$wpinjaman','$jenis_payroll')";
         mysqli_query($conn, $insert);
-        header('Location: user_page6.php');
+        header('Location: asnaktif_6.php');
     };
 
 ?>
@@ -181,11 +197,11 @@
                                         $umur = $row['umur_pengajuan'];
                                         $pinjaman = $row['jumlah_pinjaman'];
                                         $wpinjaman = $row['waktu_pinjaman'];
+                                        $jenis_payroll = $row['jenis_payroll'];
 
                                         $jpersen = 0.0;
                                         $totalbungabulanan = 0;
                                         $premi = 0;
-                                        $biayaprovisi = 0;
                                         $jmlhditerima = 0;
                                         $bungabulanan = 0;
                                         $biayapencairan = 0;
@@ -205,27 +221,40 @@
                                         exit; // Menghentikan eksekusi script jika jumlah pinjaman melebihi batas maksimal 
                                         }
 
-                                        if ($wpinjaman>=1 && $wpinjaman<=5) {
-                                            $jpersen = 9;
-                                        } elseif($wpinjaman>=6 && $wpinjaman<=10) {
-                                            $jpersen = 9.5;
-                                        } else{
-                                            $jpersen = 10.5;
+                                        if($jenis_payroll == "Bank Nagari"){
+                                            if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                                $jpersen = 8.25;
+                                            } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                                $jpersen = 8.75;
+                                            } elseif($wpinjaman>=11 && $wpinjaman<=13) {
+                                                $jpersen = 9.75;
+                                            } elseif($wpinjaman>=14 && $wpinjaman<=15) {
+                                                $jpersen = 10;
+                                            } else{
+                                                $jpersen = 10;
+                                            }
+                                        } elseif($jenis_payroll == "Non Nagari"){
+                                            if ($wpinjaman>=1 && $wpinjaman<=5) {
+                                                $jpersen = 8.75;
+                                            } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                                                $jpersen = 9.75;
+                                            } elseif($wpinjaman>=11 && $wpinjaman<=15) {
+                                                $jpersen = 11;
+                                            } else{
+                                                $jpersen = 11;
+                                            }
                                         }
-
                                         $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
                                     // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
                                         $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
                                     // Total suku bunga =1.  200jt*9persen=19jt:12 (bulan)
                                         $premi = 0.00375*$pinjaman*$wpinjaman;
                                     // Total premi =2.  0.375*200jt*5tahun=3.7jt
-                                        $biayaprovisi = $pinjaman*0.01;
-                                    // Biaya Provisi =3.
-                                        $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+                                        $jmlhditerima = $pinjaman - $premi;
                                     // Jumlah yang diterima
                                         $bungabulanan = $jpersen / 12;
                                     // Bunga Bulanan
-                                        $biayapencairan= $premi + $biayaprovisi - 150000;
+                                        $biayapencairan= $premi;
                                     // Bunga Bulanan
                                         $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
                                     // Pembayaran Bulanan
@@ -237,7 +266,6 @@
                                         $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
                                         $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
                                         $premi_format = number_format($premi, 0, ',', '.');
-                                        $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
 
                                         echo "<strong>Umur:</strong> {$umur} <br>";
                                         echo "<br>";
@@ -278,9 +306,6 @@
                                         echo "<br> Suku Bunga Tahunan: {$jpersen}%";
                                         echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
                                         echo "<br> Total Premi: Rp {$premi_format} ";
-                                        echo "<br>";
-                                        echo "Biaya Provisi: Rp {$biayaprovisi_format}";
-                                        echo "<br>";
                                         ?>
                                     </h5>
                                         
@@ -290,7 +315,7 @@
                                     <?php endif; ?>
                                     <?php if (!$BtnIsActive): ?>
                                         <div class="col-12 mb-2">
-                                            <a href="user_page3.php" class="btn btn-primary">Kembali</a>
+                                            <a href="asnaktif_3.php" class="btn btn-primary">Kembali</a>
                                         </div>
                                     <?php endif; ?>
                                 </form>

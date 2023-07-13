@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
     VALUES('$kredit_file_1','$kredit_file_2','$kredit_file_3','$kredit_file_4','$kredit_file_5','$kredit_file_6','$kredit_file_7','$kredit_file_8','$kredit_file_9','$kredit_file_10','$kredit_file_11','$kredit_file_12','$kredit_file_13','$kredit_file_14','$kredit_file_15','$kredit_file_16','$kredit_file_17','$kredit_file_18','$kredit_file_19','$kode_marketing')";
     mysqli_query($conn, $insert);
     
-    header('Location: kredit_final.php');
+    header('Location: asnaktif_kredit_final.php');
  };
 
 ?>
