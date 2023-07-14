@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jul 2023 pada 22.23
+-- Waktu pembuatan: 14 Jul 2023 pada 04.58
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -32,9 +32,9 @@ CREATE TABLE `data_kredit_asnaktif` (
   `tipe_kredit` varchar(255) NOT NULL,
   `kode_marketing` varchar(11) NOT NULL,
   `nama_marketing` varchar(255) NOT NULL,
-  `nik_marketing` int(11) NOT NULL,
+  `nik_marketing` bigint(255) NOT NULL,
   `cabang_pembantu` varchar(255) NOT NULL,
-  `no_hp_marketing` int(255) NOT NULL,
+  `no_hp_marketing` bigint(255) NOT NULL,
   `waktu_pengajuan` datetime NOT NULL,
   `tanggal_syarat_ketentuan` datetime NOT NULL,
   `nama_debitur` varchar(255) NOT NULL,
@@ -98,9 +98,9 @@ CREATE TABLE `data_kredit_pensiun` (
   `tipe_kredit` varchar(255) NOT NULL,
   `kode_marketing` varchar(11) NOT NULL,
   `nama_marketing` varchar(255) NOT NULL,
-  `nik_marketing` int(11) NOT NULL,
+  `nik_marketing` bigint(255) NOT NULL,
   `cabang_pembantu` varchar(255) NOT NULL,
-  `no_hp_marketing` int(255) NOT NULL,
+  `no_hp_marketing` bigint(255) NOT NULL,
   `waktu_pengajuan` datetime NOT NULL,
   `tanggal_syarat_ketentuan` datetime NOT NULL,
   `nama_debitur` varchar(255) NOT NULL,
@@ -175,9 +175,9 @@ CREATE TABLE `data_kredit_prapensiun` (
   `tipe_kredit` varchar(255) NOT NULL,
   `kode_marketing` varchar(11) NOT NULL,
   `nama_marketing` varchar(255) NOT NULL,
-  `nik_marketing` int(11) NOT NULL,
+  `nik_marketing` bigint(255) NOT NULL,
   `cabang_pembantu` varchar(255) NOT NULL,
-  `no_hp_marketing` int(255) NOT NULL,
+  `no_hp_marketing` bigint(255) NOT NULL,
   `waktu_pengajuan` datetime NOT NULL,
   `tanggal_syarat_ketentuan` datetime NOT NULL,
   `nama_debitur` varchar(255) NOT NULL,
@@ -240,9 +240,9 @@ INSERT INTO `data_kredit_prapensiun` (`id_pengajuan`, `tipe_kredit`, `kode_marke
 CREATE TABLE `temp_form1` (
   `id_pengajuan` int(255) NOT NULL,
   `nama_marketing` varchar(255) NOT NULL,
-  `nik_marketing` int(11) NOT NULL,
+  `nik_marketing` bigint(255) NOT NULL,
   `cabang_pembantu` varchar(255) NOT NULL,
-  `no_hp_marketing` int(255) NOT NULL,
+  `no_hp_marketing` bigint(255) NOT NULL,
   `kode_marketing` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -260,7 +260,10 @@ INSERT INTO `temp_form1` (`id_pengajuan`, `nama_marketing`, `nik_marketing`, `ca
 (7, 'mar', 123, 'CAPEM UNAND', 123, 'marcel'),
 (8, 'mar', 123, 'CABANG SITEBA', 123, 'marcel'),
 (9, '222', 222, 'CAPEM UNAND', 222, 'marcel'),
-(10, '111', 111, 'CABANG SOLOK', 111, 'marcel');
+(10, '110', 111, 'CABANG SOLOK', 112, 'marcel'),
+(11, 'marcel', 2147483647, 'CABANG TAPUS', 2147483647, 'marcel'),
+(12, 'marcel', 2147483647, 'CABANG TAPUS', 2147483647, 'marcel'),
+(13, 'marcel', 3201012406010011, 'CABANG TAPUS', 81220112821, 'marcel');
 
 -- --------------------------------------------------------
 
@@ -537,7 +540,7 @@ ALTER TABLE `data_kredit_prapensiun`
 -- AUTO_INCREMENT untuk tabel `temp_form1`
 --
 ALTER TABLE `temp_form1`
-  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pengajuan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp_form2`
