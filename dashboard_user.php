@@ -87,7 +87,8 @@ error_reporting(E_ERROR | E_PARSE);
                                 </ul>
                             </li>
                             <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a> </li>
+                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a></li>
+                            <li><a href="kalkulator.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Kalkulator (sementara)</span></a> </li>
                             <li><a href="logout.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Logout</span></a> </li>
                         </ul>
                     </div>

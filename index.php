@@ -1,12 +1,8 @@
 <?php
-    @include 'navbar.html';
-
-
+    @include 'components/navbar.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <title>Mentor - Bootstrap 4 Admin Dashboard Template</title>
     <meta charset="utf-8" />
@@ -23,11 +19,9 @@
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="footer.css">
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="components/footer.css">
+    <link rel="stylesheet" href="components/style.css">
 </head>
 
 

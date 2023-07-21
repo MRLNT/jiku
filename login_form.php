@@ -1,5 +1,5 @@
 <?php
-
+clearstatcache();
 // CLEAR THE NOTICE
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 

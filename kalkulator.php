@@ -1,51 +1,146 @@
 <?php
-
 @include 'config.php';
-
 session_start();
-
 if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
-error_reporting(E_ERROR | E_PARSE);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $plafond_pinjaman = $_POST['num1'];
-    $bunga_pinjaman = $_POST['num2'];
-    $waktu_pinjaman = $_POST['num3'];
+    $pinjaman = $_POST['jumlah_pinjaman'];
+    $pinjaman = preg_replace('/[.,]|Rp\s?/u', '', $pinjaman);
+    $jenis_payroll = $_POST['jenis_payroll'];
+    $wpinjaman = $_POST['wpinjaman'];
     $jenis_bunga = $_POST['jenis_bunga'];
 
     switch ($jenis_bunga) {
-        case 'flat':
-            $total_angsuran = $plafond_pinjaman + ($plafond_pinjaman*0.83335*$bunga_pinjaman/100);
-            $pokok = $plafond_pinjaman/$waktu_pinjaman;
-            $bunga = $plafond_pinjaman*0.83335*$bunga_pinjaman/1000;
-            $total = $total_angsuran/$waktu_pinjaman;
-            break;
-        case 'sliding_harian':
-            $total_angsuran =
-            ($plafond_pinjaman*(1+($bunga_pinjaman/100)*1.0484));
-            //Total Biaya Pinjaman = Rp.90.000.000 * (1 + 0,24)^12 = Rp.101.930.000
-            $pokok = $plafond_pinjaman/$waktu_pinjaman;
-            $bunga = ($plafond_pinjaman*$bunga_pinjaman/100)/$waktu_pinjaman;
-            $total = $pokok+$bunga;
-            $sliding_harian = true;
-            break;
-        case '*':
-            $result = $num1 * $num2;
-            break;
-        case '/':
-            // Check if division by zero is attempted
-            if ($num2 != 0) {
-                $result = $num1 / $num2;
-            } else {
-                $result = 'Cannot divide by zero!';
+        case 'asnaktif':
+            if($jenis_payroll == "Bank Nagari"){
+                if ($wpinjaman>=1 && $wpinjaman<=5) {
+                    $jpersen = 8.25;
+                } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                    $jpersen = 8.75;
+                } elseif($wpinjaman>=11 && $wpinjaman<=13) {
+                    $jpersen = 9.75;
+                } elseif($wpinjaman>=14 && $wpinjaman<=15) {
+                    $jpersen = 10;
+                } else{
+                    $jpersen = 10;
+                }
+            } elseif($jenis_payroll == "Non Nagari"){
+                if ($wpinjaman>=1 && $wpinjaman<=5) {
+                    $jpersen = 8.75;
+                } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                    $jpersen = 9.75;
+                } elseif($wpinjaman>=11 && $wpinjaman<=15) {
+                    $jpersen = 11;
+                } else{
+                    $jpersen = 11;
+                }
             }
+            $totalbungabulanan = 0;
+            $premi = 0;
+            $jmlhditerima = 0;
+            $bungabulanan = 0;
+            $biayapencairan = 0;
+            $pembayaranbulanan = 0;
+            $jumlahcicilanbulanan = 0;
+            $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+            $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+            $premi = 0.00375*$pinjaman*$wpinjaman;
+            $jmlhditerima = $pinjaman - $premi;
+            $bungabulanan = $jpersen / 12;
+            $biayapencairan= $premi;
+            $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+            $jumlahcicilanbulanan= $wpinjaman*12 ;
+            $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+            $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+            $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+            $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+            $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+            $premi_format = number_format($premi, 0, ',', '.');
+            break;
+        case 'prapensiun':
+            if($jenis_payroll == "Bank Nagari"){
+                if ($wpinjaman>=1 && $wpinjaman<=5) {
+                    $jpersen = 8.25;
+                } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                    $jpersen = 8.75;
+                } elseif($wpinjaman>=11 && $wpinjaman<=13) {
+                    $jpersen = 9.75;
+                } elseif($wpinjaman>=14 && $wpinjaman<=15) {
+                    $jpersen = 10;
+                } else{
+                    $jpersen = 10;
+                }
+            } elseif($jenis_payroll == "Non Nagari"){
+                if ($wpinjaman>=1 && $wpinjaman<=5) {
+                    $jpersen = 8.75;
+                } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                    $jpersen = 9.75;
+                } elseif($wpinjaman>=11 && $wpinjaman<=15) {
+                    $jpersen = 11;
+                } else{
+                    $jpersen = 11;
+                }
+            }
+            $totalbungabulanan = 0;
+            $premi = 0;
+            $jmlhditerima = 0;
+            $bungabulanan = 0;
+            $biayapencairan = 0;
+            $pembayaranbulanan = 0;
+            $jumlahcicilanbulanan = 0;
+            $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+            $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+            $premi = 0.00375*$pinjaman*$wpinjaman;
+            $jmlhditerima = $pinjaman - $premi;
+            $bungabulanan = $jpersen / 12;
+            $biayapencairan= $premi;
+            $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+            $jumlahcicilanbulanan= $wpinjaman*12 ;
+            $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+            $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+            $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+            $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+            $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+            $premi_format = number_format($premi, 0, ',', '.');
+            break;
+        case 'asnpensiun':
+            if ($wpinjaman>=1 && $wpinjaman<=5) {
+                $jpersen = 9;
+            } elseif($wpinjaman>=6 && $wpinjaman<=10) {
+                $jpersen = 9.5;
+            } else{
+                $jpersen = 10.5;
+            }
+            $totalbungabulanan = 0;
+            $premi = 0;
+            $biayaprovisi = 0;
+            $jmlhditerima = 0;
+            $bungabulanan = 0;
+            $biayapencairan = 0;
+            $pembayaranbulanan = 0;
+            $jumlahcicilanbulanan = 0;
+            $totalbungabulanan = ($pinjaman*$jpersen)/100/12;
+            $totalbunga = ($pinjaman*$jpersen)/100*$wpinjaman;
+            $premi = 0.00375*$pinjaman*$wpinjaman;
+            $biayaprovisi = $pinjaman*0.01;
+            $jmlhditerima = $pinjaman - $premi - $biayaprovisi - 150000;
+            $bungabulanan = $jpersen / 12;
+            $biayapencairan= $premi + $biayaprovisi - 150000;
+            $pembayaranbulanan= ($pinjaman + $totalbunga) / ($wpinjaman * 12);
+            $jumlahcicilanbulanan= $wpinjaman*12 ;
+            $bungabulanan_persen = number_format($bungabulanan, 2, '.', '') ;
+            $pembayaranbulanan_format = number_format($pembayaranbulanan, 0, ',', '.');
+            $pinjaman_format = number_format($pinjaman, 0, ',', '.');
+            $biayapencairan_format = number_format($biayapencairan, 0, ',', '.');
+            $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
+            $premi_format = number_format($premi, 0, ',', '.');
+            $biayaprovisi_format = number_format($biayaprovisi, 0, ',', '.');
             break;
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +158,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script>
+        function formatNumber(input) {
+            // Remove existing dots, commas, and "Rp" prefix
+            var num = input.replace(/[.,]|Rp\s?/g, "");
+            // Add thousands separator and "Rp" prefix
+            num = "Rp " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return num;
+        }
+        function removeNonNumeric(input) {
+            return input.replace(/[^0-9.,]/g, "");
+        }
+        function handleInputChange(input) {
+            var sanitizedValue = removeNonNumeric(input.value);
+            input.value = formatNumber(sanitizedValue);
+        }
+    </script>
 </head>
 
 <body>
@@ -83,7 +194,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <header class="app-header top-bar">
                 <!-- begin navbar -->
                 <nav class="navbar navbar-expand-md">
-
                     <!-- begin navbar-header -->
                     <div class="navbar-header d-flex align-items-center">
                         <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
@@ -96,7 +206,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <i class="ti ti-align-left"></i>
                     </button>
                     <!-- end navbar-header -->
-                    
                 </nav>
                 <!-- end navbar -->
             </header>
@@ -109,7 +218,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="sidebar-nav scrollbar scroll_light">
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">User Menu</li>
-                            
                             <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
@@ -127,7 +235,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- end sidebar-nav -->
                 </aside>
                 <!-- end app-navbar -->
-                
             </div>
             <!-- end app-container -->
             <!-- begin app-main -->
@@ -152,27 +259,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="col-xxl-4 m-b-30">
                             <div class="card card-statistics h-100 mb-0 o-hidden">
                                 <div class="card-body">
-                                    <form id="kalkulator" method="post" class="form-horizontal">
-                                    <label class="control-label" for="jenis_bunga">Jenis Bunga </label>
-                                    <select name="jenis_bunga" required>
-                                        <option value="flat">FLAT</option>
-                                        <option value="sliding_harian">SLIDING HARIAN PER TAHUN</option>
-                                        <option value="*">*</option>
-                                        <option value="/">/</option>
-                                    </select><br>
-                                    <label class="control-label" for="num1">Jumlah Kredit (Rp.) </label>
-                                    <input type="number" name="num1" required><br>
-                                    <label class="control-label" for="num2">Besar Bunga (%) </label>
-                                    <input type="number" name="num2" required><br>
-                                    <label class="control-label" for="num2">Jangka Waktu Kredit (bulan) </label>
-                                    <input type="number" name="num3" required><br>
-                                    <button type="submit" class="btn btn-primary" name="kalkulator" value="kalkulator">Calculate</button>
+                                    <form action="" method="post">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label class="control-label" for="jenis_bunga">Jenis Bunga </label>
+                                                <select name="jenis_bunga" class="form-control"
+                                                type="text"  id="formGroupExampleInput10" >
+                                                    <option value="asnaktif">ASN AKTIF</option>
+                                                    <option value="prapensiun">ASN Pra-Pensiun</option>
+                                                    <option value="asnpensiun">ASN Pensiun</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="jumlah_pinjaman">Jumlah Pinjaman</label>
+                                                <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda" inputmode="numeric" oninput="handleInputChange(this);" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
+                                                <input name="wpinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="card-body">
+                                                    <label>Jenis Payroll</label><br>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="jenis_payroll" id="inlineRadio01" value="Bank Nagari">
+                                                        <label class="form-check-label" for="inlineRadio01">Bank Nagari</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="jenis_payroll" id="inlineRadio02" value="Non Nagari">
+                                                        <label class="form-check-label" for="inlineRadio02">Non Nagari</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" name="submit" value="Hitung" class="btn btn-primary text-uppercase">
                                     </form>
-                                    <h2>
-                                        Plafond Pinjaman : Rp <?php echo number_format($plafond_pinjaman, 0, ',', '.') ?><br>
-                                        Total Angsuran : Rp <?php echo number_format($total_angsuran, 0, ',', '.') ?><br>
-                                        ANGSURAN PER-BULAN (FLAT) : <?php echo $waktu_pinjaman ?>x<br>
-                                    </h2>
+                                    <br><br><br>
+                                    <h3>
+                                        <?php
+                                        echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
+                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} Tahun<br>";
+                                        echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
+                                        echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
+                                        echo "<br>";
+                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} Bulan<br>";
+                                        echo "<br> Suku Bunga Tahunan: {$jpersen}%";
+                                        echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
+                                        echo "<br> Total Premi: Rp {$premi_format} ";
+                                        ?>
+                                    </h3>
+                                    
                                     <div class="card-header">
                                         <div class="card-heading">
                                             <h4 class="card-title">Tabel Angsuran</h4>
@@ -190,24 +326,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <th scope="col">Sisa Angsuran</th>
                                                     </tr>
                                                 </thead>
-                                                <?php for ($i = 1; $i <= $waktu_pinjaman; $i++) { ?>
+                                                <?php for ($i = 1; $i <= $jumlahcicilanbulanan; $i++) { ?>
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row"><?php echo $i; ?></th>
                                                         <td>Rp. 
-                                                            <?php echo number_format($pokok, 0, ',', '.');?>
+                                                            <?php echo $pembayaranbulanan_format;?>
                                                         </td>
                                                         <td>Rp. 
                                                             <?php
-                                                            echo number_format($bunga, 0, ',', '.');
+                                                            $tabelbungabulanan = number_format($bungabulanan*$pembayaranbulanan/100, 0, ',', '.');
+                                                            echo $tabelbungabulanan
                                                             ?>
                                                         </td>
                                                         <td>Rp.
                                                             <?php
-                                                            echo number_format($total, 0, ',', '.');?>
+                                                            echo number_format(($pembayaranbulanan+($bungabulanan*$pembayaranbulanan/100))+1, 0, ',', '.'); ;
+                                                            ?>
                                                         </td>
                                                         <td>Rp. 
-                                                            <?php $sisa = $plafond_pinjaman-($pokok*$i);
+                                                            <?php $sisa = $pinjaman-($pembayaranbulanan*$i);
                                                             echo number_format($sisa, 0, ',', '.'); 
                                                             ?>
                                                         </td>
