@@ -5,12 +5,16 @@ if(!isset($_SESSION['user_name'])){
    header('location:login_form.php');
 }
 
+error_reporting(E_ERROR | E_PARSE);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pinjaman = $_POST['jumlah_pinjaman'];
     $pinjaman = preg_replace('/[.,]|Rp\s?/u', '', $pinjaman);
     $jenis_payroll = $_POST['jenis_payroll'];
     $wpinjaman = $_POST['wpinjaman'];
     $jenis_bunga = $_POST['jenis_bunga'];
+    $kalkulasi = true;
+    $gaji_debitur = $_POST['gaji_debitur'];
+    $gaji_debitur = preg_replace('/[.,]|Rp\s?/u', '', $gaji_debitur);
 
     switch ($jenis_bunga) {
         case 'asnaktif':
@@ -144,36 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
-    <meta name="author" content="Potenza Global Solutions" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- app favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <!-- plugin stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
-    <!-- app style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <script>
-        function formatNumber(input) {
-            // Remove existing dots, commas, and "Rp" prefix
-            var num = input.replace(/[.,]|Rp\s?/g, "");
-            // Add thousands separator and "Rp" prefix
-            num = "Rp " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            return num;
-        }
-        function removeNonNumeric(input) {
-            return input.replace(/[^0-9.,]/g, "");
-        }
-        function handleInputChange(input) {
-            var sanitizedValue = removeNonNumeric(input.value);
-            input.value = formatNumber(sanitizedValue);
-        }
-    </script>
+    <?php @include 'components/head.php'?>
 </head>
 
 <body>
@@ -211,31 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </header>
             <!-- end app-header -->
             <!-- begin app-container -->
-            <div class="app-container">
-                <!-- begin app-nabar -->
-                <aside class="app-navbar">
-                    <!-- begin sidebar-nav -->
-                    <div class="sidebar-nav scrollbar scroll_light">
-                        <ul class="metismenu " id="sidebarNav">
-                            <li class="nav-static-title">User Menu</li>
-                            <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
-                            <li>
-                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
-                                <ul aria-expanded="false">
-                                    <li> <a href="asnaktif_1.php">ASN Aktif</a> </li>
-                                    <li> <a href="prapensiun_1.php">ASN Pra-Pensiun </a> </li>
-                                    <li> <a href="user_page.php">ASN Pensiun</a> </li>
-                                </ul>
-                            </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a> </li>
-                            <li><a href="logout.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Logout</span></a> </li>
-                        </ul>
-                    </div>
-                    <!-- end sidebar-nav -->
-                </aside>
-                <!-- end app-navbar -->
-            </div>
+            <?php @include 'components/navigation.html'?>
             <!-- end app-container -->
             <!-- begin app-main -->
             <div class="app-main" id="main">
@@ -275,6 +226,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                 <input name="jumlah_pinjaman" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Jumlah Pinjaman Anda" inputmode="numeric" oninput="handleInputChange(this);" required>
                                             </div>
                                             <div class="form-group">
+                                                <label class="control-label" for="gaji_debitur">Gaji Bulanan</label>
+                                                <input name="gaji_debitur" type="text" class="form-control autonumber" id="numeric8" placeholder="Masukkan Gaji Bulanan Anda" inputmode="numeric" oninput="handleInputChange(this);" required>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="numeric9">Waktu Pinjaman (dalam tahun)</label>
                                                 <input name="wpinjaman" type="text" class="form-control autonumber" id="numeric9" placeholder="Masukkan Waktu pinjaman anda dalam tahun">
                                             </div>
@@ -295,67 +250,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <input type="submit" name="submit" value="Hitung" class="btn btn-primary text-uppercase">
                                     </form>
                                     <br><br><br>
-                                    <h3>
+                                    <h4>
                                         <?php
-                                        echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
-                                        echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} Tahun<br>";
-                                        echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
-                                        echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
-                                        echo "<br>";
-                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} Bulan<br>";
-                                        echo "<br> Suku Bunga Tahunan: {$jpersen}%";
-                                        echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
-                                        echo "<br> Total Premi: Rp {$premi_format} ";
+                                        if ($kalkulasi == true){
+                                            echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
+                                            echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} Tahun<br>";
+                                            echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
+                                            echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
+                                            echo "<br>";
+                                            echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} Bulan<br>";
+                                            if($gaji_debitur*90/100 > $pembayaranbulanan){
+                                                echo "<strong><i>Gaji Anda Cukup Untuk Mengajukan Pinjaman</i></strong>";
+                                            } else echo "<strong><i>Gaji Anda Tidak Cukup Untuk Melakukan Pinjaman</i></strong>";
+                                            echo "<br> Suku Bunga Tahunan: {$jpersen}%";
+                                            echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
+                                            echo "<br> Total Premi: Rp {$premi_format} ";
+                                        }
                                         ?>
-                                    </h3>
-                                    
-                                    <div class="card-header">
-                                        <div class="card-heading">
-                                            <h4 class="card-title">Tabel Angsuran</h4>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th scope="col">Angsuran Ke-</th>
-                                                        <th scope="col">Pokok</th>
-                                                        <th scope="col">Bunga</th>
-                                                        <th scope="col">Total Angsuran</th>
-                                                        <th scope="col">Sisa Angsuran</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php for ($i = 1; $i <= $jumlahcicilanbulanan; $i++) { ?>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $i; ?></th>
-                                                        <td>Rp. 
-                                                            <?php echo $pembayaranbulanan_format;?>
-                                                        </td>
-                                                        <td>Rp. 
-                                                            <?php
-                                                            $tabelbungabulanan = number_format($bungabulanan*$pembayaranbulanan/100, 0, ',', '.');
-                                                            echo $tabelbungabulanan
-                                                            ?>
-                                                        </td>
-                                                        <td>Rp.
-                                                            <?php
-                                                            echo number_format(($pembayaranbulanan+($bungabulanan*$pembayaranbulanan/100))+1, 0, ',', '.'); ;
-                                                            ?>
-                                                        </td>
-                                                        <td>Rp. 
-                                                            <?php $sisa = $pinjaman-($pembayaranbulanan*$i);
-                                                            echo number_format($sisa, 0, ',', '.'); 
-                                                            ?>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                                <?php } ?>
-                                            </table>
-                                            
-                                        </div>
-                                    </div>
+                                    </h4>
                                 </div>
                             </div>
                         </div>

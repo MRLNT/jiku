@@ -27,20 +27,7 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
-    <meta name="author" content="Potenza Global Solutions" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- app favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <!-- plugin stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
-    <!-- app style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <?php @include 'components/head.php'?>
 </head>
 
 <body>
@@ -80,33 +67,7 @@ if(isset($_POST['submit'])){
             </header>
             <!-- end app-header -->
             <!-- begin app-container -->
-            <div class="app-container">
-                <!-- begin app-nabar -->
-                <aside class="app-navbar">
-                    <!-- begin sidebar-nav -->
-                    <div class="sidebar-nav scrollbar scroll_light">
-                        <ul class="metismenu " id="sidebarNav">
-                            <li class="nav-static-title">User Menu</li>
-                            
-                            <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
-                            <li>
-                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
-                                <ul aria-expanded="false">
-                                    <li> <a href="asnaktif_1.php">ASN Aktif</a> </li>
-                                    <li> <a href="prapensiun_1.php">ASN Pra-Pensiun </a> </li>
-                                    <li> <a href="user_page.php">ASN Pensiun</a> </li>
-                                </ul>
-                            </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a> </li>
-                            <li><a href="logout.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Logout</span></a> </li>
-                        </ul>
-                    </div>
-                    <!-- end sidebar-nav -->
-                </aside>
-                <!-- end app-navbar -->
-                
-            </div>
+            <?php @include 'components/navigation.html'?>
             <!-- end app-container -->
             <!-- begin app-main -->
             <div class="app-main" id="main">

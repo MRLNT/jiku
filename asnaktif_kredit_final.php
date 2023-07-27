@@ -20,6 +20,25 @@ if(isset($_POST['submit'])){
     $sql4 = "SELECT * FROM temp_form4 WHERE kode_marketing = '$kode_marketing' ORDER BY id_pengajuan DESC LIMIT 1";$result4 = $conn->query($sql4);if ($result4->num_rows > 0) {$row = $result4->fetch_assoc();$jumlah_pinjaman = $row['jumlah_pinjaman'];$waktu_pinjaman = $row['waktu_pinjaman'];$umur_pengajuan = $row['umur_pengajuan'];$suku_bunga = $row['suku_bunga'];$total_premi = $row['total_premi'];$pembayaranbulanan = $row['pembayaran_bulanan'];} else echo "No data found.";
     // TABLE 5
     $kredit_file_1 = $_POST['kredit_file_1'];$kredit_file_2 = $_POST['kredit_file_2'];$kredit_file_3 = $_POST['kredit_file_3'];$kredit_file_4 = $_POST['kredit_file_4'];$kredit_file_5 = $_POST['kredit_file_5'];$kredit_file_6 = $_POST['kredit_file_6'];$kredit_file_7 = $_POST['kredit_file_7'];$kredit_file_8 = $_POST['kredit_file_8'];$kredit_file_9 = $_POST['kredit_file_9'];$kredit_file_10 = $_POST['kredit_file_10'];$kredit_file_11 = $_POST['kredit_file_11'];$kredit_file_12 = $_POST['kredit_file_12'];$kredit_file_13 = $_POST['kredit_file_13'];$kredit_file_14 = $_POST['kredit_file_14'];$kredit_file_15 = $_POST['kredit_file_15'];$kredit_file_16 = $_POST['kredit_file_16'];$kredit_file_17 = $_POST['kredit_file_17'];$kredit_file_18 = $_POST['kredit_file_18'];$kredit_file_19 = $_POST['kredit_file_19'];
+    $catatan_file_1 = $_POST['catatan_file_1'];
+    $catatan_file_2 = $_POST['catatan_file_2'];
+    $catatan_file_3 = $_POST['catatan_file_3'];
+    $catatan_file_4 = $_POST['catatan_file_4'];
+    $catatan_file_5 = $_POST['catatan_file_5'];
+    $catatan_file_6 = $_POST['catatan_file_6'];
+    $catatan_file_7 = $_POST['catatan_file_7'];
+    $catatan_file_8 = $_POST['catatan_file_8'];
+    $catatan_file_9 = $_POST['catatan_file_9'];
+    $catatan_file_10 = $_POST['catatan_file_10'];
+    $catatan_file_11 = $_POST['catatan_file_11'];
+    $catatan_file_12 = $_POST['catatan_file_12'];
+    $catatan_file_13 = $_POST['catatan_file_13'];
+    $catatan_file_14 = $_POST['catatan_file_14'];
+    $catatan_file_15 = $_POST['catatan_file_15'];
+    $catatan_file_16 = $_POST['catatan_file_16'];
+    $catatan_file_17 = $_POST['catatan_file_17'];
+    $catatan_file_18 = $_POST['catatan_file_18'];
+    $catatan_file_19 = $_POST['catatan_file_19'];
 
     // Buat variabel untuk menyimpan query
     $insert = "INSERT INTO data_kredit_asnaktif(tipe_kredit,
@@ -27,13 +46,15 @@ if(isset($_POST['submit'])){
         waktu_pengajuan, tanggal_syarat_ketentuan,
         nama_debitur,tempat_lahir,tanggal_lahir,nik_debitur,nip_debitur,nomor_pensiun,alamat_rumah,nama_ibu,nama_instansi,pangkat_golongan,nomor_rekening,nomor_npwp,nomor_telepon,gaji_debitur,
         jumlah_pinjaman,waktu_pinjaman,umur_pengajuan,suku_bunga,total_premi,pembayaran_bulanan,
-        kredit_file_1, kredit_file_2, kredit_file_3, kredit_file_4, kredit_file_5, kredit_file_6, kredit_file_7, kredit_file_8, kredit_file_9, kredit_file_10, kredit_file_11, kredit_file_12, kredit_file_13, kredit_file_14, kredit_file_15, kredit_file_16, kredit_file_17, kredit_file_18, kredit_file_19
+        kredit_file_1, kredit_file_2, kredit_file_3, kredit_file_4, kredit_file_5, kredit_file_6, kredit_file_7, kredit_file_8, kredit_file_9, kredit_file_10, kredit_file_11, kredit_file_12, kredit_file_13, kredit_file_14, kredit_file_15, kredit_file_16, kredit_file_17, kredit_file_18, kredit_file_19,
+        catatan_file_1, catatan_file_2, catatan_file_3, catatan_file_4, catatan_file_5, catatan_file_6, catatan_file_7, catatan_file_8, catatan_file_9, catatan_file_10, catatan_file_11, catatan_file_12, catatan_file_13, catatan_file_14, catatan_file_15, catatan_file_16, catatan_file_17, catatan_file_18, catatan_file_19
         ) 
         VALUES('$tipe_kredit','$nama_marketing','$nik_marketing','$cabang_pembantu','$no_hp_marketing','$kode_marketing',
         '$tanggal_syarat_ketentuan','$tanggal_syarat_ketentuan',
         '$nama_debitur','$tempat_lahir','$tanggal_lahir','$nik_debitur','$nip_debitur','$nomor_pensiun','$alamat_rumah','$nama_ibu','$nama_instansi','$pangkat_golongan','$nomor_rekening','$nomor_npwp','$nomor_telepon','$gaji_debitur',
         '$jumlah_pinjaman','$waktu_pinjaman','$umur_pengajuan','$suku_bunga','$total_premi','$pembayaranbulanan',
-        '$kredit_file_1','$kredit_file_2','$kredit_file_3','$kredit_file_4','$kredit_file_5','$kredit_file_6','$kredit_file_7','$kredit_file_8','$kredit_file_9','$kredit_file_10','$kredit_file_11','$kredit_file_12','$kredit_file_13','$kredit_file_14','$kredit_file_15','$kredit_file_16','$kredit_file_17','$kredit_file_18','$kredit_file_19'
+        '$kredit_file_1','$kredit_file_2','$kredit_file_3','$kredit_file_4','$kredit_file_5','$kredit_file_6','$kredit_file_7','$kredit_file_8','$kredit_file_9','$kredit_file_10','$kredit_file_11','$kredit_file_12','$kredit_file_13','$kredit_file_14','$kredit_file_15','$kredit_file_16','$kredit_file_17','$kredit_file_18','$kredit_file_19',
+        '$catatan_file_1','$catatan_file_2','$catatan_file_3','$catatan_file_4','$catatan_file_5','$catatan_file_6','$catatan_file_7','$catatan_file_8','$catatan_file_9','$catatan_file_10','$catatan_file_11','$catatan_file_12','$catatan_file_13','$catatan_file_14','$catatan_file_15','$catatan_file_16','$catatan_file_17','$catatan_file_18','$catatan_file_19'
         )";
     mysqli_query($conn, $insert);
     header('Location: dashboard_user.php');
@@ -44,20 +65,7 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
-    <meta name="author" content="Potenza Global Solutions" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- app favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <!-- plugin stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
-    <!-- app style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <?php @include 'components/head.php'?>
 </head>
 
 <body>
@@ -97,33 +105,7 @@ if(isset($_POST['submit'])){
             </header>
             <!-- end app-header -->
             <!-- begin app-container -->
-            <div class="app-container">
-                <!-- begin app-nabar -->
-                <aside class="app-navbar">
-                    <!-- begin sidebar-nav -->
-                    <div class="sidebar-nav scrollbar scroll_light">
-                        <ul class="metismenu " id="sidebarNav">
-                            <li class="nav-static-title">User Menu</li>
-                            
-                            <li><a href="dashboard_user.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Dashboards</span></a> </li>
-                            <li>
-                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Bank Nagari</span></a>
-                                <ul aria-expanded="false">
-                                    <li> <a href="asnaktif_1.php">ASN Aktif</a> </li>
-                                    <li> <a href="prapensiun_1.php">ASN Pra-Pensiun </a> </li>
-                                    <li> <a href="user_page.php">ASN Pensiun</a> </li>
-                                </ul>
-                            </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank DKI</span></a> </li>
-                            <li><a href="#" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Bank SulSelBar</span></a> </li>
-                            <li><a href="logout.php" aria-expanded="false"><i class="nav-icon ti ti-comment"></i><span class="nav-title">Logout</span></a> </li>
-                        </ul>
-                    </div>
-                    <!-- end sidebar-nav -->
-                </aside>
-                <!-- end app-navbar -->
-                
-            </div>
+            <?php @include 'components/navigation.html'?>
             <!-- end app-container -->
             <!-- begin app-main -->
             <div class="app-main" id="main">
@@ -422,6 +404,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_1" type="text" class="form-control" value="<?php echo $row['catatan_file_1'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
@@ -438,6 +425,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_2" type="text" class="form-control" value="<?php echo $row['catatan_file_2'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
@@ -452,6 +444,11 @@ if(isset($_POST['submit'])){
                                                                     <input class="form-check-input" type="radio" name="kredit_file_3" <?php echo ($row['kredit_file_3'] == 'Tidak') ? 'checked' : '' ?> id="inlineRadio32" value="Tidak">
                                                                     <label class="form-check-label" for="inlineRadio32">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_3" type="text" class="form-control" value="<?php echo $row['catatan_file_3'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -474,6 +471,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_4" type="text" class="form-control" value="<?php echo $row['catatan_file_4'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
@@ -492,6 +494,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_5'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio52">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_5" type="text" class="form-control" value="<?php echo $row['catatan_file_5'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -514,6 +521,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_6" type="text" class="form-control" value="<?php echo $row['catatan_file_6'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>7</td>
@@ -532,6 +544,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_7'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio72">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_7" type="text" class="form-control" value="<?php echo $row['catatan_file_7'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -554,6 +571,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_8" type="text" class="form-control" value="<?php echo $row['catatan_file_8'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>9</td>
@@ -572,6 +594,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_9'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio92">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_9" type="text" class="form-control" value="<?php echo $row['catatan_file_9'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -594,6 +621,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_10" type="text" class="form-control" value="<?php echo $row['catatan_file_10'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>11</td>
@@ -612,6 +644,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_11'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio112">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_11" type="text" class="form-control" value="<?php echo $row['catatan_file_11'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -639,6 +676,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_12" type="text" class="form-control" value="<?php echo $row['catatan_file_12'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>13</td>
@@ -657,6 +699,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_13'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio132">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_13" type="text" class="form-control" value="<?php echo $row['catatan_file_13'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -679,6 +726,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_14" type="text" class="form-control" value="<?php echo $row['catatan_file_14'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>15</td>
@@ -697,6 +749,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_15'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio152">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_15" type="text" class="form-control" value="<?php echo $row['catatan_file_15'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -719,6 +776,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_16" type="text" class="form-control" value="<?php echo $row['catatan_file_16'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>17</td>
@@ -737,6 +799,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_17'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio172">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_17" type="text" class="form-control" value="<?php echo $row['catatan_file_17'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -759,6 +826,11 @@ if(isset($_POST['submit'])){
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_18" type="text" class="form-control" value="<?php echo $row['catatan_file_18'] ?>">
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>19</td>
@@ -777,6 +849,11 @@ if(isset($_POST['submit'])){
                                                                     <?php echo ($row['kredit_file_19'] == 'Tidak') ? 'checked' : '' ?>>
                                                                     <label class="form-check-label" for="inlineRadio192">Tidak</label>
                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input name="catatan_file_19" type="text" class="form-control" value="<?php echo $row['catatan_file_19'] ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
