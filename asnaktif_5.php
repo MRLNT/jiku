@@ -228,14 +228,11 @@
                                         $jmlhditerima_format = number_format($jmlhditerima, 0, ',', '.');
                                         $premi_format = number_format($premi, 0, ',', '.');
 
-                                        echo "<strong>Umur:</strong> {$umur} <br>";
                                         echo "<br>";
                                         echo "<strong>Jumlah yang Diajukan:</strong> Rp {$pinjaman_format} <br>";
                                         echo "<strong>Waktu Pinjaman:</strong> {$wpinjaman} <br>";
                                         echo "Biaya pencairan: Rp {$biayapencairan_format}<br>";
                                         echo "<strong>Jumlah yang Diterima:</strong> Rp {$jmlhditerima_format} <br>";
-                                        echo "<br>";
-                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
 
                                         $sql3 = "SELECT * FROM temp_form3 ORDER BY id_pengajuan DESC LIMIT 1";
                                         $result3 = $conn->query($sql3);
@@ -243,6 +240,7 @@
                                             $row = $result3->fetch_assoc();
                                         } else echo "No data found.";
                                         echo "Nama Debitur: {$row['nama_debitur']} <br>";
+                                        echo "<strong>Umur:</strong> {$umur} <br>";
                                         echo "Gaji Debitur: {$row['gaji_debitur']}<br>";
                                         $gaji_debitur = $row['gaji_debitur'] * 9 / 10;
 
@@ -262,8 +260,11 @@
                                             $BtnIsActive = true;
                                             echo "<strong><i>Gaji Cukup untuk Melakukan Pinjaman</i></strong>";
                                         }
-
-
+                                        echo "<br>";
+                                        echo "<strong>Pembayaran Pinjaman Bulanan :</strong> Rp {$pembayaranbulanan_format} x {$jumlahcicilanbulanan} <br>";
+                                        echo "<br>";
+                                        $sisa_gaji=$gaji_debitur-$pembayaranbulanan;
+                                        echo "<strong>Sisa Gaji :</strong> Rp {$sisa_gaji} <br>";
                                         echo "<br> Suku Bunga Tahunan: {$jpersen}%";
                                         echo "<br> Suku Bunga Bulan: {$bungabulanan_persen}%";
                                         echo "<br> Total Premi: Rp {$premi_format} ";

@@ -236,7 +236,7 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="card-header">
                                         <div class="card-heading">
-                                            <h4 class="card-title">Data Marketing</h4>
+                                            <h4 class="card-title">Data Debitur</h4>
                                         </div>
                                     </div>
                                     <div class="card-body">

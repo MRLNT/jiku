@@ -2707,10 +2707,10 @@
                     },
                     series: [{
                         name: 'Annual Sales',
-                        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+                        data: [50, 50, 50, 50, 50, 50, 50, 50, 50]
                     }, {
                         name: 'Annual Revenue',
-                        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+                        data: [50, 50, 50, 50, 50, 50, 50, 50, 50]
                     }],
                     xaxis: {
                         categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
